@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Current And Future Economic</title>
+  <!--<meta http-equiv="refresh" content="1">-->
+</head>
+<body>
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="/Gambar/Decision.jpg" style="width:100%; high:150px; padding:0px;">
+			<div class="carousel-caption">
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerTop5()">Global Economics</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomer()">Economics Growth</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiSearchCustomer()">Balance Sheet of Indonesia's Payment</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerClaim()">Exchange Rates</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerLapse()">Inflation</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="">Financial System</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerOthers()">Future Prospect and Risk</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="">Policy Mix</h4></a>
+				<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerOthers()">Policy and Focus</h4></a>
+			</div>
+		</div>
+	</div>
+
+	<div ng-switch="variabelCurrentAndFutureEconomic">
+		<div ng-switch-when="selectGlobalEconomics">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/Administration17.jpg" class="media-object" style="width:70px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateModalGlobalEconomics()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in globalEconomicsData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectEconomicsGrowth">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/business-consulting2.jpg" class="media-object" style="width:70px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateEconomicsGrowth()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in economicsGrowthData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectBalanceSheetOfIndonesiasPayment">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/Administration15.jpg" class="media-object" style="width:40px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateBalanceSheetOfIndonesiasPayment()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in balanceSheetData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectExchangeRates">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/entry4.jpg" class="media-object" style="width:80px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateExchangeRates()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in exchangeRatesData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectInflation">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/images25.png" class="media-object" style="width:40px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateInflation()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in inflationData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectFinancialSystem">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/images1.png" class="media-object" style="width:40px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateFinancialSystem()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in financialSystemData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectFutureProspectAndRisk">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/images16.jpg" class="media-object" style="width:70px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateFutureProspectAndRisk()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in futureProspectAndRiskData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectPolicyMix">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/Administration16.jpg" class="media-object" style="width:50px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivatePolicyMix()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in policyMixData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="selectCentralBankPolicyFocus">
+			<div class="media">
+				<div class="media-left">
+					<img src="/Gambar/bank (2).png" class="media-object" style="width:50px">
+				</div>
+				<div class="media-body">
+					<h4 id="masuk" ng-click="fungsiCurrentAndFutureEconomicActivateCentralBankPolicyFocus()">Click me to activate search</h4>
+				</div>
+			</div>
+			<div ng-repeat="y in centralBankPolicyFocusData">
+				<p>{{y.CAFE}}</p>
+			</div>
+		</div>
+	</div>
+	

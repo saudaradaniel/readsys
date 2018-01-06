@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<title>Table General Ledger</title>
+	<style>
+    h2   {color: green;font-family: verdana;font-size: 300%;}
+	h4   {color: blue;font-family: verdana;font-size: 100%;}
+    h5   {color: green;font-family: verdana;font-size: 100%;}
+    li a {display: block;background-color: black;color: white;padding: 8px 16px;text-decoration: none;}
+	li a.active {background-color: #4CAF50;color: white;}
+	li a:hover:not(.active) {background-color: lightgreen;color: white;}
+	ul {background-color: green;color: blue;}
+	table, th , td  {border: 1px solid grey; border-collapse: collapse; padding: 5px;}
+	th {text-align: center; background-color:rgb(170, 126, 79); color:white;}
+	</style>
+</head>
+<body>
+	<div ng-controller="generalLedgerCtrl" ng-init="nomor_Akun" class="table-responsive"  style="width:100%;">					
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th ng-click="orderByMe('Account')">Account Name</th>
+					<th ng-click="orderByMe('Kodasi')" ng-show="false">Account</th>
+					<th ng-click="orderByMe('Debit')">Debit</th>
+					<th ng-click="orderByMe('Credit')">Credit</th>
+					<th ng-click="orderByMe('Debit-Credit')">Sub Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="xz in totalData">
+					<td>'Total and Grand Total'</td>
+					<td style="text-align: right">{{ xz.Debit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ xz.Credit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ (xz.Debit-xz.Credit) | currency: "": 2}}</td>
+				</tr>
+				<tr ng-repeat="x in assetData | orderBy:myOrderBy">	
+					<td ng-click = "nomor_Akun = x.Kodasi;fungsiNomorAkun(nomor_Akun)">
+						<div id="panelRowOfTabel" class="panel panel-success" style="padding:0px">
+							<div class="panel-heading" id="accountSupportingData">
+								<a data-toggle="collapse" data-parent="#accordionPanelAsset" href="#{{ x.Account}}">{{ x.Account}}</a>
+							</div>
+						</div>
+						<div class="panel-body  collapse" id="{{ x.Account}}" style="padding:0px; height=10%;">
+							<div class="table-responsive" style="width:100%;">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th ng-click="orderByMe('Journal')">Journal#</th>
+											<th ng-click="orderByMe('Transaction')">Transaction#</th>														
+											<th ng-click="orderByMe('ProcessingDate')">Processing Date</th>
+											<th ng-click="orderByMe('Ccy')">Currency</th>
+											<th ng-click="orderByMe('Debit')">Debit</th>
+											<th ng-click="orderByMe('Credit')">Credit</th>
+											<th ng-click="orderByMe('Debit-Credit')">Sub Total</th>
+										</tr>
+									</thead>
+									<tbody>			
+										<tr ng-repeat="xx in transactionData">
+											<td>{{ xx.Journal}}</td>
+											<td>{{ xx.Transaction}}</td>
+											<td>{{ xx.ProcessingDate}}</td>
+											<td>{{ xx.Ccy}}</td>																			
+											<td style="text-align: right">{{ xx.Debit | currency: "": 2}}</td>
+											<td style="text-align: right">{{ xx.Credit | currency: "": 2}}</td>
+											<td style="text-align: right">{{ (xx.Debit-xx.Credit) | currency: "": 2}}</td> 
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</td>
+					<td ng-show="false">{{ x.Kodasi}}</td>
+					<td style="text-align: right">{{ x.Debit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ x.Credit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ (x.Debit-x.Credit) | currency: "": 2}}</td>
+				</tr>												
+			</tbody>	 
+			<tfoot>
+				<tr ng-repeat="xy in totalData">
+					<td>'Total and Grand Total'</td>
+					<td style="text-align: right">{{ xy.Debit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ xyCredit | currency: "": 2}}</td>
+					<td style="text-align: right">{{ (xy.Debit-xy.Credit) | currency: "": 2}}</td>
+				</tr>
+			</tfoot>
+		</table>								
+	</div>							
+</body>
+</html>   

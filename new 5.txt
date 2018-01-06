@@ -1,0 +1,119 @@
+<div class="form-group">
+										<select class="form-control" id="selectorAgenda" ng-model="variabelAgendaDetail" style="background-color:lightgray;">
+											<option value="selectMainAgenda" id="myEntryNewAgenda">Main Agenda</option>
+											<option value="selectAttentions">Attentions</option>
+											<option value="selectTransportation">Transportation</option>
+											<option value="selectNotes">Notes</option>
+										</select>
+										<div ng-switch="variabelAgendaDetail">
+											<div ng-switch-when="selectMainAgenda">
+												<form action="StuffInsertAgendaDataControl.php" method="post" name="mainAgendaForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Owner</label>
+														<div class="col-sm-10">
+															 <input name="myInput1" ng-model="bowner" required class="form-control" type="text">
+															 <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Owner is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Date </label>
+														<div class="col-sm-10"> 
+															<input name="myInput2" ng-model="bdate" required class="form-control" type="date">
+															<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Date is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Timeschedule</label>
+														<div class="col-sm-10">
+															<input name="myInput3" ng-model="btime" required class="form-control" type="text">
+															<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Timeschedule is required.</span>
+														</div>
+													</div>												
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Place</label>
+														<div class="col-sm-10">
+															<input name="myInput4" ng-model="bplace" required class="form-control" type="text">
+															<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Timeschedule is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Room</label>
+														<div class="col-sm-10">
+															<input name="myInput3" ng-model="broom" required class="form-control" type="text">
+														</div>
+													</div>												
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Status</label>
+														<div class="col-sm-10">
+															<input name="myInput4" ng-model="bstatus" required class="form-control" type="text">
+														</div>
+													</div>
+													<input type="submit"  value="Submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">
+
+												</form>
+											</div>	
+											<div ng-switch-when="selectTransportation">	
+												<form name="MainAgendaForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Order</label>
+														<div class="col-sm-10">
+															 <input name="myInput6" ng-model="CarOrder" required class="form-control" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Order Status</label>
+														<div class="col-sm-10"> 
+															<input name="myInput7" ng-model="CarOrderStatus" required class="form-control" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Car</label>
+														<div class="col-sm-10">
+															<input name="myInput8" ng-model="Car" required class="form-control" type="text">
+															<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Car is required.</span>
+														</div>
+													</div>												
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Driver</label>
+														<div class="col-sm-10">
+															<input name="myInput9" ng-model="Driver" required class="form-control" type="text">
+															<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Driver is required.</span>
+														</div>
+													</div>									
+												</form>
+											</div>
+											<div ng-switch-when="selectAttentions">	
+												<form name="MainAgendaForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Name</label>
+														<div class="col-sm-10">
+															 <input name="myInput10" ng-model="Name" required class="form-control" type="text">
+															 <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Name is required.</span>
+														</div>
+													</div>
+												</form>
+											</div>
+											<div ng-switch-when="selectNotes">
+												<form name="MainAgendaForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Topic/Description</label>
+														<div class="col-sm-10">
+															<textarea class="form-control" rows="2" id="topikDeskripsi" ng-model="entryDescription" required></textarea>
+															 <span ng-show="myForm.entryDescription.$touched && myForm.entryDescription.$invalid">The Topic/Description is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Notes</label>
+														<div class="col-sm-10">
+															<textarea class="form-control" rows="10" id="catatanNotes" ng-model="entryNotes" required></textarea>
+															<span ng-show="myForm.entryNotes.$touched && myForm.entryNotes.$invalid">The Notes is required.</span>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>	
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>																	
+										</div>
+									</div>
+								</div>

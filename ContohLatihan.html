@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myReadsYsApp">
+<head>
+    <title>ReadsYs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<meta http-equiv="refresh" content="1">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="pengaturAnimasiButton.js"></script>
+	<script src="ReadsYsControl.js"></script>
+    <style>
+        h1   {color: green;font-family: verdana;font-size: 200%;}
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {width:auto;height:auto;margin: 0;}
+		ul {background-color: lightblue; color: white;}
+    </style>
+</head> 
+<body ng-init="disabled=true" ng-controller="myReadsYsAppCtrl">
+<a href="" id="trash" class="cntrbtn remove pull-left disabled" ng-click="disabled||removeTasksToArchive()" ng-disabled="disabled">remove</a>													
+<button type="submit" class="btn btn-success btn-default pull-left" ng-click="removeTasksToArchive1()"><span class="glyphicon glyphicon-folder-close"></span> Close</button>																	
+<h2 id="kerja">Proceed<h2>
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li ng-show="false"><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
+</body>
+</html>

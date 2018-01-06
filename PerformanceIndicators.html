@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Performance Indicators</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>   
+	<div ng-app="myReadsYsApp" ng-controller="crManagingControl">
+        <div id="indicatorUtama"class="table-responsive" style="padding-top:0px; padding-right:5px; padding-left:5px">				
+            <table class="table table-hover table-bordered">
+                <thead style="background-color:rgb(107, 126, 105); color:white;">
+                    <tr>
+                        <th style="padding:0px;"><button type="button" class="btn-block" style="background-color:rgb(107, 126, 105); color:white; border-color:rgb(107, 126, 105; padding:0px;">Indicator</button></th>
+                        <th style="padding:0px;"><button type="button"  class="btn-block" style="background-color:rgb(107, 126, 105); color:white; border-color:rgb(107, 126, 105; padding:0px;">Required Information</button></th>
+                    </tr>
+                </thead>
+                <tbody style="background-color:lightgreen">
+                    <tr>
+                        <td>
+                        <img src="/Gambar/graph-3.png" class="media-object" style="width:70%">
+                        </td>
+                        <td id ="officesolvent" onclick = "mPilihOffiveSolvent()">Is the office solvent?</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img src="/Gambar/graph-4.png" class="media-object" style="width:70%">
+                        </td>
+                        <td id ="officelongtermobjective" onclick = "mPilihLongTermObjective()">Is the office still in a position to fulfil its long term objectives regarding capital requirement and profit?</td>   
+                    </tr>
+                    <tr>
+                        <td>
+                        <img src="/Gambar/crest-icon-64.png" class="media-object" style="width:70%">
+                        </td>
+                        <td id ="officeperformingwell" onclick = "mPilihPerformingWell()">Is the office performing well or badly compareed to targets the management has set the office for the foreseeable future?</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img src="/Gambar/graph-8.png" class="media-object" style="width:70%">
+                        </td>
+                        <td id ="officedaytodayperformance" onclick = "mPilihDaytodayPerformance()">Is the day to day performance satisfactory and what are the trend?</td>   
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="ReadsYsControl.js"></script>
+</body>
+</html>

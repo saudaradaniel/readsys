@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Administration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <style>
+    h2   {color: green;font-family: verdana;font-size: 300%;}
+    h5   {color: green;font-family: verdana;font-size: 150%;}
+  </style>
+  
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <!--<a class="navbar-brand" href="#">Reinsurance Administration</a> -->
+                </div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="StufAndfReference.html">Home</a></li>
+                        <li><a data-toggle="collapse" href="#bussinessDocument">Business Document</a></li>
+						<li><a data-toggle="collapse" href="#placingNewBusiness">Placing New Offer</a></li>
+						<li><a href="StuffBusinessOutstandingFacultative.html" target="_self">Renewal</a></li>
+						<li><a href="StuffBusinessAcceptedFacultative.html" target="_self">Tracking Cessie</a></li>
+						<li><a href="StuffBusinessRegisteredTreaty.html" target="_self">Automatic Termination</a></li>
+						<script>$(document).ready(function(){$('[data-toggle="popover"]').popover()});</script>
+                    </ul>
+					
+					<button type="button" class="btn btn-success navbar-btn  navbar-right" onclick="mengujiValitasData()">
+						<span class="glyphicon glyphicon-send"></span>Submit
+					</button>
+					
+					<button type="button" class="btn btn-danger navbar-btn  navbar-right" onclick="mengujiValitasData()">
+						<span class="glyphicon glyphicon-copy"></span>Remember
+					</button>
+				</div>
+            </div>
+        </nav>
+	</div><br><br>
+
+	<div class="container-fluid">
+        <div class="row">
+			<div id="bussinessDocument"  class="collapse" style="padding-top:15px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+				<div class="col-sm-3" style="padding-right:0px; padding-left:0px">
+					<h5><a data-toggle="collapse" data-parent="#accordion" href="#collapseBudinessDocument">Business' Document</a></h5>
+					<img src="C:/xampp/htdocs/Gambar/Administration.jpg" class="media-object" style="width:100%">	
+					<div class="panel-group" id="collapseBudinessDocument">		
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								   <a data-toggle="collapse" data-parent="#accordion" href="#collapseCalls">Calls</a>
+								</h4>
+							</div>
+							<div id="collapseCalls" class="panel-collapse collapse in">
+								<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Year</th>
+													<th>Issues</th>
+													<th>Cessie(s)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2017</td>
+													<td>Facultative</td>
+													<td>100</td>
+												</tr>
+												<tr>
+													<td>2017</td>
+													<td>Treaty</td>
+													<td>1000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>	
+						</div>
+
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								   <a data-toggle="collapse" data-parent="#accordion" href="#collapseBusinessLetters">Business Letters, and Emails</a>
+								</h4>
+							</div>
+							<div id="collapseBusinessLetters" class="collapse">
+								<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Year</th>
+													<th>Issues</th>
+													<th>Cessie(s)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2017</td>
+													<td>Facultative</td>
+													<td>100</td>
+												</tr>
+												<tr>
+													<td>2017</td>
+													<td>Treaty</td>
+													<td>1000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								   <a data-toggle="collapse" data-parent="#accordion" href="#collapseAgreement">Agreement</a>
+								</h4>
+							</div>
+							<div id="collapseAgreement" class="collapse">
+								<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Year</th>
+													<th>Issues</th>
+													<th>Cessie(s)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2017</td>
+													<td>Facultative</td>
+													<td>100</td>
+												</tr>
+												<tr>
+													<td>2017</td>
+													<td>Treaty</td>
+													<td>1000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTreatyWordings">Treaty and Wordings</a>
+								</h4>
+							</div>
+							<div id="collapseTreatyWordings" class="collapse">
+								<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Year</th>
+													<th>Issues</th>
+													<th>Cessie(s)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2017</td>
+													<td>Facultative</td>
+													<td>100</td>
+												</tr>
+												<tr>
+													<td>2017</td>
+													<td>Treaty</td>
+													<td>1000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>									
+				</div>
+				
+				<div class="col-sm-9"  style="padding:0px;">
+					<ul class="nav nav-tabs navbar-right">
+						<li><a data-toggle="tab" href="#documentLibrary">Library</a></li>
+						<li><a data-toggle="tab" href="#documentLogbook">Logbook</a></li>
+						<li class="active"><a data-toggle="tab" href="#processingDocument">Processing</a></li>	
+					</ul><br><br>
+					<div class="tab-content" id="tabBusinessDocument">
+						<div id="processingDocument" class="tab-pane fade in active">
+							<div id="collapseManagingBusinessDocument"  class="businessDocument">
+								<div class="panel-group" id="collapseBudinessDocument">
+									<div class="panel panel-primary">							
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformation">Document's Main Information</a>
+											</h4>
+										</div>
+										<div id="collapseDocumentMainInformation" class="panel-collapse collapse in">
+											<div class="panel-body" style="padding:5px;">
+												<div class="row">
+													<div class="col-sm-4">
+														<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationIdentity">Identity</a>
+																</h4>
+															</div>
+															<div id="collapseDocumentMainInformationIdentity" class="panel-collapse collapse in">
+																<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																	<div class="form-group">
+																		<label for="dod">Date of Document:</label>
+																		<input type="date" class="form-control" id="dod">
+																	</div>
+																	<div class="form-group">
+																		<label for="doc">Document#:</label>
+																		<input type="Number" class="form-control" id="doc">
+																	</div>
+																	<div class="form-group">
+																		<label for="ref">Reference#:</label>
+																		<input type="text" class="form-control" id="ref">
+																	</div>
+																	<div class="form-group">
+																		<label for="cus">Customer:</label>
+																		<select class="form-control" id="cus">
+																			<option>Bumiputera 1912</option>
+																			<option>Jiwasraya</option>
+																			<option>Prudential Indonesia</option>
+																			<option>AIG</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label for="cus">Media of Creating Document:</label>
+																		<select class="form-control" id="sel1">
+																			<option>E-mail</option>
+																			<option>Calls</option>
+																			<option>Mail</option>
+																			<option>Fax</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label for="mod">M o d e:</label>
+																		<select class="form-control" id="mod">
+																			<option>Ready to underwrite</option>
+																			<option>Underwritten</option>
+																			<option>New document</option>
+																			<option>Cancel</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label for="top">T o p i c:</label>
+																		<input type="text" class="form-control" id="top">
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-sm-4">
+														<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationDetails">Details</a>
+																</h4>
+															</div>
+															<div id="collapseDocumentMainInformationDetails" class="panel-collapse collapse in">
+																<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																	<div class="form-group">
+																		<label for="rei">Reinsurance#:</label>
+																		<input type="text" class="form-control" id="rei">
+																	</div>
+
+																	<div class="form-group">
+																		<label for="ifn">Insured First Name:</label>
+																		<input type="text" class="form-control" id="ifn">
+																	</div>
+																	<div class="form-group">
+																		<label for="iln">Insured Last Name:</label>
+																		<input type="text" class="form-control" id="iln">
+																	</div>
+																	<div class="form-group">
+																		<label for="adt">Address to:</label>
+																		<input type="text" class="form-control" id="adt">
+																	</div>
+																	<div class="form-group">
+																		<label for="sen">Sender:</label>
+																		<input type="text" class="form-control" id="sen">
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-sm-4">
+														<div class="panel panel-danger" style="padding:0px;">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationHistory">History</a>
+																</h4>
+															</div>
+															<div id="collapseDocumentMainInformationHistory" class="panel-collapse collapse in">											
+																<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																	<div class="form-group">
+																		<label for="not">N o t e s:</label>
+																		<textarea class="form-control" rows="12" id="not"></textarea>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>	
+								
+									<div class="panel panel-warning">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTemporaryEntries">Temporary Entries</a>
+											</h4>
+										</div>
+										<div id="collapseTemporaryEntries" class="collapse">
+											<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+												<div class="table-responsive">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>DoD</th>
+																<th>Source</th>
+																<th>Insured</th>
+																<th>Addressed to</th>
+																<th>Sender</th>
+																<th>Topic</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>2017</td>
+																<td>Facultative</td>
+																<td>100</td>
+															</tr>
+															<tr>
+																<td>2017</td>
+																<td>Treaty</td>
+																<td>1000</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						
+						<div id="documentLogbook" class="tab-pane fade">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<div class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentLogbook">Document's Logbook</a>
+									</div>
+									<div id="collapseDocumentLogbook" class=""panel-collapse collapse in">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Logbook#</th>
+															<th>Take out</th>
+															<th>Take in</th>
+															<th>Description</th>
+															<th>User</th>
+															<th>Requisition Status</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2017</td>
+															<td>Facultative</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>2017</td>
+															<td>Treaty</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+					
+						<div id="documentLibrary" class="tab-pane fade">
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentLibrary">Document Library</a>
+									</h4>
+								</div>
+								<div id="collapseDocumentLibrary" class="panel-collapse collapse in">
+									<div class="panel-body"  style="padding:5px;">
+										<div class="row">
+											<div class="col-sm-4">
+												<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordion1" href="#collapseDocumentMainInformationIdentity1">Identity</a>
+														</h4>
+													</div>
+													<div id="collapseDocumentMainInformationIdentity1" class="panel-collapse collapse in">
+														<form  style="padding-top:0px; padding-right:5px; padding-left:5px">
+															<div class="form-group">
+																<label for="pat">Path of Document:</label>
+																<input type="text" class="form-control" id="pat">
+															</div>
+															<div class="form-group">
+																<label for="fil">File Name:</label>
+																<input type="text" class="form-control" id="fil">
+															</div>
+															<div class="form-group">
+																<label for="ext">File Extention:</label>
+																<input type="text" class="form-control" id="ext">
+															</div>
+															<div class="form-group">
+																<label for="mod">Document Owner:</label>
+																<input type="text" class="form-control" id="mod">
+															</div>
+															<div class="form-group">
+																<label for="sen">Send and Received Status:</label>
+																<select class="form-control" id="sen">
+																	<option>Active:Out</option>
+																	<option>Active:Ready</option>
+																	<option>Static:Out</option>
+																	<option>Static:Ready</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label for="dos">Type Document:</label>
+																<select class="form-control" id="dos">
+																	<option>E-mail</option>
+																	<option>Calls</option>
+																	<option>Mail</option>
+																	<option>Fax</option>
+																</select>
+															</div>
+														</form>
+													</div>
+												</div>										
+											</div>
+											
+											<div class="col-sm-4">
+												<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentLibrary">Physical Storage</a>
+														</h4>
+													</div>
+													<div id="collapseDocumentLibrary" class="panel-collapse collapse in">
+														<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+															<div class="form-group">
+																<label for="cab">Filing Cabinet:</label>
+																<input type="text" class="form-control" id="cab">
+															</div>
+															<div class="form-group">
+																<label for="row">Row in Cabinet:</label>
+																<input type="text" class="form-control" id="row">
+															</div>
+															<div class="form-group">
+																<label for="fol">Folder in Cabinet:</label>
+																<input type="text" class="form-control" id="fol">
+															</div>
+															<div class="form-group">
+																<label for="pos">Position in Folder:</label>
+																<input type="text" class="form-control" id="pos">
+															</div>
+															<div class="form-group">
+																<label for="lib">Library Status:</label>
+																<select class="form-control" id="lib">
+																	<option>Active:Out</option>
+																	<option>Active:Ready</option>
+																	<option>Static:Out</option>
+																	<option>Static:Ready</option>
+																</select>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-sm-4">
+												<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentRequisition">Requisition</a>
+														</h4>
+													</div>
+													<div id="collapseDocumentRequisition" class="panel-collapse collapse in">
+														<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+															<div class="form-group">
+																<label for="dat">Date:</label>
+																<input type="text" class="form-control" id="dat">
+															</div>
+															<div class="form-group">
+																<label for="rea">Reason to take out:</label>
+																<input type="text" class="form-control" id="rea">
+															</div>
+																<div class="form-group">
+																<label for="at1">Attention 1:</label>
+																<input type="text" class="form-control" id="at1">
+															</div>
+															<div class="form-group">
+																<label for="at2">Attention 2:</label>
+																<input type="text" class="form-control" id="at2">
+															</div>
+															<div class="form-group">
+																<label for="at3">Attention 3:</label>
+																<input type="text" class="form-control" id="at3">
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+
+			<div id="placingNewBusiness" class="collapse" style="padding-top:15px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+				<ul class="nav nav-tabs navbar-right">
+					<li><a data-toggle="tab" href="#tabDecisionMaking">Decision Making</a></li>
+					<li class="active"><a data-toggle="tab" href="#riskAssessment">Risk Assessment</a></li>	
+				</ul>
+				
+				<div class="col-sm-3" style="padding-right:0px; padding-left:0px">
+					<h5><a data-toggle="collapse" data-parent="#accordion" href="#collapsePlacingNewOffer">Placing New Offer</a></h5>				
+					<img src="C:/xampp/htdocs/Gambar/Administration1.jpg" class="media-object" style="width:100%">
+					<div class="panel-group" id="collapsePlacingNewOffer">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseWorksheet">Worksheet</a>
+									</h4>
+								</div>
+								<div id="collapseWorksheet" class="collapse">
+									<div class="panel panel-danger" style="padding-right:0px; padding-left:5px">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseCaseFiles">Case Files</a>
+											</h4>
+										</div>
+										<div id="collapseCaseFiles" class="collapse">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Checked</th>
+															<th>Issue</th>
+															<th>Document#</th>
+														</tr>
+														<tr>
+															<th><span class="glyphicon glyphicon-triangle-bottom">Attachment:Case File</spa></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2017</td>
+															<td>Facultative</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>2017</td>
+															<td>Treaty</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-danger" style="padding-right:0px; padding-left:5px">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTreatyComplience">Treaty Complience</a>
+											</h4>
+										</div>
+										<div id="collapseTreatyComplience" class="collapse">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Applications</th>
+															<th>Comply</th>
+															<th>Incomply</th>
+															<th>Cessie(s)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Age</td>
+															<td>20</td>
+															<td>100</td>
+															<td>120</td>
+														</tr>
+														<tr>
+															<td>Gender</td>
+															<td>500</td>
+															<td>1000</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										</div>
+									</div>
+								</div>
+							
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseMyAccount">My Account</a>
+									</h4>
+								</div>
+								<div id="collapseMyAccount" class="panel-collapse collapse in">
+									<div class="panel panel-success" style="padding-right:0px; padding-left:5px">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseMyJob">My Job</a>
+											</h4>
+										</div>
+										<div id="collapseMyJob" class="panel-collapse collapse in">
+											<select class="form-control" id="cus">
+												<option>Paper cession forms</option>
+												<option>Self administration list</option>
+												<option>Electronic data transfer</option>
+												<option>Reserved facility</option>
+											</select>
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Reinsurance#</th>
+															<th>Method of Reinsurance</th>
+															<th>Customer</th>
+															<th>Insured-First Name</th>
+															<th>Insured-Last Name</th>
+															<th>Issue Date</th>
+															<th>Entry Date</th>
+															<th>Insurance Form</th>
+															<th>Gender</th>
+															<th>Birth Date</th>
+															<th>Medics</th>
+															<th>Total Sum Reinsured</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2017</td>
+															<td>Facultative</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>2017</td>
+															<td>Treaty</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>	
+									</div>
+									
+									<div class="panel panel-success" style="padding-right:0px; padding-left:5px">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseMyMail">My Mail</a>
+											</h4>
+										</div>
+										<div id="collapseMyMail" class="collapse">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Year</th>
+															<th>Issues</th>
+															<th>Cessie(s)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2017</td>
+															<td>Facultative</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>2017</td>
+															<td>Treaty</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+				
+									<div class="panel panel-success" style="padding-right:0px; padding-left:5px">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+											   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOfferJob">Offer Job Distributed to Users</a>
+											</h4>
+										</div>
+										<div id="collapseOfferJob" class="collapse">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Job#</th>
+															<th>Issue Date</th>
+															<th>Cessie(s)</th>
+															<th>User</th>
+															<th>Insured</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2017</td>
+															<td>Facultative</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>2017</td>
+															<td>Treaty</td>
+															<td>1000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				
+				<div class="tab-content" id="tabRiskAssessment">
+					<div id="riskAssessment" class="tab-pane fade in active">
+						<div class="col-sm-9"  style="padding:0px;">
+							<div class="panel-group" id="placingNewBusiness">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#collapseBasicInformation">Basic Information for Risk Assessment Consideration</a>
+										</h4>
+									</div>
+									<div id="collapseBasicInformation" class="panel-collapse collapse in">
+										<div class="panel-body" style="padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+											<div class="panel panel-success" id="mainInformation">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#collapseInsuredMainInformation">Reinsurance Main Information</a>
+													</h4>
+												</div>
+												<div id="collapseInsuredMainInformation" class="panel-collapse collapse in">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredMainInformationIdentity">Identity</a>
+																	</h4> 
+																</div>
+																<div id="insuredMainInformationIdentity" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="rei">Reference#:</label>
+																			<input type="text" class="form-control" id="rei">
+																		</div>
+																		<div class="form-group">
+																			<label for="tre">Treaty#-Wordings#:</label>
+																			<input type="text" class="form-control" id="tre">
+																		</div>
+																		<div class="form-group">
+																			<label for="pol">Policy ID#:</label>
+																			<input type="text" class="form-control" id="pol">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>	
+											
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredMainInformationSourceBusiness">Source Business</a>
+																	</h4> 
+																</div>
+																<div id="insuredMainInformationSourceBusiness" class="collapse">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="cus">Ceding Company - Customer:</label>
+																			<select class="form-control" id="cus">
+																				<option>Bumiputera 1912</option>
+																				<option>Jiwasraya</option>
+																				<option>Prudential Indonesia</option>
+																				<option>AIG</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="pay">Payor of Reference Premium:</label>
+																			<select class="form-control" id="pay">
+																				<option>Bumiputera 1912</option>
+																				<option>Jiwasraya</option>
+																				<option>Prudential Indonesia</option>
+																				<option>AIG</option>
+																			</select>
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>	
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#history">History</a>
+																	</h4> 
+																</div>
+																<div id="history" class="collapse">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<textarea class="form-control" rows="10" id="not"></textarea>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>	
+											</div>	
+										
+											<div class="panel panel-success" id="insured">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#objectReinsured">Object to Reinsured</a>
+													</h4>
+												</div>
+												<div id="objectReinsured" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#contact">Insured</a>
+																	</h4> 
+																</div>
+																<div id="insured" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="fir">First Name:</label>
+																			<input type="text" class="form-control" id="fir">
+																		</div>
+																		<div class="form-group">
+																			<label for="las">Last Name:</label>
+																			<input type="text" class="form-control" id="las">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="hol">Policy Holder:</label>																			
+																			<input type="text" class="form-control" id="hol">
+																		</div>
+																		<div class="form-group">
+																			<label for="hol">Social Security Number (SSN):</label>																			
+																			<input type="text" class="form-control" id="hol">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>	
+											
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredMainInformation">Object Location</a>
+																	</h4> 
+																</div>
+																<div id="insuredMainInformation" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="reg">Region:</label>
+																			<select class="form-control" id="reg">
+																				<option>Asean</option>
+																				<option>Non Asean</option>
+																			</select>
+																		</div>																	
+																		<div class="form-group">
+																			<label for="sta">State:</label>
+																			<select class="form-control" id="sta">
+																				<option>Indonesia</option>
+																				<option>Malaysia</option>
+																				<option>Singapore</option>
+																				<option>Thailand</option>
+																				<option>Birma</option>
+																				<option>Timor Leste</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="pro">Province:</label>
+																			<select class="form-control" id="pro">
+																				<option>D.K.I</option>
+																				<option>Jawa Barat</option>
+																				<option>Jawa Tengah</option>
+																				<option>Jawa Timur</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="cit">City:</label>
+																			<select class="form-control" id="cit">
+																				<option>Jakarta</option>
+																				<option>Bandung</option>
+																				<option>Yogjakarta</option>
+																				<option>Surabaya</option>
+																			</select>
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>	
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#contact">Contact</a>
+																	</h4> 
+																</div>
+																<div id="contact" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="add">Address:</label>
+																			<input type="text" class="form-control" id="add">
+																		</div>
+																		<div class="form-group">
+																			<label for="pho">Phone:</label>
+																			<input type="text" class="form-control" id="pho">
+																		</div>
+																		<div class="form-group">
+																			<label for="eml">Email:</label>
+																			<input type="text" class="form-control" id="eml">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="panel panel-success" id="riskFactor">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsDegre">Risk Factors: Factors that influence the degree of risk</a>
+													</h4>
+												</div>
+												<div id="riskFactorsDegre" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#issueFactor">Issue Factor</a>
+																	</h4> 
+																</div>
+																<div id="issueFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="iss">Issue Date:</label>
+																			<input type="text" class="form-control" id="iss">
+																		</div>
+																		<div class="form-group">
+																			<label for="ter">Terminate:</label>
+																			<input type="text" class="form-control" id="ter">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="poy">Policy Year:</label>																			
+																			<input type="text" class="form-control" id="poy">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																		<div class="form-group">
+																			<label for="acc">Accounting Year:</label>																			
+																			<input type="text" class="form-control" id="acc">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredFactor">Inssured Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuredFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="pla">Place of Birth:</label>
+																			<input type="text" class="form-control" id="pla">
+																		</div>
+																		<div class="form-group">
+																			<label for="bir">Birth Date:</label>
+																			<input type="text" class="form-control" id="bir">
+																		</div>	
+																		<div class="form-group">
+																			<label for="agi">Aging Method:</label>
+																			<select class="form-control" id="agi">
+																				<option>Next Birthday</option>
+																				<option>Nearest Birthday</option>
+																				<option>Birthday</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="att">Attained Age:</label>																			
+																			<input type="text" class="form-control" id="att">
+																		</div>
+																		<div class="form-group">
+																			<label for="gen">Gender:</label>																			
+																			<input type="text" class="form-control" id="gen">
+																		</div>
+																		<div class="form-group">
+																			<label for="smo">Smoking:</label>																			
+																			<input type="text" class="form-control" id="smo">
+																		</div>
+																		<div class="form-group">
+																			<label for="med">Medics:</label>																			
+																			<input type="text" class="form-control" id="med">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuranceFactor">Insurance Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuranceFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="anc">Insurance:</label>
+																			<select class="form-control" id="anc">
+																				<option>Life Insurance</option>
+																				<option>Life Insurance Syariah</option>
+																				<option>Nonlife Insurance</option>
+																				<option>Nonlife Insurance Syariah</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="inf">Insurance Form:</label>
+																			<select class="form-control" id="inf">
+																				<option>Term Insurance</option>
+																				<option>Pure Endowment</option>
+																				<option>Endowment</option>
+																				<option>Accidental and Death Benefit</option>
+																				<option>Medical Insurance</option>
+																				<option>Waiver Premium</option>
+																				<option>Terminal Illness</option>
+																				<option>Permanent Total Disability</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="cur">Currency:</label>
+																			<input type="text" class="form-control" id="cur">
+																		</div>
+																		<div class="form-group">
+																			<label for="rar">Reinsurance Arrangement:</label>
+																			<select class="form-control" id="rar">
+																				<option>Automatic</option>
+																				<option>Excess of Loss</option>
+																				<option>Specific Agreement</option>
+																				<option>Stop Loss</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="ret">Retrocession:</label>
+																			<select class="form-control" id="ret">
+																				<option>No Retrocession</option>
+																				<option>Retroceded</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="pre">Previous Insurance:</label>
+																			<select class="form-control" id="pre">
+																				<option>123456</option>
+																				<option>112222</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="gro">Group Insurance:</label>
+																			<select class="form-control" id="gro">
+																				<option>Ordinary</option>
+																				<option>Group</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="sum">Sum Reinsured:</label>
+																			<input type="text" class="form-control" id="sum">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>	
+										
+											<div class="panel panel-success" id="development">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#developmentAndStatus">Development, Document, and Status</a>
+													</h4>
+												</div>
+												<div id="developmentAndStatus" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#development">Development</a>
+																	</h4> 
+																</div>
+																<div id="development" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="off">Offer Received:</label>																			
+																			<input type="text" class="form-control" id="off">
+																		</div>
+																		<div class="form-group">
+																			<label for="off">Offer Due Date:</label>																			
+																			<input type="text" class="form-control" id="off">
+																		</div>
+																		<div class="form-group">
+																			<label for="ent">Entry Date:</label>
+																			<input type="text" class="form-control" id="ent">
+																		</div>
+																		<div class="form-group">
+																			<label for="ada">Acceptance Date:</label>
+																			<input type="text" class="form-control" id="ada">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="ren">Renewal Date:</label>																			
+																			<input type="text" class="form-control" id="ren">
+																		</div>
+																		<div class="form-group">
+																			<label for="alt">Alteration Date:</label>																			
+																			<input type="text" class="form-control" id="alt">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>	
+											
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#documentation">Documentation</a>
+																	</h4> 
+																</div>
+																<div id="documentation" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="bil">Billing Date:</label>
+																			<input type="text" class="form-control" id="bil">
+																		</div>
+																		<div class="form-group">
+																			<label for="are">Age at Renewal:</label>
+																			<input type="text" class="form-control" id="are">
+																		</div>
+																		<div class="form-group">
+																			<label for="gea">Age at Alteration:</label>
+																			<input type="text" class="form-control" id="gea">
+																		</div>																
+																		<div class="form-group">
+																			<label for="sta">Payment Mode:</label>
+																			<select class="form-control" id="sta">
+																				<option>Annual</option>
+																				<option>Day(s)</option>
+																				<option>Month(s)</option>
+																				<option>Quarter</option>
+																				<option>Semiannual</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="frp">Frequency of Payment:</label>
+																			<input type="text" class="form-control" id="frp">
+																		</div>
+																		<div class="form-group">
+																			<label for="wpo">W.P.O:</label>
+																			<input type="text" class="form-control" id="wpo">
+																		</div>				
+																	</form>
+																</div>
+															</div>
+														</div>	
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#status">Status</a>
+																	</h4> 
+																</div>
+																<div id="status" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="ffe">Offer:</label>
+																			<input type="text" class="form-control" id="ffe">
+																		</div>
+																		<div class="form-group">
+																			<label for="und">Underwriting:</label>
+																			<input type="text" class="form-control" id="und">
+																		</div>
+																		<div class="form-group">
+																			<label for="cur">Current:</label>
+																			<input type="text" class="form-control" id="cur">
+																		</div>
+																		<div class="form-group">
+																			<label for="ret">Retro:</label>
+																			<input type="text" class="form-control" id="ret">
+																		</div>
+																		<div class="form-group">
+																			<label for="umu">Accumulation:</label>
+																			<input type="text" class="form-control" id="umu">
+																		</div>
+																		<div class="form-group">
+																			<label for="sem">Endorsement:</label>
+																			<input type="text" class="form-control" id="sem">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+											<div class="panel panel-success" id="coverage">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceCoverage">Reinsurance Coverage</a>
+													</h4>
+												</div>
+												<div id="reinsuranceCoverage" class="collapse">
+													<div class="table-responsive">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>Coverage#</th>
+																<th>Product</th>
+																<th>Risks</th>
+																<th>Elapse(Year)</th>
+																<th>Sum Insured</th>
+																<th>Sum at Risk</th>
+																<th>Sum Reinsured</th>
+																<th>% Reinsurance Shared</th>
+																<th>Sum Retroced</th>
+																<th>Reinsurance Treaty</th>
+																<th>Retro Treaty</th>
+																<th>CCy/Risk</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>2017</td>
+																<td>Facultative</td>
+																<td>100</td>
+															</tr>
+															<tr>
+																<td>2017</td>
+																<td>Treaty</td>
+																<td>1000</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												</div>
+											</div>
+										
+											<div class="panel panel-success" id="billing">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceBilling">Reinsurance Billing</a>
+													</h4>
+												</div>
+												<div id="reinsuranceBilling" class="collapse">
+													<div class="table-responsive">
+														<table class="table table-hover">
+															<thead>
+																<tr>
+																	<th>Billing#</th>
+																	<th>Risks</th>
+																	<th>Balance</th>
+																	<th>Premium</th>
+																	<th>EM Premium</th>
+																	<th>ER Premium</th>
+																	<th>Commission</th>
+																	<th>EM Commission</th>
+																	<th>ER Commission</th>
+																	<th>Overriding</th>
+																	<th>Fleet Discount</th>
+																	<th>Profit Commission</th>
+																	<th>Fleet Discount</th>
+																	<th>Product</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>2017</td>
+																	<td>Facultative</td>
+																	<td>100</td>
+																</tr>
+																<tr>
+																	<td>2017</td>
+																	<td>Treaty</td>
+																	<td>1000</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										
+											<div class="panel panel-success" id="Sharing Risk">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceSharingRisk">Sharing Risk</a>
+													</h4>
+												</div>
+												<div id="reinsuranceSharingRisk" class="collapse">
+													<div class="table-responsive">
+														<table class="table table-hover">
+															<thead>
+																<tr>
+																	<th>Product</th>
+																	<th>Risks</th>
+																	<th>Reinsurance</th>
+																	<th>Amount at Risk Shared</th>
+																	<th>Total Premium</th>
+																	<th>Total Commission</th>
+																	<th>Total Discount</th>
+																	<th>Balance</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>2017</td>
+																	<td>Facultative</td>
+																	<td>100</td>
+																</tr>
+																<tr>
+																	<td>2017</td>
+																	<td>Treaty</td>
+																	<td>1000</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										
+											<div class="panel panel-success" id="riskNature">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsHazardNature">Risk Factors: Nature of Hazard</a>
+													</h4>
+												</div>
+												<div id="riskFactorsHazardNature" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#issueFactor">Issue Factor</a>
+																	</h4> 
+																</div>
+																<div id="issueFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="iss">Issue Date:</label>
+																			<input type="text" class="form-control" id="iss">
+																		</div>
+																		<div class="form-group">
+																			<label for="ter">Terminate:</label>
+																			<input type="text" class="form-control" id="ter">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="poy">Policy Year:</label>																			
+																			<input type="text" class="form-control" id="poy">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																		<div class="form-group">
+																			<label for="acc">Accounting Year:</label>																			
+																			<input type="text" class="form-control" id="acc">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredFactor">Inssured Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuredFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="pla">Place of Birth:</label>
+																			<input type="text" class="form-control" id="pla">
+																		</div>
+																		<div class="form-group">
+																			<label for="bir">Birth Date:</label>
+																			<input type="text" class="form-control" id="bir">
+																		</div>	
+																		<div class="form-group">
+																			<label for="agi">Aging Method:</label>
+																			<select class="form-control" id="agi">
+																				<option>Next Birthday</option>
+																				<option>Nearest Birthday</option>
+																				<option>Birthday</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="att">Attained Age:</label>																			
+																			<input type="text" class="form-control" id="att">
+																		</div>
+																		<div class="form-group">
+																			<label for="gen">Gender:</label>																			
+																			<input type="text" class="form-control" id="gen">
+																		</div>
+																		<div class="form-group">
+																			<label for="smo">Smoking:</label>																			
+																			<input type="text" class="form-control" id="smo">
+																		</div>
+																		<div class="form-group">
+																			<label for="med">Medics:</label>																			
+																			<input type="text" class="form-control" id="med">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuranceFactor">Insurance Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuranceFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="anc">Insurance:</label>
+																			<select class="form-control" id="anc">
+																				<option>Life Insurance</option>
+																				<option>Life Insurance Syariah</option>
+																				<option>Nonlife Insurance</option>
+																				<option>Nonlife Insurance Syariah</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="inf">Insurance Form:</label>
+																			<select class="form-control" id="inf">
+																				<option>Term Insurance</option>
+																				<option>Pure Endowment</option>
+																				<option>Endowment</option>
+																				<option>Accidental and Death Benefit</option>
+																				<option>Medical Insurance</option>
+																				<option>Waiver Premium</option>
+																				<option>Terminal Illness</option>
+																				<option>Permanent Total Disability</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="cur">Currency:</label>
+																			<input type="text" class="form-control" id="cur">
+																		</div>
+																		<div class="form-group">
+																			<label for="rar">Reinsurance Arrangement:</label>
+																			<select class="form-control" id="rar">
+																				<option>Automatic</option>
+																				<option>Excess of Loss</option>
+																				<option>Specific Agreement</option>
+																				<option>Stop Loss</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="ret">Retrocession:</label>
+																			<select class="form-control" id="ret">
+																				<option>No Retrocession</option>
+																				<option>Retroceded</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="pre">Previous Insurance:</label>
+																			<select class="form-control" id="pre">
+																				<option>123456</option>
+																				<option>112222</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="gro">Group Insurance:</label>
+																			<select class="form-control" id="gro">
+																				<option>Ordinary</option>
+																				<option>Group</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="sum">Sum Reinsured:</label>
+																			<input type="text" class="form-control" id="sum">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+											<div class="panel panel-success" id="riskFactor1">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsHealthState">Risk Factors: Factors that influence the state of health</a>
+													</h4>
+												</div>
+												<div id="riskFactorsHealthState" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#issueFactor">Issue Factor</a>
+																	</h4> 
+																</div>
+																<div id="issueFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="iss">Issue Date:</label>
+																			<input type="text" class="form-control" id="iss">
+																		</div>
+																		<div class="form-group">
+																			<label for="ter">Terminate:</label>
+																			<input type="text" class="form-control" id="ter">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="poy">Policy Year:</label>																			
+																			<input type="text" class="form-control" id="poy">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																		<div class="form-group">
+																			<label for="acc">Accounting Year:</label>																			
+																			<input type="text" class="form-control" id="acc">
+																		</div>
+																		<div class="form-group">
+																			<label for="uny">Underwriting Year:</label>																			
+																			<input type="text" class="form-control" id="uny">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuredFactor">Inssured Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuredFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="pla">Place of Birth:</label>
+																			<input type="text" class="form-control" id="pla">
+																		</div>
+																		<div class="form-group">
+																			<label for="bir">Birth Date:</label>
+																			<input type="text" class="form-control" id="bir">
+																		</div>	
+																		<div class="form-group">
+																			<label for="agi">Aging Method:</label>
+																			<select class="form-control" id="agi">
+																				<option>Next Birthday</option>
+																				<option>Nearest Birthday</option>
+																				<option>Birthday</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="att">Attained Age:</label>																			
+																			<input type="text" class="form-control" id="att">
+																		</div>
+																		<div class="form-group">
+																			<label for="gen">Gender:</label>																			
+																			<input type="text" class="form-control" id="gen">
+																		</div>
+																		<div class="form-group">
+																			<label for="smo">Smoking:</label>																			
+																			<input type="text" class="form-control" id="smo">
+																		</div>
+																		<div class="form-group">
+																			<label for="med">Medics:</label>																			
+																			<input type="text" class="form-control" id="med">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#insuranceFactor">Insurance Factor</a>
+																	</h4> 
+																</div>
+																<div id="insuranceFactor" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="anc">Insurance:</label>
+																			<select class="form-control" id="anc">
+																				<option>Life Insurance</option>
+																				<option>Life Insurance Syariah</option>
+																				<option>Nonlife Insurance</option>
+																				<option>Nonlife Insurance Syariah</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="inf">Insurance Form:</label>
+																			<select class="form-control" id="inf">
+																				<option>Term Insurance</option>
+																				<option>Pure Endowment</option>
+																				<option>Endowment</option>
+																				<option>Accidental and Death Benefit</option>
+																				<option>Medical Insurance</option>
+																				<option>Waiver Premium</option>
+																				<option>Terminal Illness</option>
+																				<option>Permanent Total Disability</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="cur">Currency:</label>
+																			<input type="text" class="form-control" id="cur">
+																		</div>
+																		<div class="form-group">
+																			<label for="rar">Reinsurance Arrangement:</label>
+																			<select class="form-control" id="rar">
+																				<option>Automatic</option>
+																				<option>Excess of Loss</option>
+																				<option>Specific Agreement</option>
+																				<option>Stop Loss</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="ret">Retrocession:</label>
+																			<select class="form-control" id="ret">
+																				<option>No Retrocession</option>
+																				<option>Retroceded</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="pre">Previous Insurance:</label>
+																			<select class="form-control" id="pre">
+																				<option>123456</option>
+																				<option>112222</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="gro">Group Insurance:</label>
+																			<select class="form-control" id="gro">
+																				<option>Ordinary</option>
+																				<option>Group</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="sum">Sum Reinsured:</label>
+																			<input type="text" class="form-control" id="sum">
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>																			
+							</div>
+						</div>
+					</div>
+					
+					<div id="processingPlacingOffer" class="tab-pane fade">
+						<div class="col-sm-9"  style="padding:0px;">
+							<div class="panel-group" id="collapseBudinessDocument">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformation">Document's Main Information</a>
+										</h4>
+									</div>
+									<div id="collapseDocumentMainInformation" class="panel-collapse collapse in">
+										<div class="panel-body" style="padding:5px;">
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+															   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationIdentity">Identity</a>
+															</h4>
+														</div>
+														<div id="collapseDocumentMainInformationIdentity" class="panel-collapse collapse in">
+															<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																<div class="form-group">
+																	<label for="dod">Date of Document:</label>
+																	<input type="text" class="form-control" id="dod">
+																</div>
+																<div class="form-group">
+																	<label for="doc">Document#:</label>
+																	<input type="text" class="form-control" id="doc">
+																</div>
+																<div class="form-group">
+																	<label for="ref">Reference#:</label>
+																	<input type="text" class="form-control" id="ref">
+																</div>
+																<div class="form-group">
+																	<label for="cus">Customer:</label>
+																	<select class="form-control" id="cus">
+																		<option>Bumiputera 1912</option>
+																		<option>Jiwasraya</option>
+																		<option>Prudential Indonesia</option>
+																		<option>AIG</option>
+																	</select>
+																</div>
+																<div class="form-group">
+																	<label for="cus">Media of Creating Document:</label>
+																	<select class="form-control" id="sel1">
+																		<option>E-mail</option>
+																		<option>Calls</option>
+																		<option>Mail</option>
+																		<option>Fax</option>
+																	</select>
+																</div>
+																<div class="form-group">
+																	<label for="mod">M o d e:</label>
+																	<select class="form-control" id="mod">
+																		<option>Ready to underwrite</option>
+																		<option>Underwritten</option>
+																		<option>New document</option>
+																		<option>Cancel</option>
+																	</select>
+																</div>
+																<div class="form-group">
+																	<label for="top">T o p i c:</label>
+																	<input type="text" class="form-control" id="top">
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-sm-4">
+													<div class="panel panel-danger" style="padding-top:0px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+															   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationDetails">Details</a>
+															</h4>
+														</div>
+														<div id="collapseDocumentMainInformationDetails" class="panel-collapse collapse in">
+															<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																<div class="form-group">
+																	<label for="rei">Reinsurance#:</label>
+																	<input type="text" class="form-control" id="rei">
+																</div>
+
+																<div class="form-group">
+																	<label for="ifn">Insured First Name:</label>
+																	<input type="text" class="form-control" id="ifn">
+																</div>
+																<div class="form-group">
+																	<label for="iln">Insured Last Name:</label>
+																	<input type="text" class="form-control" id="iln">
+																</div>
+																<div class="form-group">
+																	<label for="adt">Address to:</label>
+																	<input type="text" class="form-control" id="adt">
+																</div>
+																<div class="form-group">
+																	<label for="sen">Sender:</label>
+																	<input type="text" class="form-control" id="sen">
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-sm-4">
+													<div class="panel panel-danger" style="padding:0px;">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																   <a data-toggle="collapse" data-parent="#accordion" href="#collapseDocumentMainInformationHistory">History</a>
+																</h4>
+															</div>
+															<div id="collapseDocumentMainInformationHistory" class="panel-collapse collapse in">											
+																<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																	<div class="form-group">
+																		<label for="not">N o t e s:</label>
+																		<textarea class="form-control" rows="12" id="not"></textarea>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+											</div>	
+										</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			
+				<div class="tab-content" id="tabDecisionMaking">
+					<div id="riskAssessment" class="tab-pane fade in active">
+						<div class="col-sm-9"  style="padding:0px;">
+							<div class="panel-group" id="placingNewBusiness">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#collapseBasicInformation">Basic Information for Risk Assessment Consideration</a>
+										</h4>
+									</div>
+									<div id="collapseBasicInformation" class="panel-collapse collapse in">
+										<div class="panel-body" style="padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+											<div class="panel panel-success" id="pengambilanKeputusan">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordion" href="#decision">Decision</a>
+													</h4>
+												</div>
+												<div id="decision" class="collapse">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#extraRating">Extra Rating</a>
+																	</h4> 
+																</div>
+																<div id="extraRating" class="collapse">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="emo">Extra Mortality:</label>
+																			<input type="text" class="form-control" id="emo">
+																		</div>
+																		<div class="form-group">
+																			<label for="eme">EM Expiry Date:</label>
+																			<input type="text" class="form-control" id="eme">
+																		</div>																	
+																		<div class="form-group">
+																			<label for="eri">Extra Risk:</label>																			
+																			<input type="text" class="form-control" id="eri">
+																		</div>
+																		<div class="form-group">
+																			<label for="ere">ER Expiry Date:</label>																			
+																			<input type="text" class="form-control" id="ere">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#basicWayDeal">Basic way to deal</a>
+																	</h4> 
+																</div>
+																<div id="basicWayDeal" class="collapse">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="und">Underwriter:</label>
+																			<input type="text" class="form-control" id="und">
+																		</div>
+																		<div class="form-group">
+																			<label for="uda">Underwriter Date:</label>																			
+																			<input type="text" class="form-control" id="uda">
+																		</div>
+																		<div class="form-group">
+																			<label for="med">Medical Advicer:</label>
+																			<input type="text" class="form-control" id="med">
+																		</div>	
+																		<div class="form-group">
+																			<label for="mad">Medical Advicer Date:</label>																			
+																			<input type="text" class="form-control" id="mad">
+																		</div>
+																		<div class="form-group">
+																			<label for="cmo">Chief Medical Officer:</label>																			
+																			<input type="text" class="form-control" id="cmo">
+																		</div>
+																		<div class="form-group">
+																			<label for="cmd">CMO Date:</label>																			
+																			<input type="text" class="form-control" id="cmd">
+																		</div>
+																	</form>	
+																</div>																
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+																<div class="panel-heading">
+																	<h4 class="panel-title">
+																	   <a data-toggle="collapse" data-parent="#accordion" href="#decisionMaking">Decision</a>
+																	</h4> 
+																</div>
+																<div id="decisionMaking" class="panel-collapse collapse in">
+																	<form style="padding-top:0px; padding-right:5px; padding-left:5px">
+																		<div class="form-group">
+																			<label for="fin">Final Decision:</label>
+																			<input type="text" class="form-control" id="fin">
+																		</div>
+																	</form>	
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		document.getElementById('basicInformationForRiskAssessment').style.display='none';
+		function fugsiJenisClaim() {document.getElementById("demo").innerHTML = "Claims Register";}
+		
+		function mengaktifkanBasicInformationForRiskAssessment() {document.getElementById("basicInformationForRiskAssessment").style.display="block";}
+	</script>
+</body>
+</html>

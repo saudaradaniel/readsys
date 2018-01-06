@@ -1,0 +1,14 @@
+In js file
+
+$scope.predicate = function( roleOrder ) {
+  return function( item ) {
+    return !roleOrder || item.role === roleOrder;
+  };
+};
+And in html
+
+ <tr ng-repeat="user in users | filter:predicate(roleOrder)">
+        <td>{{user.name}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.role}}</td>
+ </tr>

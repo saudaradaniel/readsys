@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myReadsYsApp">
+<head>
+    <title>ReadsYsModalSignUp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<meta http-equiv="refresh" content="1">-->
+</head>  
+<body>
+	<div class="modal-dialog">   
+		<div class="modal-content">
+			<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+				<div class="media">
+					<div class="media-right">
+						<img src="/Gambar/images4.jpg" class="media-object" style="width:70px;">
+					</div>
+					<div class="media-body">
+						<h3>Tasks Sign Up</h3>
+					</div>
+				</div>								
+			</div>
+			<div class="modal-body" style="padding:40px 50px;">
+				<form name="mainSignUpForm" class="form-horizontal">
+					<div id="selectDivision" class="form-group">
+						<label class="col-sm-2 control-label">Select Division:</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="sel1" ng-model="variabelDivision">
+								<option value="selectLife">Life</option>
+								<option>Nonlife</option>
+								<option>Life Syaria</option>
+								<option>Nonlife Syaria</option>
+							</select>
+							<div ng-switch="variabelDivision">
+								<div ng-switch-when="selectLife">
+									<h4 ng-click="fungsiColectUserLife()">Click me to list users</h4>
+									
+							
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div id="selectUser" class="form-group">
+						<label for="sel1" class="col-sm-2 control-label">Select User</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="sel1" ng-model="selectedUser">
+								<option ng-repeat="x in listUsersData" value="{{x.Name}}">{{x.Name}}</option>
+							</select>
+							 <span ng-show="mainSignUpForm.x.Name.$touched && mainSignUpForm.x.Name.$invalid">The User is required.</span>
+						</div>
+					</div>
+					<div id="password" class="form-group">
+						<label class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							 <input name="myInputUser" ng-model="Password" required class="form-control" type="password">
+							 <span ng-show="mainSignUpForm.Password.$touched && mainSignUpForm.Password.$invalid">The User is required.</span>
+						</div>
+					</div>
+					<p>
+						<input type="submit"
+						ng-disabled="mainSignUpForm.user.$dirty && mainSignUpForm.user.$invalid ||
+						mainSignUpForm.Password.$dirty && mainSignUpForm.Password.$invalid" ng-click="removeTasksToArchive()">
+					</p>
+				</form>
+				<table ng-show="showMeTheTable" class="table table-hover" style="background-color:lightgreen">
+					<thead>
+						<tr>
+							<th>User Name</th>
+							<th ng-show="false">ID#</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="y in listCustomerData | filter:User">													
+							<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)">{{y.Customer}}</td>
+							<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)">{{y.Transaction | currency: "": 2}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>																
+			</div>
+		</div>		 
+	</div>	
+</body>
+</html>

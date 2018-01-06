@@ -1,0 +1,161 @@
+<html lang="en" ng-app="queryParameter">
+<head>
+	<title>QueryParameter</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="pengaturAnimasiButton.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<style>
+		h2   {color: green;font-family: verdana;font-size: 300%;}
+		h4   {color: blue;font-family: verdana;font-size: 100%;}
+		h5   {color: green;font-family: verdana;font-size: 100%;}
+		li a {display: block;background-color: black;color: white;padding: 8px 16px;text-decoration: none;}
+		li a.active {background-color: #4CAF50;color: white;}
+		li a:hover:not(.active) {background-color: lightgreen;color: white;}
+		ul {background-color: green;color: blue;}
+		table, th , td  {border: 1px solid grey; border-collapse: collapse; padding: 5px;}
+		th {text-align: center; background-color:rgb(170, 126, 79); color:white;}
+	</style>
+</head>
+</head>  
+<body>
+    <div class="panel panel-success">			
+		<div class="panel-heading">
+			<h4 class="panel-title">
+			   <a data-toggle="collapse" data-parent="#accordionDatabase" href="#collapseKeyPerformanceParameter">Query Parameters</a>
+			</h4>
+		</div>
+		<div id="collapseKeyPerformanceParameter" class="panel-collapse collapse in">
+			<div class="row" style="padding-top:5px; padding-right:15px; padding-left:15px">
+				<div id="parameterIndicator" class="col-lg-4" style="padding-top:0px; padding-right:5px; padding-left:5px">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</div>
+					</div><br>
+			
+					<div class="btn-group">
+						<button class="btn btn-danger btn-block dropdown-toggle" type="button" id="datatimeseries" data-toggle="dropdown">Time Series<span class="caret"></span></button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="DarkCyan">
+							<li role="presentation"><a role="menuitem" tabindex="-1" style="background-color:DarkCyan" id="menu2" onclick="mPilihCurrentMethodYearMonth()">Current - Year - Month</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" style="background-color:DarkCyan" id="menu3" onclick="mPilih3ConsecutiveYear()">3 Consecutive Year</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" style="background-color:DarkCyan" id="menu4" onclick="mPilih3ConsecutiveYearMonthly()">3 Consecutive Year - Monthly</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" style="background-color:DarkCyan" id="menu5" onclick="mPilih5ConsecutiveYear()">5 Consecutive Year</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" style="background-color:DarkCyan" id="menu6" onclick="mPilih5ConsecutiveYearMonthly()">5 Consecutive Year - Monthly</a></li>
+						</ul>
+					</div>
+					<p></p>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="" data-toggle="collapse" data-target="#displayPassingParameter">Set Passing Parameter
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="" data-toggle="collapse" data-target="#sqlQueryCommand">Sql query command
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="" data-toggle="collapse" data-target="#transformQueryResult">Transform query result
+					</label>
+					<label class="checkbox-inline">
+					   <input type="checkbox" value="" data-toggle="collapse" data-target="#groupingGrid" onclick="mMerubahGlyphicon13()">Managing Parameter
+					</label>
+			
+					<div id="displayPassingParameter" class="collapse">
+					   <div class="form-group">
+						  <label for="comment">Passing Parameter</label>
+						  <textarea class="form-control" rows="5" id="passingParameter"></textarea>
+					   </div>
+					</div>
+					
+					<div id="sqlQueryCommand" class="collapse">
+					   <div class="form-group">
+						  <label for="comment">Sql Query Command</label>
+						  <textarea class="form-control" rows="5" id="queryCommand"></textarea>
+					   </div>
+					</div>
+					
+					<div id="transformQueryResult" class="collapse">
+					   <div class="form-group">
+						  <label for="comment">Transform Query Result</label>
+						  <textarea class="form-control" rows="5" id="transformQueryResult"></textarea>
+					   </div>
+					</div>
+
+					<p></p>
+				</div>
+				
+				<div id="breakdownIndicator" class="col-lg-4" style="padding-top:0px; padding-right:15px; padding-left:15px">
+					<div id="groupingGrid" class="collapse">
+						<h4>Managing Parameter by:</h4>
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="judulPilihan">Bussiness Parameter<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">KPI Parameter</li>
+								<li><a  data-toggle="collapse" data-target="#detailDataParameter" id="pilihanSalesAndCommission" onclick="menggantiJudulSalesCommission()">Sales and Commission</a></li>
+								<li><a href="#">Expence</a></li>
+								<li class="dropdown-header">Actuarial Analytical Parameter</li>
+								<li><a href="#">New Bussiness</a></li>
+								<li><a href="#">Inforce Bussiness</a></li>
+								<li><a href="#">Liability</a></li>
+								<li><a href="#">Accounting</a></li>
+								<li><a href="#">Investment</a></li>
+								<li><a href="#">Others</a></li>
+							</ul>	
+						</div>
+						<p></p>
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="judulpilihanBreakdownParameter">Breakdown Parameter<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a data-toggle="collapse" data-target="#volumeBreakdownParameter" id="pilihanVolumeBreakdownParameter" onclick="menggantiJudulVolume()">Volume</a></li>
+								<li><a href="#">Productline</a></li>
+								<li><a href="#">Distribution Channel</a></li>
+								<li><a href="#">Region</a></li>
+								<li><a href="#">Individual Producer</a></li>
+								<li><a href="#">Group Producer</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			
+				<div id="groupingDataGrid" class="col-lg-4" style="padding-top:0px; padding-right:15px; padding-left:15px">
+					<div id="volumeBreakdownParameter" class="collapse">
+						<h4>Grouping Parameter by:</h4>
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-success">First item</li>
+							<li class="list-group-item list-group-item-info">Second item</li>
+							<li class="list-group-item list-group-item-warning">Third item</li>
+							<li class="list-group-item list-group-item-danger">Fourth item</li>
+							<li class="list-group-item list-group-item-success">First item</li>
+							<li class="list-group-item list-group-item-info">Second item</li>
+							<li class="list-group-item list-group-item-warning">Third item</li>
+							<li class="list-group-item list-group-item-danger">Fourth item</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div id="detailDataParameter" class="collapse">
+				<div id="salesAndCommission" class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						   <a data-toggle="collapse" data-parent="#accordionDatamart" href="#collapseSalesandCommission">Sales and Commission</a>
+						</h4>
+					</div>
+				</div>
+				
+				<div id="expences" class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						   <a data-toggle="collapse" data-parent="#accordionExpances" href="#collapseExpances">Expances</a>
+						</h4>
+					</div>
+
+				</div>
+			
+			</div>
+		</div>
+	</div>
+</body>
+</html>

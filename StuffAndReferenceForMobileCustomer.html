@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StuffMobileCustomer</title>
+<!--<meta http-equiv="refresh" content="1">-->
+</head>
+<body>	
+	<div id="panelStuffReferenceCustomer" class="panel panel-danger" style="padding:0px">
+		<div class="panel-heading" id="headingPanelCustomer">
+			<h4 class="panel-title">
+				<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReference" href="#collapseCustomer">Customer</a>
+			</h4>
+		</div>
+		<div id="collapseCustomer" class="panel-collapse collapse">
+			<div class="form-group">
+				<select class="form-control" ng-model="variabelSelectorCustomer" style="background-color:tomato; color:white;">
+					<option value="selectTopTenBussinessResult">Top Ten Bussiness Transaction</option>
+					<option value="selectInternalCommunication">Internal Communication</option>
+					<option value="selectDocumentRequisition">Company's Policy</option>
+					<option value="selectThreat">Synthesis Certainty</option>
+					<option value="selectSquawk">Inteligent Knowlage</option>
+				</select>
+			</div>		
+			<div ng-switch="variabelSelectorCustomer" ng-app="myReadsYsApp" ng-controller="crManagingControl">
+				<div ng-switch-when="selectTopTenBussinessResult">
+					<div class="media">
+						<div class="media-left">
+							<img src="/Gambar/paste-icon-64.png" class="media-object" style="width:40px">
+						</div>
+						<div class="media-body">
+							<h4 id="judul" class="media-heading" ng-click="fungsiColectCustomerTop5()">Click me to colect data</h4>
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="selectInternalCommunication">
+					<div ng-include="'StuffAndReferenceForMobileIntercon.html'"></div>
+				</div>
+				<div ng-switch-when="selectDocumentRequisition">
+					<div ng-include="'StuffAndReferenceForMobileRequisition.html'"></div>
+				</div>
+				<div ng-switch-when="selectSquawk">
+					<div ng-include="'StuffAndReferenceForMobileSquawk.html'"></div>
+				</div>
+				<div ng-switch-when="selectThreat">
+					<div ng-include="'StuffAndReferenceForMobileThreat.html'"></div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id="refcustomer" class="table-responsive" ng-show="showMeAllCustomers">
+		<select ng-show="showMeSelectedCustomer"><option ng-repeat="xy in listSelectedCustomerData">{{xy.Customer}}</option></select>
+		<h4 ng-show="showMeTheTable" id="titleRefCustomer"></h4>
+		<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="test"></p>
+		<table ng-show="showMeTheTable" class="table table-hover" style="background-color:lightgreen">
+			<thead>
+				<tr>
+					<th>Ceding Company</th>
+					<th>Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="y in listCustomerData | filter:test">													
+					<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)" data-toggle="modal" data-target="#myModal">{{y.Customer}}</td>
+					<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)" data-toggle="modal" data-target="#myModal">{{y.Transaction | currency: "": 2}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div id="displayClaimMobile" class="panel panel-danger" ng-show="showMeCustomerClaim">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				   <a data-toggle="collapse" data-parent="#accordionClaim" href="#collapsetStuffClaim">C l a i m s</a>
+				</h4>
+			</div>
+			<div id="collapsetStuffClaim" class="panel-collapse collapse">
+				<div class="panel-body" style="padding:0px;">
+					<div class="row">
+						<div class="col-lg-3">
+							<img src="/Gambar/images19.jpg" class="media-object" style="width:100%">
+						</div>
+						<div class="col-lg-9">	
+							<div class="form-group">
+								<select class="form-control" id="sel1" ng-model="selectClaimsTasks">
+									<option value="selectRegisteredClaims">Registered Claims</option>
+									<option value="selectProceedClaims">Proceed Claims</option>
+									<option value="selectOutstandingClaims">Outstanding Claims</option>
+									<option value="selectPaidClaims">Paid Claims</option>
+								</select>
+							</div>
+							<div ng-switch="selectClaimsTasks">
+								<div ng-switch-when="selectRegisteredClaims">
+									<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="insuredName"></p>
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th ng-show="false">Claim#</th>
+													<th>Insured</th>
+													<th>Preleminary Loss Advice</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cx in listRegisteredClaimData | filter:insuredName">
+													<td ng-show="false">{{cx.ClaimID}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal">{{cx.FirstName}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal" style="text-align: right">{{cx.ClaimPla | currency: "": 2}}</td>
+												</tr>		
+											</tbody>
+											<tfoot>
+												<tr ng-repeat="cy in totalRegisteredClaimData">
+												  <td>SUM</td>
+												  <td style="text-align: right">{{cy.ClaimPla | currency: "": 2}}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								<div ng-switch-when="selectProceedClaims">
+									<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="insuredName"></p>
+									<div class="table-responsive" style="background-color:lightgreen;">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th ng-show="false">Claim#</th>
+													<th>Insured</th>
+													<th>Estimate Claim</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cx in listProceededClaimsData | filter:insuredName">
+													<td ng-show="false">{{cx.ClaimID}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal">{{cx.FirstName}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal" style="text-align: right">{{cx.EstimateClaim | currency: "": 2}}</td>
+												</tr>		
+											</tbody>
+											<tfoot>
+												<tr ng-repeat="cy in totalProceededClaimData">
+												  <td>SUM</td>
+												  <td style="text-align: right">{{cy.EstimateClaim | currency: "": 2}}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								<div ng-switch-when="selectOutstandingClaims">
+									<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="insuredName"></p>
+									<div class="table-responsive" style="background-color:lightgreen;">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th ng-show="false">Claim#</th>
+													<th>Insured</th>
+													<th>Outstanding Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cx in listOutstandingClaimData | filter:insuredName">
+													<td ng-show="false">{{cx.ClaimID}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal">{{cx.FirstName}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal" style="text-align: right">{{cx.ClaimPla | currency: "": 2}}</td>
+												</tr>		
+											</tbody>
+											<tfoot>
+												<tr ng-repeat="cy in totalOutstandingClaimData">
+												  <td>SUM</td>
+												  <td style="text-align: right">{{cy.ClaimPla | currency: "": 2}}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								<div ng-switch-when="selectPaidClaims">
+									<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="insuredName"></p>
+									<div class="table-responsive" style="background-color:lightgreen;">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th ng-show="false">Claim#</th>
+													<th>Insured</th>
+													<th>Paid Claim</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cx in listHaveBeenPaidClaimsData | filter:insuredName">
+													<td ng-show="false">{{cx.ClaimID}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal">{{cx.FirstName}}</td>
+													<td ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal" style="text-align: right">{{cx.ClaimDla | currency: "": 2}}</td>
+												</tr>		
+											</tbody>
+											<tfoot>
+												<tr ng-repeat="cy in totalPaidClaimsData">
+												  <td>SUM</td>
+												  <td style="text-align: right">{{cy.ClaimDla | currency: "": 2}}</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="modal fade" id="myClaimDetailModal" role="dialog">
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="form-group">
+											<select class="form-control" id="selectorCustomer" ng-model="variabelInfoMasterClaim">
+												<option value="selectPreminaryLossAdvice">Preminary Loss Advice</option>
+												<option value="selectDefiniteLossAdvice">Definite Loss Advice</option>
+												<option value="selectAssessmentInformation">Assessment Information</option>
+												<option value="selectDecisionMaking">Decision Making</option>
+												<option value="selectDescriptionofClaim">Description of Claim</option>
+												<option value="selectAccountofClaim">Account of Claim</option>
+												<option value="selectAccountControl">Account Control</option>
+												<option value="selectRecoveryClaim">Claim Recovery</option>																	
+												<option value="selectCessieMainInformation">Cessie's Main Information</option>
+												<option value="selectCessieBilling">Cessie's Billing</option>
+												<option value="selectCessieDocument">Cessie's Document</option>
+											</select>
+										</div>
+										<div ng-switch="variabelInfoMasterClaim">
+											<div ng-switch-when="selectPreminaryLossAdvice">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>
+													<h4>PLA Document#: {{x.PLADocNumber}}</h4>
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Insured Name: {{x.FirstName + " " + x.LastName}}</p>
+														<p>Reference: {{x.ReferenceOfPla}}</p>
+														<p>Date of Entry: {{x.DateOfEntry | date : "dd.MM.y" }}</p>
+														<p>Date of Advice: {{x.DateOfPla | date : "dd.MM.y" }}</p>
+														<p>Date of Case: {{x.DateofCase | date : "dd.MM.y" }}</p>
+														<p>Amount of PLA: {{x.ClaimPlaOriginal | currency: "": 2}}</p>
+														<p>Amount of PLA IDR: {{x.ClaimPlaIdr | currency: "": 2}}</p>
+														<p>Litigation Cost: {{x.LitigationOri | currency: "": 2}}</p>
+														<p>Litigation Cost IDR: {{x.LitigationIdr | currency: "": 2}}</p>
+														<p>Other Cost: {{x.OtherCostOri | currency: "": 2}}</p>
+														<p>Other Cost IDR: {{x.OtherCostIDR | currency: "": 2}}</p>
+														<p>Cash Loss: {{x.CashLossOri | currency: "": 2}}</p>
+														<p>Cash Loss IDR: {{x.CashLossIdr | currency: "": 2}}</p>
+														<p>Benficiary: {{x.Benficiary}}</p>
+														<p>PLA Status: {{x.ClaimStatus}}</p>
+														<p>Reserve Status: {{x.ReserveStatus}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectDefiniteLossAdvice">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>
+													<h4>DLA Document#: {{x.DLADocNumber}}</h4>
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Insured Name: {{x.FirstName + " " + x.LastName}}</p>
+														<p>Reference: {{x.ReferenceOfDla}}</p>
+														<p>Date of Entry: {{x.DateOfUpdate | date : "dd.MM.y" }}</p>
+														<p>Date of DLA: {{x.DateOfDla | date : "dd.MM.y" }}</p>
+														<p>Amount of DLA: {{x.ClaimDlaOriginal | currency: "": 2}}</p>
+														<p>Amount of DLA IDR: {{x.ClaimDlaIdr | currency: "": 2}}</p>
+														<p>Litigation Cost: {{x.LitigationDlaOri | currency: "": 2}}</p>
+														<p>Litigation Cost IDR: {{x.LitigationDlaIDR | currency: "": 2}}</p>
+														<p>Other Cost: {{x.OtherCostDlaOri | currency: "": 2}}</p>
+														<p>Other Cost IDR: {{x.OtherCostDlaIDR | currency: "": 2}}</p>
+														<p>Cash Loss: {{x.CashLossOri | currency: "": 2}}</p>
+														<p>Cash Loss IDR: {{x.CashLossIdr | currency: "": 2}}</p>
+														<p>DLA Status: {{x.ClaimStatus}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectAssessmentInformation">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Confirmation Status: {{x.DocumentConfir}}</p>
+														<p>Document Needed: {{x.DocumentNeeded}}</p>
+														<p>Underwriter Assessment: {{x.UnderwriterDescription}}</p>
+														<p>Division Assessment: {{x.DivisiDescription}}</p>
+														<p>Director Assessment: {{x.DirectorDescription}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectRecoveryClaim">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Recovery Status: {{RecoveryStatus}}</p>
+														<p>Voucher Retro: {{x.VoucherRetro}}</p>
+														<p>Expected Recovery Date: {{x.ExpectRecoveryDate}}</p>
+														<p>Underwriter Assessment: {{x.UnderwriterDescription}}</p>
+														<p>Division Assessment: {{x.DivisiDescription}}</p>
+														<p>Director Assessment: {{x.DirectorDescription}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectDescriptionofClaim">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">																			
+														<p>Description: {{x.Description}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectDecisionMaking">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Insured Name: {{x.FirstName + " " + x.LastName}}</p>																						
+														<p>Underwriter Decision: {{x.UnderwriterDecision}}</p>
+														<p>Division Decision: {{x.DivisionDecision}}</p>
+														<p>Director Decision: {{x.DirectorDecision}}</p>
+														<p>President Director Decision: {{x.PresidentDirDecision}}</p>	
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectAccountofClaim">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">																																						
+														<p>Billing#: {{x.BillingNumber}}</p>
+														<p>Voucher Claim#: {{x.TechVoucherNumber}}</p>
+														<p>Billing Document#: {{x.TechDocNumber}}</p>
+														<p>Transaction List#: {{x.TransactionList}}</p>
+														<p>Financial Status: {{FinancialStatus}}</p>
+														<p>Expected Claim Paid: {{x.ExpectedClaimPaid | currency: "": 2}}</p>
+														<p>Amount of DLA: {{x.ClaimDlaOriginal | currency: "": 2}}</p>
+														<p>Amount of DLA IDR: {{x.ClaimDlaIdr | currency: "": 2}}</p>
+														<p>Litigation Cost: {{x.LitigationDlaOri | currency: "": 2}}</p>
+														<p>Litigation Cost IDR: {{x.LitigationDlaIDR | currency: "": 2}}</p>
+														<p>Other Cost: {{x.OtherCostDlaOri | currency: "": 2}}</p>
+														<p>Other Cost IDR: {{x.OtherCostDlaIDR | currency: "": 2}}</p>
+														<p>Cash Loss: {{x.CashLossOri | currency: "": 2}}</p>
+														<p>Cash Loss IDR: {{x.CashLossIdr | currency: "": 2}}</p>
+														<p>Approval For Full Payment: {{x.ApprovePaymentInfull}}</p>
+														<p>Payment Due Date: {{DueDate}}</p>
+														<p>Voucher Bank: {{x.VoucherBank}}</p>
+														<p>Payment Bankers: {{PaymentBankers}}</p>
+														<p>IDE Cheque: {{IDECheque}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="selectAccountControl">
+												<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in aClaimsData">
+													<h4>Claim#: {{x.ClaimID}}</h4>	
+													<h4>Ceding's Claim#: {{x.CedingClaimID}}</h4>
+													<h4>Reinsurance#: {{x.ReinsuranceNo}}</h4>	
+												</div>
+												<div class="modal-body">
+													<div class="tampilkan" ng-repeat="x in aClaimsData">
+														<p>Audit: {{x.Auditing}}</p>
+														<p>Auditing Date: {{x.AuditingDate}}</p>
+														<p>Auditing Confirmation: {{x.AuditingConfir}}</p>
+														<p>Payment Controller1: {{x.PayController1}}</p>
+														<p>Payment Controller2: {{x.PayController2}}</p>
+														<p>Payment Controller3: {{x.PayController3}}</p>
+														<p>Payment Controller4: {{x.PayController4}}</p>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+										</div>
+									</div>  
+								</div>
+							</div>
+						</div>
+					</div>  			
+				</div>
+			</div>
+		</div>
+		<div id="displayLapsesAndAlteration" class="panel panel-danger" ng-show="showMeCustomerLapses">	
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				   <a data-toggle="collapse" data-parent="#accordionAlteration" href="#collapsetStuffLapsesandAlteration">Lapses and Alteration</a>
+				</h4>
+			</div>
+			<div id="collapsetStuffLapsesandAlteration" class="panel-collapse collapse">
+				<div class="panel-body">
+					<img src="/Gambar/Administration12.jpg" class="media-object" style="width:100%">
+				</div>
+			</div>
+		</div>
+		<div id="displayBusinessMobile" class="panel panel-danger" ng-show="showMeCustomerBusin">			
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusiness">Business</a>
+				</h4>
+			</div>
+			<div id="collapsetStuffBusiness" class="panel-collapse collapse">
+				<div class="panel-body">
+					<img src="/Gambar/Administration14.jpg" class="media-object" style="width:100%">
+					<h5>Five Year Business</h5>
+					<div class="table-responsive" style="background-color:lightgreen">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Year</th>
+									<th>TOB</th>
+									<th>Cessie(s)</th>
+									<th>Sum at Risk</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2017</td>
+									<td>Facultative</td>
+									<td>100</td>
+									<td>5.000.000.000</td>
+								</tr>
+								<tr>
+									<td>2017</td>
+									<td>Treaty</td>
+									<td>1000</td>
+									<td>50.000.000.000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusinessCRFB">Current Registered Facultative Business</a>
+							</h4>
+						</div>
+						<div id="collapsetStuffBusinessCRFB" class="panel-collapse collapse">
+							<div class="panel-body">	
+								<div class="table-responsive" style="background-color:DarkSeaGreen">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>D.O.D</th>
+												<th>Customer</th>
+												<th>Insured</th>
+												<th>Policy Owner</th>
+												<th>Coverage</th>
+												<th>Sum Insured</th>
+												<th>Sum at Risk</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2 January 2017</td>
+												<td>21 February 2017</td>
+												<td>PT. Bumi Asih Jaya</td>
+												<td>Sulaiman Usmar Ismail</td>
+												<td>Siti Hartadian</td>
+												<td>Death Risk</td>
+												<td>5.000.000.000</td>
+												<td>5.000.000.000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div> 			
+							</div>
+						</div>	
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusinessCAFB">Current Accepted Facultative Business</a>
+							</h4>
+						</div>
+						<div id="collapsetStuffBusinessCAFB" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="table-responsive" style="background-color:LightGoldenRodYellow">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>D.O.D</th>
+												<th>Customer</th>
+												<th>Insured</th>
+												<th>Policy Owner</th>
+												<th>Coverage</th>
+												<th>Sum Insured</th>
+												<th>Sum at Risk</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2 January 2017</td>
+												<td>21 February 2017</td>
+												<td>PT. Bumi Asih Jaya</td>
+												<td>Sulaiman Usmar Ismail</td>
+												<td>Siti Hartadian</td>
+												<td>Death Risk</td>
+												<td>5.000.000.000</td>
+												<td>5.000.000.000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>	
+					</div>		
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusinessCOFB">Current Outstanding Facultative Business</a>
+							</h4>
+						</div>
+						<div id="collapsetStuffBusinessCOFB" class="panel-collapse collapse">
+							<div class="panel-body">	
+								<div class="table-responsive" style="background-color:LightCyan">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>D.O.D</th>
+												<th>Customer</th>
+												<th>Insured</th>
+												<th>Policy Owner</th>
+												<th>Coverage</th>
+												<th>Sum Insured</th>
+												<th>Sum at Risk</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2 January 2017</td>
+												<td>21 February 2017</td>
+												<td>PT. Bumi Asih Jaya</td>
+												<td>Sulaiman Usmar Ismail</td>
+												<td>Siti Hartadian</td>
+												<td>Death Risk</td>
+												<td>5.000.000.000</td>
+												<td>5.000.000.000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>	
+					</div>
+							
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusinessCPFB">Current Proceed Facultative Business</a>
+							</h4>
+						</div>
+						<div id="collapsetStuffBusinessCPFB" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="table-responsive" style="background-color:LightCoral">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>D.O.D</th>
+												<th>Customer</th>
+												<th>Insured</th>
+												<th>Policy Owner</th>
+												<th>Coverage</th>
+												<th>Sum Insured</th>
+												<th>Sum at Risk</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2 January 2017</td>
+												<td>21 February 2017</td>
+												<td>PT. Bumi Asih Jaya</td>
+												<td>Sulaiman Usmar Ismail</td>
+												<td>Siti Hartadian</td>
+												<td>Death Risk</td>
+												<td>5.000.000.000</td>
+												<td>5.000.000.000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>	
+					</div>
+							
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapsetStuffBusinessCRTB">Current Registered Treaty Business</a>
+							</h4>
+						</div>
+						<div id="collapsetStuffBusinessCRTB" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="table-responsive" style="background-color:LightGray">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>D.O.D</th>
+												<th>Customer</th>
+												<th>Insured</th>
+												<th>Policy Owner</th>
+												<th>Coverage</th>
+												<th>Sum Insured</th>
+												<th>Sum at Risk</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>2 January 2017</td>
+												<td>21 February 2017</td>
+												<td>PT. Bumi Asih Jaya</td>
+												<td>Sulaiman Usmar Ismail</td>
+												<td>Siti Hartadian</td>
+												<td>Death Risk</td>
+												<td>5.000.000.000</td>
+												<td>5.000.000.000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div id="displayCustomerOther" class="panel panel-danger" ng-show="showMeCustomerOther">
+			<div class="form-group" ng-init="showMeTreatyWording=false">
+				<select class="form-control" id="sel1" ng-model="selectCustomerOther" ng-click="fungsiHideSearch()">
+					<option value="treatyWordingandAggrement">Treaty, Wording and Aggrement</option>
+					<option value="reinsurancePremiumRates">Reinsurance Premium Rates</option>
+					<option value="decreasingSumatRisk">Decreasing Sum at Risk</option>
+					<option value="mortality">Mortality</option>
+				</select>
+			</div> 
+			<div ng-switch="selectCustomerOther">
+				<div ng-switch-when="treatyWordingandAggrement">
+					<div id="panelStuffReferenceRate" class="panel panel-danger" style="padding:0px" ng-init="showMeSearchOfTheTableTreaty=true">
+						<div id="headingPanelCustomerTreaty" class="panel-heading">
+							<h4 class="panel-title">
+								<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReferenceTreaty" href="#collapseTreatyWording">Control Panel of Viewing Treaty</a>
+							</h4>
+						</div>
+						<div id="collapseTreatyWording" class="panel-collapse collapse">
+							<p ng-show="showMeSearchOfTheTableTreaty" style="padding-top:5px;">Search <input type="text" ng-model="treaties"></p>
+							<table ng-show="showMeTheTable" class="table table-hover" style="background-color:lightgreen">
+								<thead>
+									<tr>
+										<th>ID#</th>
+										<th>Description</th>													
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="y in listTreatyData | filter:treaties">													
+										<td ng-click = "noTreaty = y.Code; fungsiShowTreatyDetail(noTreaty)" data-toggle="modal" data-target="#modalTreatyMaster">{{y.Code}}</td>
+										<td ng-click = "noTreaty = y.Code; fungsiShowTreatyDetail(noTreaty)" data-toggle="modal" data-target="#modalTreatyMaster">{{y.Description}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="modal fade" id="modalTreatyMaster" role="dialog">
+								<div class="modal-dialog"> 
+									<div class="modal-content"> 
+										<div class="form-group">
+											<select class="form-control" id="selectorTreaty" ng-model="variabelTreaty">
+												<option value="mappingTreatyMaster">Mapping Treaty Master</option>
+												<option value="risktoCoverbyTreaty">Risk to Cover by Treaty</option>
+												<option value="keysVariabel">Keys Variabel</option>
+												<option value="treatyReference">Treaty Reference</option>
+											</select>
+										</div>
+										<div ng-switch="variabelTreaty">
+											<div ng-switch-when="mappingTreatyMaster" ng-repeat="x in aTreatyData">
+												<div class="modal-header">	
+													<h4 id="modalTreatyMasterDetail">Treaty Detail #: {{x.Code}}</h4>
+												</div>
+												<div class="modal-body">													
+													<p>Description: {{x.Description}}</p>
+													<p ng-click="fungsiShare()">Share: {{x.TREATYSHARE}}</p>
+													<p ng-click="fungsiLayer()">Layer: {{x.TREATYLAYER}}</p>
+													<p ng-click="fungsiLimitation()">Limitation: {{x.TREATY_LIMIT}}</p>
+													<p ng-click="fungsiRetention()">Retention: {{x.TREATYRETENTION}}</p>
+													<p ng-click="fungsiRecapture()">Recapture: {{x.TREATYRECAPTURE}}</p>
+													<p ng-click="fungsiUnderwriting()">Overriding: {{x.TREATYOVERRIDING}}</p>
+													<p ng-click="fungsiCommission()">Commission: {{x.TREATYCOMISSION}}</p>
+													<p ng-click="fungsiUnderwriting()">Underwriting: {{x.TREATYUNDERWRITING}}</p>
+													<p ng-click="fungsiFleetDiscount()">Fleet Discount: {{x.TREATYFLEEDDISCOUNT}}</p>
+													<p ng-click="fungsiUnderwriting()">Volume Discount: {{x.TREATYVOLUMEDISCOUNT}}</p>
+													<p ng-click="fungsiProfitCommission()">Profit Commission: {{x.TREATYPROFITCOMMISSION}}</p>
+												</div>                                                
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>  
+											<div ng-switch-when="risktoCoverbyTreaty" ng-repeat="x in aTreatyData">
+												<div class="modal-header">	
+													<h4 id="modalTreatyMasterDetail">Treaty Detail #: {{x.Code}}</h4>
+												</div>
+												<div class="modal-body">													
+													<p>Description: {{x.Description}}</p>
+													<p>Death Risk: {{x.TREATYR1}}</p>																		
+													<p>Crisisi Cover: {{x.TREATYR2}}</p>
+													<p>Total Permanent Disability: {{x.TREATYR3}}</p>
+													<p>Accident Death: {{x.TREATYR4}}</p>
+													<p>Accidental and Death Cover: {{x.TREATYR5}}</p>
+													<p>Term Life: {{x.TREATYR6}}</p>
+													<p>Health Cover: {{x.TREATYR7}}</p>
+													<p>TPD then Death Cover: {{x.TREATYR8}}</p>
+													<p>Wave of Premium: {{x.TREATYR9}}</p>
+													<p>Undefind Coverage: {{x.TREATYR10}}</p>
+													<p>Undefind Accident Death: {{x.TREATYR11}}</p>
+												</div>                                                
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="keysVariabel" ng-repeat="x in aTreatyData">
+												<div class="modal-header">	
+													<h4 id="modalTreatyMasterDetail">Treaty Detail #: {{x.Code}}</h4>
+												</div>
+												<div class="modal-body">													
+													<p>Description: {{x.Description}}</p>
+													<p>Keys Underwriting Limit: {{x.KEYUNDLIMIT}}</p>
+													<p>Keys Retro Commission: {{x.KEYRETROCOMMISSION}}</p>
+													<p>Keys Commission: {{x.KEYKOMISI}}</p>																		
+													<p>Keys Overriding: {{x.KEY_OVERRIDING}}</p>
+													<p>Keys Retentions: {{x.KEYRETENSI}}</p>
+													<p>Keys Layer: {{x.KEYLAYER}}</p>
+													<p>Keys Share: {{x.KEYSHARE}}</p>
+												</div>                                                
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+											<div ng-switch-when="treatyReference" ng-repeat="x in aTreatyData">
+												<div class="modal-header">	
+													<h4 id="modalTreatyMasterDetail">Treaty Detail #: {{x.Code}}</h4>
+												</div>
+												<div class="modal-body">	
+													<p>Date of Issued: {{x.TGLISSUE | date : "dd.MM.y" }}</p>													
+													<p>Termination Date: {{x.TGLTERMINATE}}</p>
+													<p>Reinsurance Administration Method: {{x.MetodeAdministrasiReasuransi}}</p>
+													<p>Method of Reinsurance Proportional: {{x.MetodeProporsional}}</p>
+													<p>Type of Reinsurance Proportional: {{x.TypeProporsional}}</p>
+													<p>Type of Insurance Product Cover: {{x.JenisProdukDicover}}</p>
+													<p>Reinsurance Treaty Status: {{x.StatusTreaty}}</p>
+													<p>Automatic Binding Limit: {{x.AutomaticBindingLimit}}</p>
+													<p>Joint Age Calculation: {{x.JointAgeCalculation}}</p>
+													<p>Minimum Entry Age: {{x.AgeLimits}}</p>
+													<p>Maximum Entry Age: {{x.AgeLimitsAtas}}</p>
+													<p>Reinsurance Structure: {{x.ReinsuranceStructures}}</p>
+													<p>Mortality Limit: {{x.MortalityLimit}}</p>
+													<p>Administrator: {{x.Administrator}}</p>
+													<p>Direct Retro: {{x.DirectRetro}}</p>
+													<p>Document: {{x.Document}}</p>
+													<p>Teritory: {{x.Teritory}}</p>
+													<p>Notes: {{x.CatatanNegosiasi}}</p>
+												</div>                                                
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>
+										</div>
+									</div>	
+								</div>
+							</div>		
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="reinsurancePremiumRates">
+					<div id="panelStuffReferenceRate" class="panel panel-danger" style="padding:0px">
+						<div class="panel-heading" id="headingPanelCustomerRate">
+							<h4 class="panel-title">
+								<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReferenceRate" href="#collapseReinsurancePremiumRates">Reinsurance Premium Rates</a>
+							</h4>
+						</div>
+						<div id="collapseReinsurancePremiumRates" class="panel-collapse collapse">
+						
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="decreasingSumatRisk">
+					<div id="panelStuffReferenceDecreasingSumatRisk" class="panel panel-danger" style="padding:0px">
+						<div class="panel-heading" id="headingPanelCustomerDecreasingSumatRisk">
+							<h4 class="panel-title">
+								<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReferenceDecreasingSumatRisk" href="#collapseDecreasingSumatRisk">Decreasing Sum at Risk</a>
+							</h4>
+						</div>
+						<div id="collapseDecreasingSumatRisk" class="panel-collapse collapse">
+						
+						</div>
+					</div>
+				</div>
+				<div ng-switch-when="mortality">
+					<div id="panelStuffReferenceMortality" class="panel panel-danger" style="padding:0px">
+						<div class="panel-heading" id="headingPanelCustomerMortality">
+							<h4 class="panel-title">
+								<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReferenceMortality" href="#collapseMortality">Mortality</a>
+							</h4>
+						</div>
+						<div id="collapseMortality" class="panel-collapse collapse">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="myDetailReinsurancePolicyModal" role="dialog">
+			<div class="modal-dialog"> 
+				<div class="modal-content" ng-repeat="x in aPolicyIdentityData">
+					<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow;">
+						<h4><center>Reinsurance#: {{x.ReinsuranceNumber}}</center></h4>						
+					</div>
+					<div class="modal-body">
+						<div class="panel-group" id="panelReinsurancePolicy">
+							<div class="panel panel-primary" id="basicInformation">
+								<div id="collapseBasicInformationHeading" class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordionBasicInformationforRiskAssessmentConsideration" href="#collapseBasicInformation">Basic Information for Risk Assessment Consideration</a>
+									</h4>
+								</div>
+								<div id="collapseBasicInformation" class="panel-collapse collapse in">
+									<div class="panel-body" style="padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+										<div class="panel panel-success" id="mainInformation">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordionInsuredMainInformation" href="#collapseInsuredMainInformation">Reinsurance Main Information</a>
+												</h4>
+											</div>
+											<div id="collapseInsuredMainInformation" class="panel-collapse collapse in">
+											<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordionInsuredMainInformationIdentity" href="#insuredMainInformationIdentity">Identity</a>
+													</h4> 
+												</div>
+												<div id="insuredMainInformationIdentity" class="panel-collapse collapse in">
+													<p>Reference#: {{x.FirstName}}</p>
+													<p>Treaty#-Contract#: {{x.TreatyNumber + " - " + x.Contract}}</p>
+													<p>Policy ID#: {{x.CedingPolicy}}</p>
+													<p>Reinsurance#: {{x.ReinsuranceNumber}}</p>
+													<p>Reins.Code: {{x.ReasCode}}</p>
+												</div>
+											</div>
+											<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordionSourceBusiness" href="#insuredMainInformationSourceBusiness">Source Business</a>
+													</h4> 
+												</div>
+												<div id="insuredMainInformationSourceBusiness" class="collapse">
+													<p>Ceding Company - Customer: {{x.FirstName}}</p>
+													<p>Payor of Reference Premium: {{x.FirstName}}</p>
+													
+												</div>
+											</div>
+											<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													   <a data-toggle="collapse" data-parent="#accordionHistory" href="#history">History</a>
+													</h4> 
+												</div>
+												<div id="history" class="collapse">
+													<p>{{x.FirstName}}</p>
+												</div>
+											</div>
+										</div>
+										</div>
+										<div class="panel panel-success" id="objectReinsuredInsured">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordionObjecttoReinsured" href="#objectReinsured">Object to Reinsured</a>
+												</h4>
+											</div>
+											<div id="objectReinsured" class="panel-collapse">
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionInsuredName" href="#insuredName">Insured</a>
+														</h4> 
+													</div>
+													<div id="insuredName" class="panel-collapse ">
+														<p>First Name: {{x.FirstName}}</p>
+														<p>Last Name: {{x.FirstName}}</p>
+														<p>Full Name: {{x.FirstName}}</p>
+														<p>Policy Holder: {{x.FirstName}}</p>
+														<p>Social Security Number (SSN): {{x.FirstName}}</p>	
+													</div>
+												</div>
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionObjectLocation" href="#insuredObjectLocation">Object Location</a>
+														</h4> 
+													</div>
+													<div id="insuredObjectLocation" class="panel-collapse">
+														<p>Region: {{x.FirstName}}</p>
+														<p>State: {{x.FirstName}}</p>
+														<p>Province: {{x.FirstName}}</p>
+														<p>City: {{x.FirstName}}</p>
+														<p>Address: {{x.FirstName}}</p>
+														<p>Phone: {{x.FirstName}}</p>
+														<p>HP: {{x.FirstName}}</p>
+														<p>Email: {{x.FirstName}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-success" id="riskFactor">											
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordionRiskFactorsDegre" href="#riskFactorsDegre">Risk Factors: Factors that influence the degree of risk</a>
+												</h4>
+											</div>
+											<div id="riskFactorsDegre" class="panel-collapse">
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionIssueFactor" href="#issueFactor">Issue Factor</a>
+														</h4> 
+													</div>
+													<div id="issueFactor" class="panel-collapse">
+														<p>Issue Date: {{x.FirstName}}</p>
+														<p>Terminate: {{x.FirstName}}</p>
+														<p>Policy Year: {{x.FirstName}}</p>
+														<p>Underwriting Year: {{x.FirstName}}</p>
+														<p>Accounting Year: {{x.FirstName}}</p>
+														
+													</div>
+												</div>
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionInssuredFactor" href="#insuredFactor">Inssured Factor</a>
+														</h4> 
+													</div>
+													<div id="insuredFactor" class="panel-collapse">
+														<p>Place of Birth: {{x.FirstName}}</p>
+														<p>Birth Date: {{x.FirstName}}</p>
+														<p>Aging Method: {{x.FirstName}}</p>
+														<p>Attained Age: {{x.FirstName}}</p>
+														<p>Gender: {{x.FirstName}}</p>
+														<p>Smoking: {{x.FirstName}}</p>
+														<p>Medics: {{x.FirstName}}</p>
+								
+													</div>
+												</div>
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionInsuranceFactor" href="#insuranceFactor">Insurance Factor</a>
+														</h4> 
+													</div>
+													<div id="insuranceFactor" class="panel-collapse collapse in">
+														<p>Insurance: {{x.FirstName}}</p>
+														<p>Type of Insurance: {{x.FirstName}}</p>
+														<p>Reinsurance Arrangement: {{x.FirstName}}</p>
+														<p>Retrocession: {{x.FirstName}}</p>
+														<p>Previous Insurance: {{x.FirstName}}</p>
+														<p>Group Insurance: {{x.FirstName}}</p>
+														<p>Sum Reinsured: {{x.FirstName}}</p>
+								
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-success" id="developmentDocumentStatus">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordionDevelopmentAndStatus" href="#developmentAndStatus">Development, Document, and Status</a>
+												</h4>
+											</div>
+											<div id="developmentAndStatus" class="panel-collapse">
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionDevelopment" href="#development">Development</a>
+														</h4> 
+													</div>
+													<div id="development" class="panel-collapse">
+														<p>Offer Received: {{x.FirstName}}</p>
+														<p>Offer Due Date: {{x.FirstName}}</p>
+														<p>Acceptance Date: {{x.FirstName}}</p>
+														<p>Renewal Date: {{x.FirstName}}</p>
+														<p>Alteration Dater: {{x.FirstName}}</p>
+													</div>
+												</div>
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionDocumentation" href="#documentation">Documentation</a>
+														</h4> 
+													</div>
+													<div id="documentation" class="panel-collapse">
+														<p>Billing Date: {{x.FirstName}}</p>
+														<p>Age at Renewal: {{x.FirstName}}</p>
+														<p>Age at Alteration: {{x.FirstName}}</p>
+														<p>Payment Mode: {{x.FirstName}}</p>
+														<p>Frequency of Payment: {{x.FirstName}}</p>
+														<p>Waiver of Premium: {{x.FirstName}}</p>																
+															
+													</div>
+												</div>
+												<div class="panel panel-danger" style="padding-top:5px; padding-bottom:5px; padding-right:0px; padding-left:0px">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+														   <a data-toggle="collapse" data-parent="#accordionStatus" href="#status">Status</a>
+														</h4> 
+													</div>
+													<div id="status" class="panel-collapse">
+														<p>Offer: {{x.FirstName}}</p>
+														<p>Underwriting: {{x.FirstName}}</p>
+														<p>Current: {{x.FirstName}}</p>
+														<p>Retro: {{x.FirstName}}</p>
+														<p>Accumulation: {{x.FirstName}}</p>
+														<p>Endorsement: {{x.FirstName}}</p>																
+																													
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-success" id="coverage">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceCoverage">Reinsurance Coverage</a>
+												</h4>
+											</div>
+											<div id="reinsuranceCoverage" class="collapse">																	
+												<p>Coverage#</p>
+												<p>Product</p>
+												<p>Risks</p>
+												<p>Elapse(Year)</p>
+												<p>Sum Insured</p>
+												<p>Sum at Risk</p>
+												<p>Sum Reinsured</p>
+												<p>% Reinsurance Shared</p>
+												<p>Sum Retroced</p>
+												<p>Reinsurance Treaty</p>
+												<p>Retro Treaty</p>
+												<p>CCy/Risk</p>
+											</div>
+										</div>
+										<div class="panel panel-success" id="billing">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceBilling">Reinsurance Billing</a>
+												</h4>
+											</div>
+											<div id="reinsuranceBilling" class="collapse">
+												<p>Billing#</p>
+												<p>Risks</p>
+												<p>Balance</p>
+												<p>Premium</p>
+												<p>EM Premium</p>
+												<p>ER Premium</p>
+												<p>Commission</p>
+												<p>EM Commission</p>
+												<p>ER Commission</p>
+												<p>Overriding</p>
+												<p>Fleet Discount</p>
+												<p>Profit Commission</p>
+												<p>Fleet Discount</p>
+												<p>Product</p>
+											</div>
+										</div>
+										<div class="panel panel-success" id="Sharing Risk">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+												   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceSharingRisk">Sharing Risk</a>
+												</h4>
+											</div>
+											<div id="reinsuranceSharingRisk" class="collapse">
+											<p>Product</p>
+											<p>Risks</p>
+											<p>Reinsurance</p>
+											<p>Amount at Risk Shared</p>
+											<p>Total Premium</p>
+											<p>Total Commission</p>
+											<p>Total Discount</p>
+											<p>Balance</p>
+											</div>
+										</div>
+									</div>														
+								</div>												
+							</div>										
+							<div class="panel panel-primary" id="riskNature">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsHazardNature">Risk Factors: Nature of Hazard</a>
+									</h4>
+								</div>
+							</div>
+							<div class="panel panel-primary" id="riskFactor1">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+									   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsHealthState">Risk Factors: Factors that influence the state of health</a>
+									</h4>
+								</div>
+								<div id="riskFactorsHealthState" class="collapse">
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+					</div>
+				</div>  
+			</div>
+		</div>
+	</div>
+						
+</body>
+</html>
