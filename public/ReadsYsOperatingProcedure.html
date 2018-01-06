@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <title>Operating Procedure</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<meta http-equiv="refresh" content="1">-->
+	
+</head>  
+<body>
+	<img src="/Gambar/Administration6.jpg" class="media-object" style="width:100%; height:automatic;">
+	<div class="form-group">
+		<select class="form-control" id="selectorAgenda" ng-model="variabelOperatingProcedure" style="background-color:tomato; color:white;">
+			<option value="selectIntroductionToReadsYs">Introduction to ReadsYs</option>
+			<option value="selectGettingStarted">Getting Started</option>
+			<option value="selectGallery">Gallery</option>
+			<option value="selectInqueryCenter">Inquery Center</option>			
+			<option value="selectInverseNavigationBar">Inverse Navigation Bar</option>
+		</select>
+		<div ng-switch="variabelOperatingProcedure">
+			<div ng-switch-when="selectIntroductionToReadsYs">
+				<strong>ReadsYs</strong> is an application designed to manage reinsurance business in a very simple and practical way. 
+				<strong>Reinsurance</strong> is a type of insurance that an insurer buys in onther to transfer some or all of its own risk on a policy or a group
+				of policies. Through reinsurance for example, a reinsurer reimburses a life insurer for the death benefits the insurer pays to a policyowner's beneficiaries.
+				<p></p>
+				An insurance company or an insurer uses reinsurance to transfer part or all of a risk to another insurance company or reinsurer. In exchange for the reinsurance, 
+				the insurer pays reinsurance premiums to other reinsurer. The amount of the reinsurance premiums is based on the reinsurance arrangement negotiated between the two companies.
+				<p></p>
+				As long as the reinsurance arrangement is in effect, the sellers of the reinsurance reimburses the buyer for claims covered unthe the arrangement.
+				Every insured risk must be supported by <strong>reserves</strong>, which are accounts that an insurer maintains to set aside fund for meeting future business obligation, including
+				paying claims. An insurer is responsible for setting up sufficient reserves to cover its risk.When risks are reinsured, the reinsurer also agrees to establish reserves for part or
+				all of the reinsured portion of each risk.
+				<p></p>
+				Those above are subject that all about <strong>ReadsYs</strong> will manage through out this system. The access is control on 3 dropdown buttons. The basic consept is to received 
+				a facultatively offer or a cessie that ceded under automatic treaty, all the process are electronically manage. Data are integratedly organized to preserve a consistent presence 
+				through out the whole mecanism thar are available on 3 main menu. The menu is represented by 3 dropdown button. Select a category and then click it to activate process. 
+				To be able to access a task, user should has a valid authority. Validity of authority is control by giving an interval time period to every user that has sign in.
+				<p></p>
+			</div>	
+			<div ng-switch-when="selectGettingStarted">
+				<p></p>
+				<div class="media">
+					<div class="media-left">
+						<img src="/Gambar/lock-icon-64.png" class="media-object" style="width:40px">
+					</div>
+					<div class="media-body">
+						<p>Menu of the tasks and buttons are inactive. It takes an identification and sign up process prior to be active.</p>
+					</div>
+				</div>
+				<div class="media">
+					<div class="media-left">
+						<img src="/Gambar/open-folder.png" class="media-object" style="width:40px">
+					</div>
+					<div class="media-body">
+						<p>[1] Click open folder button.</p>
+						<p>[2] Do sign up proses: Select your division, click the request, select your listed user name then entry your password.</p>
+						<p>[3] Click submit button to activate identification process.</p>
+						<p>[4] Click close button to go back to menu task</p>
+					</div>
+				</div>
+				<div class="media">
+					<div class="media-left">
+						<img src="/Gambar/open.png" class="media-object" style="width:40px">
+					</div>
+					<div class="media-body">
+						<p>[5] Activate a menu then click the task that you are going to work with.</p>
+					</div>
+				</div>
+			</div>
+			<div ng-switch-when="selectInqueryCenter">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" href="#collapseModifiedInformationHirarchy">Modified Information Hirarchy</a>
+						</h4>
+					</div>
+					<div id="collapseModifiedInformationHirarchy" class="panel-collapse collapse">	
+						<div class="panel-body">
+							In supporting decision making process, <strong>ReadsYs</strong> is designed to provide information that match with Haechel Modified Information Hirarchy.
+							The wise decision as an output of a continous and prudent data processing is mainly the purpose of using <strong>ReadsYs</strong>.
+							<p></p>
+							<div class="form-group">
+								<select class="form-control" ng-model="variabelSelectorModifiedInformationHirarchy" style="background-color:tomato; color:white;">
+									<option value="selectAgendaP">Agenda</option>
+									<option value="selectInternalCommunicationP">Internal Communication</option>
+									<option value="selectDocumentRequisitionP">Company's Policy</option>
+									<option value="selectThreatP">Synthesis Certainty</option>
+									<option value="selectSquawkP">Inteligent Knowlage</option>
+								</select>
+							</div>			
+							<div ng-switch="variabelSelectorModifiedInformationHirarchy">
+								<div ng-switch-when="selectAgendaP">
+									<strong>Agenda</strong> is developt to be a part of control of the whole organisation when it comes to share and provide information. Users should be able to share theire activity to other user.
+									<p></p>
+									<strong>Agenda</strong> is organized in 2 categories; My Agenda and Company Agenda.
+									<h4>Operating Procedure</h4>
+									
+								</div>
+								<div ng-switch-when="selectInternalCommunicationP">
+									
+								</div>
+								<div ng-switch-when="selectDocumentRequisitionP">
+									
+								</div>
+								<div ng-switch-when="selectSquawkP">
+									
+								</div>
+								<div ng-switch-when="selectThreatP">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" href="#collapseInformationContex">Information Contex</a>
+						</h4>
+					</div>
+					<div id="collapseInformationContex" class="panel-collapse collapse">	
+						<div class="panel-body">
+							<div class="panel-body">
+							<p></p>
+							<div class="form-group">
+								<select class="form-control" ng-model="variabelInformationContex" style="background-color:tomato; color:white;">
+									<option value="selectCustomer">Customer</option>
+									<option value="selectCurrentAndFutureEconomicConditions">Current and future economic conditions</option>
+								</select>
+							</div>			
+							<div ng-switch="variabelInformationContex">
+								<div ng-switch-when="selectCustomer">
+									<h4>Introduction</h4>
+									<p> Stuff and Reference are an at glance information that is provided for a simple review; Stuff Panel control Agenda, Internal Communication (Intercom), Document requisition, Threat and Squawk; Reference Panel control Customer. </p>
+									<p> Customer Panel has 5 buttons that will activate every customer main information.</p>
+									<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/paste-icon-64.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Top 10 Customer Transaction</h4>
+												<p>When this button is activate (click), ReadsYs will colect recent year transaction of a ceding company and then arrange them descending to top 10.</p>
+												<p>Transactions are New Business plus Renewal plus/minus Lapses and Alterations minus claims.</p>
+												<p>[1] Click the button. [2] View the amount of each customer, they are arrange descending. [3] Select a customer and click it to activate a modal for viewing detail transaction.</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/file-icon-64.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">List of Customer</h4>
+												<p>When this button is activate (click), ReadsYs will listing all ceding companies and provide its information .</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Searching Customer</h4>
+												<p>When this button is activate (click), ReadsYs will colect recent year transaction of a ceding company and then arrange them descending to top 10.</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/icons8-High Priority-50.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Top 10 Customer's Claim</h4>
+												<p>When this button is activate (click), ReadsYs will colect recent year transaction of a ceding company and then arrange them descending to top 10.</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/paper-plane-icon-64.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Top 10 Customer Lapses and Alteration</h4>
+												<p>When this button is activate (click), ReadsYs will colect recent year transaction of a ceding company and then arrange them descending to top 10.</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/settings-icon-64.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Top 10 Customer New Business</h4>
+												<p>When this button is activate (click), ReadsYs will colect recent year transaction of a ceding company and then arrange them descending to top 10.</p>
+											</div>
+										</div>
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/icon4.png" class="media-object" style="width:40px">
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading">Customer Other Information</h4>
+												<p>When this button is activate (click), ReadsYs will activate a selector to select task; Treaty/Wording and agrement, Reinsurance Premium Rate, Decreaseing Sum at Risk, and Mortality.</p>
+												<p>[1] Click the button. [2] Select a Customer on the List then a task selector will be activate. [3] Select a Treaty/Wording and agrement task and click it then a panel control will be shown. [4] Click the Panel Control and find another selector that manage the treaty - wording and agrement information </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div ng-switch-when="selectCurrentAndFutureEconomicConditions">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>		
+			<div ng-switch-when="selectGallery">
+				<strong>ReadsYs</strong> has 4 main pictures that become background of the four reinsurance tasks managed. 
+			</div>
+			<div ng-switch-when="selectInverseNavigationBar">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title"  id="references">
+							<a data-toggle="collapse" href="#collapseIntroductionInverseNavigationBar">Introduction</a>
+						</h4>
+					</div>
+					<div id="collapseIntroductionInverseNavigationBar" class="panel-collapse collapse in">	
+						<div class="panel-body">
+							<strong>Inverse Navigation Bar</strong> is a bar that control the processing task of <strong>ReadsYs</strong>, every task is autorhized to limited users. A security rules will be signed up to listed users.
+							System Administrator responsible for autorhized a user. All tasks are inactive prior to an identification procedures.
+							There are 6 buttons that fungtion as controler for managing supporting tools of the active task.
+							<p></p>
+							<h3>Operating Procedure</h3>
+							<div class="media">
+								<div class="media-left">
+									<img src="/Gambar/menu.png" class="media-object" style="width:40px">
+								</div>
+								<div class="media-body">
+									<p>[1] Click this button to make it active and find that all tasks bar and supporting buttons are inactive exept an open file button. To collapse the menu, click this button once again.</p>
+								</div>
+								<div class="media">
+									<div class="media-left">
+										<img src="/Gambar/open-folder.png" class="media-object" style="width:40px">
+									</div>
+									<div class="media-body">
+										<p>[2] Click this button, <strong>ReadsYs</strong> will raise a sign up modal where division should be select.</p>
+									</div>
+								</div>
+								<div class="media">
+									<div class="media-left">
+										<img src="/Gambar/images4.jpg"" class="media-object" style="width:40px">
+									</div>
+									<div class="media-body">
+										<p>[3] Select listed users of yours. If you nave not listed yet then you should ask system administrator to insert your identity into the system administration database.</p>
+										<p>[4] Entry your password, and <strong>ReadsYs</strong> will identify and singn you up, your password should perfectly related with your user name. Otherwise you are not liabel to activate any tasks.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title"  id="references">
+							<a data-toggle="collapse" href="#collapseMainTask">Main Task</a>
+						</h4>
+					</div>
+					<div id="collapseMainTask" class="panel-collapse collapse in">	
+						<div class="panel-body">
+							<strong>Main Tasks</strong> consist of 7 Tasks. Defaultly those task are inactive. There should be an efford be made to activated the tasks.
+							
+							<div class="form-group">
+								<select class="form-control" id="selectorMainTask" ng-model="variabelMainTask" style="background-color:tomato; color:white;">
+									<option value="selectAccount">ACCOUNT</option>
+									<option value="selectActuarial">ACTUARIAL</option>
+									<option value="selectAdministration">ADMINISTRATION</option>			
+									<option value="selectClaim">CLAIM</option>
+									<option value="selectManagingCustomerRelationship">MANAGING CUSTOMER RELATIONSHIP</option>
+									<option value="selectReport">REPORT</option>			
+									<option value="selectUnderwriting">UNDERWRITING</option>
+								</select>
+								<div ng-switch="variabelMainTask">
+									<div ng-switch-when="selectAccount">
+										<strong>ACCOUNT</strong> Stakeholders all are all require information about the company's operations and its financial performance. 
+										However the level of details and the information the various parties require is different, since their objectives and perspective are somewhat different.
+										<div class="form-group">
+											<select class="form-control" id="selectorMainTaskAccount" ng-model="variabelMainTaskAccount" style="background-color:tomato; color:white;">
+												<option value="selectManagingBilling">Managing Billing</option>
+												<option value="selectFinancialAccountStatement">Financial Account Statement</option>
+												<option value="selectAccountFrameWork">Account Frame Work</option>			
+												<option value="selectManagingPayment">Managing Payment</option>
+												<option value="selectBudget">Budget</option>
+											</select>
+											<div ng-switch="variabelMainTaskAccount">
+												<div ng-switch-when="selectManagingBilling">
+													<img src="/Gambar/Entry4.jpg" class="media-object" style="width:100%; height:automatic;">
+													<h4>Introduction</h4>
+													<p> Billing is colection of reinsurance transactions; New Business, Renewal, Alteration, and Termination Transaction. Billings are basic data source of Financial Account Statement (FAS) and also the Customer Sub Ledger (CSL). Data colection has 5 years time period.</p>
+													<p> There are 5 closed panels, activate that panel.</p>
+													<h4>My Jobs</h4>
+													<p> It is job that autorhized to an appointed user to process them to FAS and CSL. Others can only retrive and views.</p>
+													<p> [1] Click the panel. [2] Click button New Biz or Renewal or Alteration or Termination. The job will be shown on grid. [3] Click a selected row to see detail of job on a modal. [4] Click close button to exit of modal.</p>
+													<h4>Counting Job to be Billing</h4>
+													<p> Every reinsurance deal should be managed financially proper. Managing start from setting a classified job, counting the cessies to be billing then set FAS and CSL.</p> 
+													<p> [1] Click the panel, then system will colect number of jobs that group by customer. [2] Select a Customer and click it to see more detail information on customer's transaction.</p>
+												</div>
+												<div ng-switch-when="selectFinancialAccountStatement">
+												</div>
+												<div ng-switch-when="selectAccountFrameWork">
+												</div>
+												<div ng-switch-when="selectManagingPayment">
+												</div>
+												<div ng-switch-when="selectBudget">
+												</div>
+											</div>
+										</div>	
+									</div>
+									<div ng-switch-when="selectActuarial">
+									</div>
+									<div ng-switch-when="selectAdministration">
+									</div>
+									<div ng-switch-when="selectClaim">
+									</div>
+									<div ng-switch-when="selectManagingCustomerRelationship">
+									</div>
+									<div ng-switch-when="selectReport">
+									</div>
+									<div ng-switch-when="selectUnderwriting">
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h4 class="panel-title"">
+							<a data-toggle="collapse" href="#collapse6SupportingButtons">6 Supporting Buttons </a>
+						</h4>
+					</div>
+					<div id="collapse6SupportingButtons" class="panel-collapse collapse">	
+						<div class="panel-body">
+							<h3> Operating Procedure of Inverse Navigation Bar</h3>
+							<div class="media">
+								<div class="media-left">
+									<img src="/Gambar/open-folder.png" class="media-object" style="width:40px">
+								</div>
+								<div class="media-body">
+									<p>[1] Click this button,  <strong>ReadsYs</strong> will raise a sign up modal where division should be select.</p>
+									<p>[2] Select listed users of yours. If you nave not listed yet then you should ask system administrator for recording.</p>
+									<p>[3] Entry your password, and <strong>ReadsYs</strong> will identify and singn you up, your password should perfectly related with your user name. Otherwise you are not liabel to activate any tasks.</p>
+								</div>
+							</div>													
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>	
+</body>
+</html>

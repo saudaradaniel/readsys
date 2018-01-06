@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Actuarial</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    h2   {color: green;font-family: verdana;font-size: 300%;}
+	h4   {color: blue;font-family: verdana;font-size: 100%;}
+    h5   {color: green;font-family: verdana;font-size: 100%;}
+    li a {display: block;background-color: black;color: white;padding: 8px 16px;text-decoration: none;}
+	li a.active {background-color: #4CAF50;color: white;}
+	li a:hover:not(.active) {background-color: lightgreen;color: white;}
+	ul {background-color: green;color: blue;}
+  </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand active" href="#">Security Loading</a>
+                </div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="Aktuaria.html">Home</a></li>
+						<li><a href="SecurityLoading.html">Overviews Exist S.L</a></li> 
+						<li><a href="ActuarialSecurityLoadingSettingParameters.html">Setting Parameters</a></li> 
+						<li><a href="ActuarialSecurityLoadingManualDataPreparation.html">Manual Data Preparation</a></li> 
+						<li><a href="ActuarialSecurityLoadingUsingDatabasePreparation.html">Using Database Preparation</a></li> 
+						<li><a href="ActuarialSecurityLoadingCalculateSecurityLoading.html">Calculate Security Loading</a></li>
+                        <li><a href="ActuarialSecurityLoadingChart.html" target="_self">Chart</a></li> 				
+						<script>$(document).ready(function(){$('[data-toggle="popover"]').popover()});</script>
+                    </ul>
+				</div>
+        </nav>
+	</div><br><br>
+	
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-lg-4"><br>
+				<img src="C:/xampp/htdocs/Gambar/images18.jpg" class="media-object" style="width:100%">
+				<div class="table-responsive" style="background-image:/xampp/htdocs/Gambar/emages11.jpg">
+					<table class="table table-hover">
+						<thead style="background-color:rgba(255,0,0,0.3)">
+							<tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+								<th>Topic</th>
+                            </tr>
+						</thead>
+						<tbody style="background-color:rgba(255,0,255,0.3">
+                            <tr>
+                                <td>123456</td>
+                                <td>29 January 2007</td>
+                                <td>Bumi Asih Jaya</td>
+								<td>Penawaran Group Facultative PT Angin Ribut</td>
+							</tr>
+						</tbody>
+	                </table>
+	            </div>				
+			</div>
+			
+			<div class="col-lg-6">
+				<h3 style="color:green"><strong><bold>Algoritm of a Calulated Security Loading</bold></strong></h3>				
+                <div class="table-responsive">
+					<table class="table table-hover">
+						<thead style="background-color:rgba(255,0,0,0.3)">
+							<tr>
+                                <th>k</th>
+                                <th>q(k)</th>
+                                <th>b(k)</th>
+								<th>Mean=(k)*b(k)*q(k)</th>
+                                <th>Variance=n(k)*b(k)^2*q(k)*(1-q(k)</th>
+								<th>n(k)</th>
+                            </tr>
+						</thead>
+						<tbody style="background-color:rgba(255,0,255,0.3)">
+                            <tr>
+                                <td>1</td>
+                                <td>.01234</td>
+                                <td>123.556.890,50</td>
+								<td>123.556.890,50</td>
+                                <td>123.556.890,50</td>
+								<td>1</td>
+							</tr>
+						</tbody>
+	                </table>
+			    </div>
+			</div>
+			
+			<div class="col-lg-2"><br>
+				<div id="resume" class="panel panel-primary">
+                    <div class="panel-heading"><center>Resume of Calculation</center></div>
+					<div class="panel-body">Setting Parameters</div>
+					<div id="slmean" class="panel-body">Mean</div>
+					<div id="slvariance" class="panel-body">Variance</div>                     
+					<div id="calculatedsl" class="panel-body">Calculated Security Loading</div>
+					<div class="panel-body">
+					    Description
+					    <p>Disini disimpan keterangan yang berkait dengan proses pehitungan dan kesimpulan yang diperoleh</p>
+					</div>
+				</div>
+				<img src="C:/xampp/htdocs/Gambar/images15.jpg" class="media-object" style="width:100%">
+				<script>
+					function myFunction(){
+                        document.getElementById("slmean").innerHTML = "Mean = " + 5 * 10;
+                         document.getElementById("slvariance").innerHTML = "Variance = " + 5 * 10;
+						document.getElementById("calculatedsl").innerHTML = "Calulated Security Loading = " + 12345;
+                        } 
+					function fungsiagenda(){ <p>Masuk</p>}	
+                </script>
+			</div>
+        </div>  			
+	</div>					
+</body>
+</html>

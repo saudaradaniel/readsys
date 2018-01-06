@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <title>StuffIntercon</title>
+  <!--<meta http-equiv="refresh" content="20">-->
+</head>  
+<body>
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="/Gambar/mobile_communication.jpg" style="width:100%; high:automatic; padding:0px;">
+			<div class="carousel-caption">
+				<a href="#showMyIntercon"><h4 style="color:yellow" ng-click="fungsiInterconColectMyIntercon()">Mine</h4></a>
+				<a href="#showCompanyAgenda"><h4 style="color:yellow" ng-click="fungsiInterconColectThisYear()">Company's</h4></a>
+				<a href="StuffAndReferenceForMobileInterconEntry.html"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">New Agenda</h4></a>
+			</div>
+		</div>
+	</div>
+	<div class="media" id="toInsertNewIntercon" ng-show="showMeEntryNewIntercon">
+		<div class="media-right">
+			<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+		</div>
+		<div class="media-body">
+			<h4 id="modalJudulTransactionDetail" ng-click="fungsiAgendaActivateFormEntry()">Click me to confirm entry new agenda</h4>
+		</div>
+	</div>
+	<div class="media" id="showMyIntercon" ng-show="showMeMyIntercon">
+		<div class="media-right">
+			<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+		</div>
+		<div class="media-body">
+			<h4 ng-click="fungsiAgendaColectMyAgenda()">Click me to colect my intercon</h4>
+		</div>
+	</div>
+	<div class="media" id="showCompanyIntercon" ng-show="showMeCompanyIntercon">
+		<div class="media-right">
+			<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+		</div>
+		<div class="media-body">
+			<h4 ng-click="fungsiAgendaColectThisYear()">Click me to colect company's intercon</h4>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<select class="form-control" id="selectorIntercon" ng-model="variabelIntercon" style="background-color:Tomato; color:white;">
+			Select Task
+			<option value="selectEntryNewIntercon">Entry New Intercon</option>
+			<option value="selectMyIntercon">My Intercon</option>
+			<option value="selectCompanyIntercon">Company Intercon</option>
+		</select>
+	</div>
+	<div ng-switch="variabelIntercon">
+		<div ng-switch-when="selectEntryNewIntercon">
+			<div ng-include="'StuffAndReferenceForMobileInterconEntry.html'"></div>
+		</div>
+		<div ng-switch-when="selectMyIntercon">
+			<div class="media">
+				<div class="media-right">
+					<img src="/Gambar/telephone-icon-64.png" class="media-object" style="width:70px;">
+				</div>
+				<div class="media-body">
+					<h4 id="JudulMyIntercon" ng-click="fungsiInterconColectMyIntercon()">Click me to refresh the table</h4>
+				</div>
+			</div>
+			<div ng-include="'StuffAndReferenceForMobileInterconTabel.html'"></div>
+		</div>
+		<div ng-switch-when="selectCompanyIntercon">
+			<div class="media">
+				<div class="media-right">
+					<img src="/Gambar/telephone-icon-64.png" class="media-object" style="width:70px;">
+				</div>
+				<div class="media-body">
+					<h4 id="JudulCompanyIntercon" ng-click="fungsiInterconColectThisYear()">Click me to refresh the table</h4>
+				</div>
+				<div ng-include="'StuffAndReferenceForMobileInterconTabel.html'"></div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myShowInterconModal" role="dialog">
+		<div class="modal-dialog">   
+			<div class="modal-content">
+				<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+					<div class="media">
+						<div class="media-left">
+							<img src="/Gambar/mobile_communication.jpg" class="media-object" style="width:90px;">
+						</div>
+						<div class="media-body">
+							<h3 class="media-heading">Intercon #</h3>
+							<h3 class="media-heading" id="modalHeading">{{nomorUrutIntercon}}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body" style="padding:10px 50px;" ng-repeat="xx in anInterconData">
+					<h3>Main Intercon</h3>
+					<p>Topic: {{xx.Topic}}</p>
+					<p>Date: {{xx.InterconDate | date : "dd.MM.y" }}</p>
+					<p>Sender: {{xx.Sender}}</p>
+					<p>Receiver: {{xx.Receiver}}</p>
+					<h3>Attentions</h3>
+					<p> : {{xx.Attention1}}</p>
+					<p> : {{xx.Attention2}}</p>
+					<p>	: {{xx.Attention3}}</p>
+					<p> : {{xx.Attention4}}</p>
+					<p>	: {{xx.Attention5}}</p>
+					<h3>Attentions</h3>
+					<p>Notes:{{xx.Notes}}</p>	
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>	
+					<button class="btn pull-left"><span class="glyphicon glyphicon-refresh" style="background-color:lightgray; color:green;"></span> Modify</button>
+					<button ng-click="fungsiInterconDelete()" class="btn pull-left"><span class="glyphicon glyphicon glyphicon-remove" style="background-color:lightgray; color:red;"></span> Delete</button>
+				</div>
+				<p ng-show="showMeDeleteIntercon">Intercon deleted successfully</p> 
+				<p ng-hide="hideMeDeleteIntercon">You can't delete Intercon</p>
+			</div>	
+		</div>
+	</div>		
+
+		
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Managing Billing</title>
+	<!--<meta http-equiv="refresh" content="1">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.js"></script>
+</head>
+<body>
+	<script src="AccountBillingControler.js"></script>
+	<div ng-app="accountBillingApp" ng-controller="accountControl">
+		<div class="row content">
+			<nav class="navbar navbar-fixed-top navbar-default" Style="color: #FFFFFF; background-color: #CC3333;">
+					<div class="navbar-header">
+						<h4> ACCOUNT: Managing Billing</h4>
+					</div>
+			</nav><br><br><br>
+			<div id="panelIconBilling" class="panel panel-primary" style="padding:0px">			
+				<div class="panel-heading" id="panelIconBillings">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordionPanelIconBilling" href="#collapseIconBilling">Data Sources</a>
+					</h4>
+				</div>
+				<div class="panel-body collapse collapse in" id="collapseIconBilling" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+					<iframe src="ReadsYsAccountManagingBillingSupport.html" style="border:none; height: 500px; width:100%; border:hidden;"></iframe>
+				</div>
+			</div>
+			<div id="mainPanelMyBillingJobs" class="panel panel-primary" style="padding:0px">				
+				<div class="panel-heading" id="panelMyBillingJobs">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordionPanelIconBilling" href="#collapseMyBillingJobs">Main Worksheet</a>
+					</h4>
+				</div>	
+				<div class="panel-body collapse collapse" id="collapseMyBillingJobs" style="padding-top:5px; padding-left:0px; padding-right:0px;">		
+					<div class="form-group">
+						<select class="form-control" ng-model="variabelMyBillingJobs" style="background-color:tomato;">
+							<option value=""></option>
+							<option value="selectNewBussiness">New Bussiness</option>
+							<option value="selectRenewalBussiness">Renewal Bussiness</option>
+							<option value="selectBussinessAlterations">Bussiness Alterations</option>
+							<option value="selectTerminateBussiness">Terminate Bussiness</option>			
+						</select>
+					</div>	
+					<div ng-switch="variabelMyBillingJobs">
+						<div ng-switch-when="selectNewBussiness">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<tr>
+										<th ng-click="fungsiOrderByBillingDataField('Code')"><center>Customer</center></th>
+										<th ng-click="fungsiOrderByBillingDataField('Period')"><center>Period</center></th>
+										<th ng-click="fungsiOrderByBillingDataField('NewBusinesFas')"><center>Amount(IDR)</center></th>							
+										<th ng-show="false">Billing#</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr ng-repeat="z in billingTData">
+										<td><center>Sum</center></td>
+										<td></td>
+										<td style="text-align: right">{{z.NewBusinesFas | currency: "": 2}}</td>
+									</tr>
+								</tfoot>
+								<tbody>
+									<tr ng-repeat="y in billingData | orderBy:billingOrderBy:reverse" ng-class="{'selected':$index == selectedRow}" ng-click="fungsiSetClickedRow($index)">
+										<td ng-show="false">{{$index}}</td>
+										<td style="text-align: center">{{ y.Code}}</td>
+										<td>{{y.Period}}</td>
+										<td id="billingNewBusinesFas" ng-click="nomorBilling=y.BillingNumber; fungsiColectCessieNewBusiness(nomorBilling)"style="text-align: right">
+											<div id="panelDetailsOfCessieN" class="panel panel-success panel-scroll" style="padding:0px">
+												<div class="panel-heading" id="headingPanelDetailsOfCessieN">
+													<a data-toggle="collapse" data-parent="#accordionPanelDetailsOfCessieN" href="#N{{$index}}">{{y.NewBusinesFas | currency: "": 2}}</a>
+												</div>
+											</div>
+											<div class="panel-body collapse" id="N{{$index}}" style="padding:0px; height=10%;">
+												<table class="table table-hover table-bordered" style="background-color:#f1f1c1; color:black">
+													<thead>
+														<tr>													
+															<th ng-click="fungsiOrderByNewBusinesDataField('ReinsuranceNumber')"><center>Reins#</center></th>
+															<th ng-click="fungsiOrderByNewBusinesDataField('ReinsuranceNumber')"><center>Transaction</center></th>
+														</tr>
+													</thead>
+													<tfoot>
+														<tr ng-repeat="nz in newBusinessTData">
+															<td><center>Sum</center></td>
+															<td style="text-align: right">{{nz.TotalTransactionAmount | currency: "": 2}}</td>
+														</tr>
+													</tfoot>
+													<tbody>																			
+														<tr ng-repeat="ny in newBusinessData | orderBy:newBusinessOrderBy" ng-class="{'selected':$index1 == selectedRow}" ng-click="fungsiSetClickedRowN($index1)">
+															<td ng-show="false">{{$index1}}</td>
+															<td ng-click="nomorReas=ny.ReinsuranceNumber; fungsiBillingActivateMasterPolicyModal(nomorReas)">{{ny.ReinsuranceNumber}}</td>		
+															<td ng-click="fungsiBillingActivateMasterPolicyModal()" style="text-align: right">{{ny.TransactionAmount | currency: "": 2}}</td>
+														</tr>
+													</tbody>										
+												</table>
+											</div>
+										</td>
+									</tr>
+									<div class="modal fade in" id="masterPolicyModal">
+										<div class="modal-dialog">   
+											<div class="modal-content">
+												<div class="modal-header" style="padding:20px;"> 
+													<div class="media">
+														<div class="media-left">
+															<img src="/Gambar/Administration.jpg" class="media-object" style="width:90px;">
+														</div>
+														<div class="media-body">
+															<h3 class="media-heading">Master Policy Detail of Reinsurance#</h3>
+															<h3 class="media-heading" id="modalHeading">{{nomorUrutAgenda}}</h3>
+														</div>
+													</div>						
+												</div>
+												<div class="modal-body" style="padding:0px;">
+													<iframe src="MasterPolicyView.html" style="border:none; height: 650px; width:100%; border:hidden;"></iframe>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+												</div>
+											</div>  
+										</div>
+									</div>
+								</tbody>
+							</table>
+						</div>
+						<div ng-switch-when="selectRenewalBussiness">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<tr>
+										<th ng-click="fungsiOrderByBillingDataField('Code')">{{Customer}}</th>
+										<th ng-click="fungsiOrderByBillingDataField('Period')"><center>Accounting</center></th>
+										<th ng-show="showMeNewBusiness" ng-click="fungsiOrderByBillingDataField('NewBusinesFas')"><center>New Bussiness</center></th>
+										<th ng-show="showMeRenewal" ng-click="fungsiOrderByBillingDataField('RenewalFas')"><center>Renewal Bussiness</center></th>
+										<th ng-show="showMeAlteration" ng-click="fungsiOrderByBillingDataField('AlterationFas')"><center>Alteration</center></th>
+										<th ng-show="showMeClaim" ng-click="fungsiOrderByBillingDataField('ClaimFas')"><center>Claim</center></th>
+										<th ng-show="false">Billing#</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr ng-repeat="z in billingTData">
+										<td><center>Sum</center></td>
+										<td></td>
+										<td></td>
+										<td ng-show="showMeNewBusiness" style="text-align: right">{{z.NewBusinesFas | currency: "": 2}}</td>
+										<td ng-show="showMeRenewal" style="text-align: right">{{z.RenewalFas | currency: "": 2}}</td>
+										<td ng-show="showMeAlteration" style="text-align: right">{{z.AlterationFas | currency: "": 2}}</td>
+										<td ng-show="showMeClaim" style="text-align: right">{{z.ClaimFas | currency: "": 2}}</td>
+									</tr>
+								</tfoot>
+								<tbody>
+									<tr ng-repeat="y in billingData | orderBy:billingOrderBy:reverse" ng-class="{'selected':$index == selectedRow}" ng-click="fungsiSetClickedRow($index)">
+										<td ng-show="false">{{$index}}</td>
+										<td>{{ y.Code}}</td>
+										<td id="billingPeriod">{{y.Period}}</td>
+										<td id="showMeNewBusiness">{{y.NewBusinesFas | currency: "": 2}}</td>
+										<td id="showMeRenewal">{{y.RenewalFas | currency: "": 2}}</td>
+										<td id="showMeAlteration">{{y.AlterationFas | currency: "": 2}}</td>
+										<td id="showMeClaim">{{y.ClaimFas | currency: "": 2}}</td>
+									</tr>	
+								</tbody>
+							</table>
+						</div>
+						<div ng-switch-when="selectBussinessAlterations">
+							<h4 id="topikMyBillingJobs2" ng-click="fungsiAlteration()">Click me to colect Bussiness Alterations</h4>
+						</div>
+						<div ng-switch-when="selectTerminateBussiness">
+							<h4 id="topikMyBillingJobs3" ng-click="fungsiTermination()">Click me to colect Terminate Bussiness</h4>
+						</div>
+						<div ng-switch-when="selectClaimTransactions">
+							<h4 id="topikMyBillingJobs4" ng-click="fungsiClaimTransactions()">Click me to colect Claim Transactions</h4>
+						</div>
+						<div ng-switch-when="selectCountingJobToBeBilling">
+							<h4 id="topikMyBillingJobs5" ng-click="fungsiCountingJobToBeBilling()">Click me to colect Claim Transactions</h4>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

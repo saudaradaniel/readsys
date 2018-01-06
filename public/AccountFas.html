@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<title>Financial Account Statement</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="AccountControler.js"></script>
+	<style>
+		ul {background-color: rgb(187, 88, 124); color: white;}
+	</style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="550" ng-controller="accountFasControl" ng-init="showMe1=false; showMe2=false;">
+	<div class="row content" ng-init="legendSurplus; mJudul; mJudul2; mJudul3; mJudul4; mJudul5; mySwitch=true; mySwitch2=true; mySwitch3=true; mySwitch4=true; mySwitch5=true; mSwitch=false; mSwitch2=false; mSwitch3=false; mSwitch4=false; mSwitch5=false; mSwitch6=true; mSwitch7=false; mSwitch8=false; mSwitch9=false; mSwitch10=false; mSwitch11=true;">
+		<div class="col-sm-3" style="padding=0px;">
+			<nav class="navbar navbar-fixed-top" style="background-color: coral; color:white;">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">ACCOUNT: Financial Account Statement</a>
+					</div>
+				</div>
+			</nav>   
+			<div id="panelOperatingProcedures" class="panel panel-success" style="padding-top:55px; padding-left:0px, padding-right:0px">
+				<div class="panel-heading" id="headingPanelIndicatorUtama">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordionPanelDevelopmentIndicators" href="#collapseOperatingProcedures">Operating Procedures</a>
+					</h4>
+				</div>
+				<div class="panel-body collapse" id="collapseOperatingProcedures" style="padding:0px">
+					<img src="/Gambar/Administration3.jpg" class="media-object" style="width:100%; height:automatic;">
+					<h4>Introduction</h4>
+					<p> FAS is colection of customer's billing ; It is consist of begining balance which is an ending balance of previous accounting period, current transaction during the accounting period. This application will be used to view and create.</p>
+					<p> There are 5 closed panels. Activate the panels.</p>
+					<h4>5 Years FAS Development Indicator</h4>
+					<p> This panel will show a five year summary data of FAS. Each of them display its endding balance and an indicator sign.</p>
+					<p> [1] Click the panel. [2] Select a period and click the glyphicon. [3] Find the result on a grid and an executive summary. [4] Select a customer and click it to see details on a modal.</p>
+					<h4>Counting Billing into FAS</h4>
+					<p> This is a list of billing that has been classfied through Managing Billing process. It is an ongoing process jobs of reinsurance transactionnd.</p> 
+					<p> [1] Click the panel. [2] Select a Customer and click it to see more detail information on customer's transaction.</p>
+				</div>
+			</div>	
+			<div class="panel panel-success" style="padding:0px">
+				<div class="panel-heading" id="headingPanelIndicatorUtama">
+					<h4 class="panel-title">
+						<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelFasDevelopmentIndicators" href="#collapseFasDevelopmentIndicators">5 Years FAS Development Indicator</a>
+					</h4>
+				</div>
+				<div class="panel-body collapse" id="collapseFasDevelopmentIndicators" style="padding:0px;">			
+					<h3 ng-show="mySwitch" id="titlePerkembanganTahun1" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconBottom1" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-bottom" ng-click = "fungsiColectFas()" ></span></a>{{mJudul}}</h3>
+					<h3 ng-show="mSwitch" id="titlePerkembanganTahun1" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconTop1" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-top" ng-click = "fungsiDevelopmentIndicator()"></span></a>{{mJudul}}</h3>			
+					<h3 ng-show="mySwitch2" id="titlePerkembanganTahun2" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconBottom2" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-bottom" ng-click = "fungsiColectSurplus2()"></span></a>{{mJudul2}}</h3>
+					<h3 ng-show="mSwitch2" id="titlePerkembanganTahun2" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconTop2" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-top" ng-click = "fungsiDevelopmentIndicator()"></span></a>{{mJudul2}}</h3>		
+					<h3 ng-show="mySwitch3" id="titlePerkembanganTahun3" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconBottom3" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-bottom" ng-click = "fungsiColectSurplus3()"></span></a>{{mJudul3}}</h3>
+					<h3 ng-show="mSwitch3" id="titlePerkembanganTahun3" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconTop3" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-top" ng-click = "fungsiDevelopmentIndicator()"></span></a>{{mJudul3}}</h3>
+					<h3 ng-show="mySwitch4" id="titlePerkembanganTahun4" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-4.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconBottom4" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-bottom" ng-click = "fungsiColectSurplus4()"></span></a>{{mJudul4}}</h3>
+					<h3 ng-show="mSwitch4" id="titlePerkembanganTahun4" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-4.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconTop4" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-top" ng-click = "fungsiDevelopmentIndicator()" ></span></a>{{mJudul4}}</h3>								
+					<h3 ng-show="mySwitch5" id="titlePerkembanganTahun5" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconBottom5" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-bottom" ng-click = "fungsiColectSurplus5()"></span></a>{{mJudul5}}</h3>
+					<h3 ng-show="mSwitch5" id="titlePerkembanganTahun5" style="text-align:center"><img class="img-responsive" src="/Gambar/graph-3.png" style="float:right; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionPanelGliphiconTop5" href="#collapseDevelopmentTahun1"><span class="glyphicon glyphicon-triangle-top" ng-click = "fungsiDevelopmentIndicator()"></span></a>{{mJudul5}}</h3>
+
+					<div class="panel-body collapse" id="collapseDevelopmentTahun1" style="padding-right:0px; padding-left:0px">
+						<table class="table table-hover table-bordered">
+							<thead>
+								<tr>
+									<th style="padding:0px;">Customer</th>
+									<th style="padding:0px;">Ending Balance</th>
+								</tr>
+							</thead>
+							<tbody id="provideDataContent">
+								<tr ng-repeat="yx in listFasData">													
+									<td ng-click = "legendSurplus = yx.Legend;fungsiLegendSurplus(legendSurplus)">{{yx.Customer}}</td>
+									<td style="text-align: right">{{ yx.EndingBalance | currency: "": 2}}</td>	
+								</tr>
+							</tbody>
+						</table>
+						<h3 id="mExecutiveSummary1">Executive Summary:Consideration to be Solvent - Asset Side</h3>
+						<h5 id="mExecutiveSummary2" style="text-align:left"><img class="img-responsive" src="/Gambar/success.png" style="float:right; width:40; height:40px;">Value Base: Prudent</h5>
+						<h5 id="mExecutiveSummary3" style="text-align:left"><img class="img-responsive" src="/Gambar/success.png" style="float:right; width:40; height:40px;">Amount: Exceed Liability</h5>			
+						<p id="mExecutiveSummary4"></p>
+
+						<h3 id="mExecutiveSummary5">Executive Summary:Consideration to be Solvent - Liability Side</h3>
+						<h5 id="mExecutiveSummary6" style="text-align:left"><img class="img-responsive" src="/Gambar/checked-1.png" style="float:right; width:40; height:40px;">Determination: Conservative</h5>
+						<h5 id="mExecutiveSummary7" style="text-align:left"><img class="img-responsive" src="/Gambar/checked-1.png" style="float:right; width:40; height:40px;">Regulation: Conforms </h5>			
+						<p id="mExecutiveSummary8"></p>
+
+						<h3 id="mExecutiveSummary9">Executive Summary:Consideration to be Solvent - Premium Side</h3>
+						<h5 id="mExecutiveSummary10" style="text-align:left"><img class="img-responsive" src="/Gambar/like.png" style="float:right; width:40; height:40px;">Resources of Free Asset Margin: </h5>
+						<h5 id="mExecutiveSummary11" style="text-align:left"><img class="img-responsive" src="/Gambar/like.png" style="float:right; width:40; height:40px;">Free Money: </h5>			
+						<h5 id="mExecutiveSummary12" style="text-align:left"><img class="img-responsive" src="/Gambar/like.png"  style="float:right; width:40; height:40px;">Surplus: </h5>
+						<h5 id="mExecutiveSummary13" style="text-align:left"><img class="img-responsive" src="/Gambar/like.png" style="float:right; width:40; height:40px;">Extra Reserves: </h5>
+						<h5 id="mExecutiveSummary14" style="text-align:left"><img class="img-responsive" src="/Gambar/like.png" style="float:right; width:40; height:40px;">Other Resources: </h5>
+						<p id="mExecutiveSummary15"></p>
+
+					</div>
+				</div>
+			</div>			
+			<div id="panelCountingJob" class="panel panel-success" style="padding:0px">			
+				<p id="panelCountingJobs" ng_show="true"></p>
+				<div class="panel-heading" id="headingPanelIndicatorUtama">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordionPanelDevelopmentIndicators" href="#collapseCountingJob">Counting Billing into FAS</a>
+					</h4>
+				</div>				
+				<div class="panel-body collapse" id="collapseCountingJob" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+					<table class="table table-hover table-bordered visible-xs">
+						<thead>
+							<tr>
+								<th>Customer</th>
+								<th>Billings</th>
+								<th ng-show="false">Code</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr ng-repeat="xy in totalCustomerBillingData">
+							  <td>SUM of ALL CUSTOMER</td>
+							  <td style="text-align: right">{{xy.Total | currency: "": 2}}</td>
+							</tr>
+						</tfoot>	
+						<tbody id="provideDataContent">
+							<tr ng-repeat="yx in countCustomerBillingData">													
+								<td ng-click = "noCustomer = yx.Code; mCustomer=yx.Customer; fungsiCountingJob(noCustomer,mCustomer)" data-toggle="modal" data-target="#myModalBilling">{{yx.Customer}}</td>
+								<td style="text-align: right">{{ yx.Count | currency: "": 2}}</td>	
+								<td ng-show="false">{{ yx.Code}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-hover table-bordered hidden-xs">
+						<thead>
+							<tr>
+								<th>Customer</th>
+								<th>Billings</th>
+								<th ng-show="false">Code</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr ng-repeat="xy in totalCustomerBillingData">
+							  <td>Sum of All Customer</td>
+							  <td style="text-align: right">{{xy.Total | currency: "": 2}}</td>
+							</tr>
+						</tfoot>	
+						<tbody id="provideDataContent">
+							<tr ng-repeat="yx in countCustomerBillingData">													
+								<td ng-click = "noCustomer = yx.Code; mCustomer=yx.Customer; fungsiCountingJob(noCustomer,mCustomer)">{{yx.Customer}}</td>
+								<td style="text-align: right">{{ yx.Count | currency: "": 2}}</td>	
+								<td ng-show="false">{{ yx.Code}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal fade" id="myModalBilling" role="dialog">
+				<div class="modal-dialog">   
+					<div class="modal-content">
+						<div class="modal-header" style="padding:20px 50px;">
+							<h4 id="modalBillingDetail"></h4>							
+						</div>
+						<div class="modal-body" style="padding:40px 50px;">
+							<p id="modalBillingDetailJob"></p>
+							<p id="modalBillingDetailDate"></p>
+							<p id="modalBillingDetailTopik"></p>
+							<p id="modalBillingDetailCustomer"></p>
+							<p id="modalBillingDetailFileName"></p>
+							<p id="modalBillingDetailSOAPL"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

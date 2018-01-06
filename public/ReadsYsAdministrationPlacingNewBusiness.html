@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ReadsYsAdministration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<meta http-equiv="refresh" content="1">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.js"></script>
+</head>
+<body>
+	<script src="AdministrationController.js"></script>
+	<div ng-app="myAdministrationApp" ng-controller="administrationControl">
+		<ul class="nav nav-tabs navbar-right">
+			<li class="active"><a data-toggle="tab" href="#outstandingFacultative"><b>Outstanding Business</b></a></li>
+			<li><a data-toggle="tab" href="#acceptedFacultative"><b>Acceptance Process</b></a></li>	
+		</ul><br><br>
+		<div class="tab-content" id="tabBusinessDocument">
+			<div id="outstandingFacultative" class="tab-pane fade in active" style="padding:0px">
+				<div id="panelOutstandingFacultative" class="panel panel-success">
+					<div class="panel-heading" id="headingPanelIndicatorUtama">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordionPanelOutstandingFacultative" href="#collapseOutstandingFacultative">Currently Listed Offer</a>
+						</h4>
+					</div>
+					<div class="panel-body panel-collapse collapse in" id="collapseOutstandingFacultative" style="padding:0px">
+						<div class="row">
+							<div class="col-sm-9">
+							</div>
+							<div class="col-sm-3">
+								<select class="form-control" id="selectorVariabelAgenda" ng-model="variabelSelectorTBJ" style="background-color:tomato; color:white;">
+									<option value="colectNewOffer">Paper Cession Form: New Offer</option>
+									<option value="colectAcceptedFacultative">Paper Cession Form: Accepted Facultative</option>
+									<option value="colectReservedFacility">Paper Cession Form: Reserved Facility</option>
+									<option value="colectProceedFacultative">Paper Cession Form: Proceed Facultative</option>
+									<option value="colectRegisterTreatyBusiness">Self Administration: Register Treaty Business</option>
+									<option value="colectElectronicDataTransfer">Self Administration: Electronic Data Transfer</option>
+								</select>
+								<div ng-switch="variabelSelectorTBJ">									
+									<div ng-switch-when="colectNewOffer">
+										<h4 ng-click="fungsiColectNewOffer()">Click Me to Colect Data</h4>
+									</div>
+									<div ng-switch-when="colectAcceptedFacultative">
+										<h4 ng-click="fungsiColectAcceptedFacultative()">Click Me to Colect Data</h4>
+									</div>
+									<div ng-switch-when="colectProceedFacultative">
+										<h4 ng-click="fungsiColectProceedFacultative()">Click Me to Colect Data</h4>
+									</div>
+									<div ng-switch-when="colectRegisterTreatyBusiness">
+										<h4 ng-click="fungsiColectRegisterTreatyBusiness()">Click Me to Colect Data</h4>
+									</div>
+									<div ng-switch-when="colectReservedFacility">
+										<h4 ng-click="fungsiColectReservedFacility()">Click Me to Colect Data</h4>
+									</div>
+									<div ng-switch-when="colectElectronicDataTransfer">
+										<h4 ng-click="fungsiColectProceedFacultative()">Click Me to Colect Data</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="table-responsive" style="background-color:LightCyan">
+							<div class="media" ng-show="showMeTabelSearch"> 
+								<div class="media-right">
+									<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px;">
+								</div>
+								<div class="media-body">
+									<h4 ng-click="fungsiShowMeSearchTabelRecord()">Search By</h4>
+								</div>
+							</div>
+							<p ng-show="showMeSearchBy">D.O.D<input type="text" ng-model="search.DueDate"></p>
+							<p ng-show="showMeSearchBy">Customer<input type="text" ng-model="search.Customer"></p>
+							<p ng-show="showMeSearchBy">Insured' <input type="text" ng-model="search.Insured"></p>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th ng-click="fungsiOrderByDataField('DateOfOfferEntry')">Date</th>
+										<th ng-click="fungsiOrderByDataField('DueDate')">D.O.D</th>
+										<th ng-click="fungsiOrderByDataField('DocumentNumber')">P.C.F.D</th>
+										<th ng-click="fungsiOrderByDataField('Customer')">Customer</th>
+										<th ng-click="fungsiOrderByDataField('Insured')">Insured</th>
+										<th ng-click="fungsiOrderByDataField('Customer')">Policy Owner</th>
+										<th ng-click="fungsiOrderByDataField('Customer')">Coverage</th>
+										<th ng-click="fungsiOrderByDataField('SumInsuredOrg')">Sum Insured</th>
+										<th ng-click="fungsiOrderByDataField('SumReInsuredOrg')">Sum Reinsured</th>
+										<th>Reinsurance#</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ny in outstandingFacultative | filter:search | orderBy:outstandingOrderBy:reverse" ng-class="{'selected':$index1 == selectedRow}" ng-click="fungsiSetClickedRowN($index1)">
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.DateOfOfferEntry}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.DueDate}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.DocumentNumber}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.Customer}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.Insured}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.Insured}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.Insured}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.SumInsuredOrg|currency: "": 0}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.SumReInsuredOrg|currency: "": 0}}</td>
+										<td ng-click="nomor_Reas = ny.ReinsuranceNumber; fungsiSeekMasterPolicy(nomor_Reas); fungsiSeekCoverage(nomor_Reas); fungsiSeekBilling(nomor_Reas)">{{ny.ReinsuranceNumber}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div id="acceptedFacultative" class="tab-pane fade" style="padding:0px">
+			
+			</div>
+		</div>
+		<div id="panelMasterPolicy" class="panel panel-success">
+			<div class="panel-heading" id="headingPanelMasterPolicy">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordionPanelMasterPolicy" href="#collapseMasterPolicy">Master Policy</a>
+				</h4>
+			</div>
+			<div class="panel-body panel-collapse collapse in" id="collapseMasterPolicy" style="padding:0px">
+				<div class="panel-group panel-scroll" id="masterPolicyViewing">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <a data-toggle="collapse" data-parent="#accordion" href="#collapseBasicInformation">Basic Information for Risk Assessment Consideration</a>
+							</h4>
+						</div>
+						<div id="collapseBasicInformation" class="panel-collapse collapse in">
+							<div class="panel-body" style="padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px" ng-show="showMeMasterPolicy">
+								<div class="panel panel-success" id="mainInformation">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#collapseInsuredMainInformation">Reinsurance Main Information</a>
+										</h4>
+									</div>
+									<div id="collapseInsuredMainInformation" class="panel-collapse collapse in" style="background-color:LightCyan; padding:5px">
+										<div class="row" ng-repeat = "dx in cessieMainInformation">
+											<div class="col-sm-4">
+												<h3>Identity</h3>
+												<p>Reference#: {{dx.ReinsuranceNumber}}</p>
+												<p>Treaty# or Wordings#: {{dx.TreatyNumber}}</p>
+												<p>Policy ID#: {{dx.CedingPolicy}}</p>
+												<p>Slip#: {{dx.SlipNumber}}</p>
+												<p>Slip Date: {{dx.SlipDate}}</p>
+												
+											</div>
+											<div class="col-sm-4" style="padding-right:0px; padding-left:1">
+												<h3>Source of Business</h3>
+												<img src="/Gambar/family.jpg" style="width:90%; high:80px; padding:0px;">
+												<p>Ceding Company or Customer: {{dx.SourceOfBusiness}}</p>
+												<p>Payor of Reference Premium: {{dx.SourceOfBusiness}}</p>
+											</div>
+											<div class="col-sm-4" style="padding-right:0px; padding-left:1">
+												<h3>Processing Development</h3>
+												<p>Offer Received: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+												<p>Offer Due Date: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+												<p>Date of Entry: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+												<p>Date of Complete Recorded: {{dx.DateOfComprehensiveData|date:'dd/MM/yyyy'}}</p>
+												<p>Date of Underwriting Processing: {{dx.DateOfUnderwriting|date:'dd/MM/yyyy'}}</p>
+												<p>Date of Acceptance: {{dx.DateOfComprehensiveData|date:'dd/MM/yyyy'}}</p>
+												<p>Date to Retroceded: {{dx.RetrocessionDate|date:'dd/MM/yyyy'}}</p>
+												<p>Last Renewal Date: {{dx.LastRenewalDate|date:'dd/MM/yyyy'}}</p>
+												<p>Status of Insurance: {{dx.StatusInsurancePeriod}}</p>
+												<p>Alteration Date: {{dx.StatusInsurancePeriod|date:'dd/MM/yyyy'}}</p>
+												<p>Date of Preleminary Loss Advice: {{dx.DateOfPLA|date:'dd/MM/yyyy'}}</p>
+												<p>History: {{dx.History}}</p>
+											</div>
+										</div>
+									</div>	
+								</div>
+								<div class="panel panel-success" id="insured">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#objectReinsured">Object to Reinsured</a>
+										</h4>
+									</div>
+									<div id="objectReinsured"  class="panel-collapse collapse" style="background-color:DarkSalmon; color:white; padding-left:5px">
+										<div class="row" ng-repeat = "dx in cessieMainInformation">
+											<div class="col-sm-3">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/icons8-High Priority-50.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Object</h3>
+													</div>
+												</div>
+												<p>Insured Object: {{dx.InsuredObject}}</p>
+												<p>Specification: {{dx.SpesificBusiness}}</p>
+											</div>
+											<div class="col-sm-3">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/location-pointer-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Object Location</h3>
+													</div>
+												</div>
+												<p>Region: {{dx.SourceOfBusiness}}</p>
+												<p>State: {{dx.SourceOfBusiness}}</p>																										<p>Region: {{dx.SourceOfBusiness}}</p>
+												<p>Province: {{dx.SourceOfBusiness}}</p>																		
+												<p>City: {{dx.SourceOfBusiness}}</p>
+												<p>Address: {{dx.History}}</p>
+											</div>
+											<div class="col-sm-3">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/user-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Insured</h3>
+													</div>
+												</div>
+												<p>First Name: {{dx.FirstName}}</p>
+												<p>Last Name: {{dx.LastName}}</p>
+												<p>Policy Owner: {{dx.CedingPolicy}}</p>
+												<p>Social Security Number (SSN): {{dx.SocialSecurityNumber}}</p>
+											</div>
+											<div class="col-sm-3">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/telephone-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Contact</h3>
+													</div>
+												</div>
+												<p>Phone: {{dx.History}}</p>
+												<p>Email: {{dx.History}}</p>
+											</div>
+										</div>	
+									</div>
+								</div>	
+								<div class="panel panel-success" id="riskFactor">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsDegre">Risk Factors: Factors that influence the degree of risk</a>
+										</h4>
+									</div>
+									<div id="riskFactorsDegre" class="panel-collapse collapse">
+										<div class="row" ng-repeat = "dx in cessieMainInformation">
+											<div class="col-sm-4">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/user-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Issued Factor</h3>
+													</div>
+												</div>
+												<p>Issue Date: {{dx.ReinsuranceNumber}}</p>
+												<p>Terminate: {{dx.TreatyNumber}}</p>
+												<p>Policy Year: {{dx.CedingPolicy}}</p>
+												<p>Underwriting Year: {{dx.SlipNumber}}</p>
+												<p>Accounting Year: {{dx.SlipDate}}</p> 
+											</div>
+											<div class="col-sm-4">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/user-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Inssured Factor</h3>
+													</div>
+												</div>
+												<p>Place of Birth: {{dx.SourceOfBusiness}}</p>
+												<p>Birth Date: {{dx.SourceOfBusiness}}</p>
+												<p>Aging Method: {{dx.SourceOfBusiness}}</p>
+												<p>Attained Age: {{dx.SourceOfBusiness}}</p>
+												<p>Gender: {{dx.SourceOfBusiness}}</p>
+												<p>Smoking: {{dx.SourceOfBusiness}}</p>
+												<p>Medics: {{dx.SourceOfBusiness}}</p>										
+											</div>
+											<div class="col-sm-4">
+												<div class="media"> 
+													<div class="media-right">
+														<img src="/Gambar/user-icon-64.png" class="media-object">
+													</div>
+													<div class="media-body">
+														<h3>Insurance Factor</h3>
+													</div>
+												</div>
+												<p>Insurance: {{dx.DateOfOfferEntry}}</p>
+												<p>Insurance Form: {{dx.DateOfComprehensiveData}}</p>
+												<p>Currency: {{dx.DateOfUnderwriting}}</p>
+												<p>Reinsurance Arrangement: {{dx.RetrocessionDate}}</p>
+												<p>Retrocession: {{dx.LastRenewalDate}}</p>
+												<p>Previous Insurance: {{dx.StatusInsurancePeriod}}</p>
+												<p>Group Insurance: {{dx.DateOfPLA}}</p>
+												<p>Sum Reinsured: {{dx.History}}</p>										
+											</div>
+										</div>	
+									</div>
+								</div>	
+								<div class="panel panel-success" id="coverage">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceCoverage">Reinsurance Coverage</a>
+										</h4>
+									</div>	
+									<div id="reinsuranceCoverage" class="panel-collapse collapse">															
+										<div class="table-responsive">
+											<table class="table table-hover" style="background-color:LightCyan;">
+												<thead>
+													<tr>
+														<th>Coverage#</th>
+														<th>Product</th>
+														<th>Risks</th>
+														<th>Elapse(Year)</th>
+														<th>Sum Insured</th>
+														<th>Sum at Risk</th>
+														<th>Sum Reinsured</th>
+														<th>% Reinsurance Shared</th>
+														<th>Sum Retroced</th>
+														<th>Reinsurance Treaty</th>
+														<th>Retro Treaty</th>
+														<th>CCy/Risk</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>2017</td>
+														<td>Facultative</td>
+														<td>100</td>
+														<td>2017</td>
+														<td>Treaty</td>
+														<td>1000</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>		
+								<div class="panel panel-success" id="billing">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										   <a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceBilling">Reinsurance Billing</a>
+										</h4>
+									</div>
+									<div id="reinsuranceBilling" class="panel-collapse collapse">
+										<div class="table-responsive" style="background-color:LightCyan;">
+											<table class="table table-hover">
+												<thead>
+													<tr ng-click="fungsiColectCedingBilling()">
+														<th>Billing#</th>
+														<th>Risks</th>
+														<th>Balance</th>
+														<th>Premium</th>
+														<th>EM Premium</th>
+														<th>ER Premium</th>
+														<th>Commission</th>
+														<th>EM Commission</th>
+														<th>ER Commission</th>
+														<th>Overriding</th>
+														<th>Fleet Discount</th>
+														<th>Profit Commission</th>
+														<th>Fleet Discount</th>
+														<th>Product</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>2017</td>
+														<td>Facultative</td>
+														<td>100</td>
+														<td>2017</td>
+														<td>Treaty</td>
+														<td>1000</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

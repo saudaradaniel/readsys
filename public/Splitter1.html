@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>MasterPolicyView</title>
+	<!--<meta http-equiv="refresh" content="1">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.js"></script>
+	<script>
+    $(document).ready(function(){
+    $("#resizable").click(function(){
+        $(this).hide();
+    });
+});
+
+</script>
+</head> 
+<body>
+<div class="container">
+ <div class="row">
+ 	 <div id="resizable" class="col-xs-12" style="background-color:green;">column 1</div>
+	 <div id="mirror" class="col-xs-12" style="background-color:red;">column 2</div>
+ </div> 	 
+</div> 
+<script>
+  $(function() {
+    
+    if($('.col-xs-12').width()>720 && $('.col-xs-12').width()==$('.container').width())
+    {
+    $( "#resizable" ).resizable({ maxWidth: $('.container').width()-200 });
+    $( "#resizable" ).on( "resize", 
+    function( event, ui ) {
+		$('#mirror').css('width', $('.container').width() - $( "#resizable" ).width() );
+		});
+    $('.col-xs-12').css('width','50%');
+    }
+    else {
+    $( "#resizable" ).resizable({ disabled: true });
+    }  
+  
+	$( window ).resize(function() {  
+	  if($('.container').width()<=720){
+	  $('.col-xs-12').css('width','100%');
+	  $( "#resizable" ).resizable({ disabled: true });
+      }
+      else {
+		  $( "#resizable" ).resizable({ disabled: false });
+		  if($('.col-xs-12').width()==$('.container').width())$('.col-xs-12').css('width','50%');
+		  else {
+              $( "#resizable" ).css('width',( $('#resizable').width() / ($('#resizable').width() + $('#mirror').width()) ) * $('.container').width());
+			  $('#mirror').css('width', $('.container').width() - $( "#resizable" ).width() - 15 );
+		  } 
+	  }     	  
+  });
+  
+  });
+  
+ </script>
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Operating Procedure</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-lg-4" style="padding-right:0;">
+				<ul class="nav nav-pills nav-stacked" style="position:fixed; width: 350px; height: 650px;overflow: auto;line-height: 40%;">
+					<li class="active"><a href="#">Reinsurance Administration System</a></li>
+					<li class="dropdown-header"><h3 style="color:green;line-height: 10%;"><strong>ReadsYs</strong></h3></li>
+					<li><a href="#aboutReadsYsIntroduction"><h4 style="color:red;line-height: 10%;">Introduction to ReadsYs</h4></a></li>
+					<li><a href="#thePictures">The Pictures</a></li>
+					<li><a href="#buttonLogin">Button Login</a></li>
+					<li><a href="#buttonDevelopers"><h4 style="color:red;line-height: 10%;">Button Developers</h4></a></li>
+					<li><a href="#buttonDevelopersIntroduction">BD Introduction</a></li>
+					<li><a href="#applicationDevelopmentBD">BD Application Development</a></li>
+					<li><a href="#applicationDevelopmentBD">BD Application Development Operating Pro</a></li>
+					<li><a href="#stuff"><strong>BD Stuff</strong></a></li>
+					<li><a href="#applicationDevelopmentBDSA">BDS Agenda</a></li>
+					<li><a href="#stuffOperatingProcedureBDSA">BD Agenda Operating Procedure</a></li>
+					<li><a href="#applicationDevelopmentBDSB">BDS Business</a></li>
+					<li><a href="#applicationDevelopmentBDSC">BDS Claims</a></li>
+					<li><a href="#applicationDevelopmentBDSI">BDS Intercon</a></li>
+					<li><a href="#applicationDevelopmentBDSM">BDS Mails</a></li>
+					<li><a href="#applicationDevelopmentBDSS">BDS Squawk</a></li>
+					<li><a href="#applicationDevelopmentBDST">BDS Threat</a></li>
+					<li><a href="#applicationDevelopmentBD"><strong>BD References</strong></a></li>
+					<li><a href="#operatingProcedureBD">BD Operating Procedure</a></li>
+					<li><a href="#buttonApplication"><h4 style="color:red;line-height: 10%;">Button Application</h4></a></li>
+					<li><a href="#buttonApplicationBAA"><strong>BA Actuarial</strong></a></li>
+					<li><a href="#buttonApplicationBAAA">BA Actuarial Operating Procedure</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAAP Performance<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#buttonApplicationBasicInformationRequirements">BAAP Basic Information Requirements</a></li>
+							<li><a href="#buttonApplicationBAAPOP">BAAP Performance Operating Procedure</a></li>
+							<li><a href="#buttonApplicationBAAPI">BAAP Information Required by S.A</a></li>
+							<li><a href="#buttonApplicationBAAPE">BAAP Introduction of Performance</a></li>
+						</ul>
+					</li>			
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#buttonApplicationValuation">BAAP Actuarial Valuation<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#buttonApplicationReserve">BAAP Reserves<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#buttonApplicationSecurityLoading">BAAP Security Loading<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#buttonApplicationRetentionLimit">BAAP Retention Limit<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						
+						</ul>
+					</li>
+					<li><a href="#administration"><strong>BA Administration</strong></a></li>
+					<li><a href="#buttonApplicationOperatingProcedureAdministration">BAA Administration Operating Procedure</a></li>
+					<li class="dropdown" id="dropdownManagingBusinessDocument">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAA Managing Business Document<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#divisionBusinessDocument1">BAA Division Business Document</a></li>
+							<li><a href="#tabProcessing">BAA Business Document Processing</a></li>
+							<li><a href="#panelDocumentMainInformation">BAA Document's Main Information</a></li> 
+							<li><a href="#panelDocumentLibrary">BAA Document Library</a></li>
+							<li><a href="#panelDocumentLogbook">BAA Document Logbook</a></li>
+							<li><a href="#panelTemporaryEntries">BAA Temporary Entries</a></li>
+							<li><a href="#panelCalls">BAA Calls</a></li>
+							<li><a href="#panelBusinessLetterEMail">BAA Business' Letter and E-Mail</a></li>
+							<li><a href="#panelAgreement">BAA Agreement</a></li>
+							<li><a href="#panelTreatyWordings">BAA Treaty and Wordings</a></li>
+							<li><a href="#buttonApplicationOperatingProcedureManagingBusinessDocument">BAA Managing Business Document O.P</a></li>
+						</ul>
+					</li>	
+					<li class="dropdown" id="dropdownPlacingNewOffer">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAA Placing New Offer<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#placingNewOffer">BAA Introduction of Placing New Offer</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAA Managing Renewal<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#managingRenewal">BAA Introduction of Managing Renewal</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAA Tracking Cessie<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#trackingCessiel">BAA Introduction of Tracking Cessie</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">BAA Managing Automatic Termination<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#managingAutomaticTermination">BAA Introduction of Managing Automatic Termination</a></li>
+						</ul>
+					</li>
+					<li><a href="#OperatingProceduretReadsYs">Operating Procedure</a></li>
+				</ul>
+			</div>
+
+			<div class="col-lg-8" style="padding-right:0; padding-left:0;">
+				<div class="row">
+					<div class="col-sm-12" style="padding-right:0; padding-left:0;">
+						<div class="panel-group">
+							<div class="panel panel-success" style="padding-right:0; padding-left:0;">
+								<div class="panel-heading" id="aboutReadsYsIntroduction">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" href="#collapseIntroduction">Introduction to ReadsYs</a>
+									</h4>
+								</div>
+								<div id="collapseIntroduction" class="panel-collapse collapse in">	
+									<div class="panel-body">
+										<strong>ReadsYs</strong> is an application designed to manage reinsurance business in a very simple and practical way. 
+										<strong>Reinsurance</strong> is a type of insurance that an insurer buys in onther to transfer some or all of its own risk on a policy or a group
+										of policies. Through reinsurance for example, a reinsurer reimburses a life insurer for the death benefits the insurer pays to a policyowner's beneficiaries.
+										<p></p>
+										An insurance company or an insurer uses reinsurance to transfer part or all of a risk to another insurance company or reinsurer. In exchange for the reinsurance, 
+										the insurer pays reinsurance premiums to other reinsurer. The amount of the reinsurance premiums is based on the reinsurance arrangement negotiated between the two companies.
+										<p></p>
+										As long as the reinsurance arrangement is in effect, the sellers of the reinsurance reimburses the buyer for claims covered unthe the arrangement.
+										Every insured risk must be supported by <strong>reserves</strong>, which are accounts that an insurer maintains to set aside fund for meeting future business obligation, including
+										paying claims. An insurer is responsible for setting up sufficient reserves to cover its risk.When risks are reinsured, the reinsurer also agrees to establish reserves for part or
+										all of the reinsured portion of each risk.
+										<p></p>
+										Those above are subject that all about <strong>ReadsYs</strong> will manage through out this system. The access is control on 3 dropdown buttons. The basic consept is to received 
+										a facultatively offer or a cessie that ceded under automatic treaty, all the process are electronically manage. Data are integratedly organized to preserve a consistent presence 
+										through out the whole mecanism thar are available on 3 main menu. The menu is represented by 3 dropdown button. Select a category and then click it to activate process. 
+										To be able to access a task, user should has a valid authority. Validity of authority is control by giving an interval time period to every user that has sign in.
+										<p></p>
+										<div class="panel panel-warning">
+											<div class="panel-heading">
+												<h4 class="panel-title"  id="thePictures">
+													<a data-toggle="collapse" href="#collapseThePictures">The Pictures</a>
+												</h4>
+											</div>
+											<div id="collapseThePictures" class="panel-collapse collapse in">	
+												<div class="panel-body">
+												</div>
+											</div>
+										</div>
+										
+										<div class="panel panel-warning">
+											<div class="panel-heading">
+												<h4 class="panel-title"  id="buttonLogin">
+													<a data-toggle="collapse" href="#collapseLogin">Button Login</a>
+												</h4>
+											</div>
+											<div id="collapseLogin" class="panel-collapse collapse in">	
+												<div class="panel-body">
+												</div>
+											</div>
+										</div>
+										
+										<div class="panel panel-warning">
+											<div class="panel-heading">
+												<h4 class="panel-title"  id="buttonDevelopers">
+													<a data-toggle="collapse" href="#collapseDeveloper">Button Developer</a>
+												</h4>
+											</div>
+											<div id="collapseDeveloper" class="panel-collapse collapse in">	
+												<div class="panel-body">
+													<h3 id="buttonDevelopersIntroduction">Introduction</h3>
+													This blue button has main task to let users activate system operating procedure, reference, and application development. They are help system to guide users deal with operating tasks.
+													It would be better to activate them once for each time it activates a new tab will be added.
+													
+													<div class="panel panel-danger">
+														<div class="panel-heading">
+															<h4 class="panel-title"  id="applicationDevelopmentBD">
+																<a data-toggle="collapse" href="#collapseapplicationDevelopment">Application Development</a>
+															</h4>
+														</div>
+														<div id="collapseapplicationDevelopment" class="panel-collapse collapse in">	
+															<div class="panel-body">
+																This is a task to know how intens an application was used by users. In the consept of pay as you go, this task can easyly inform how much liability of the company
+																who operates the <strong>ReadsYs</strong>. The view is given as a charts.
+																<h3 id="operatingProcedureBD">Operating Procedure</h3>
+																1. Click  blue button of <strong>ReadsYs</strong>.
+																<p></p>
+																2. Select menu <strong>Application Development</strong>, and click it.
+																<p></p>
+																3. Do overview over the chart.
+															</div>
+														</div>
+													</div>
+													
+													<div class="panel panel-danger">
+														<div class="panel-heading">
+															<h4 class="panel-title"  id="stuff">
+																<a data-toggle="collapse" href="#collapseStuffAndReferences">Stuff</a>
+															</h4>
+														</div>
+														<div id="collapseStuffAndReferences" class="panel-collapse collapse in">	
+															<div class="panel-body">
+																<strong>Stuff</strong> are views to get information at aglance on <strong>Agenda, Mails, Business, Claims, Intercon, Squawk, and Treat.</strong> It is good to activate them once.
+																user can write his/her information while activate an issue.
+																<h3 id="applicationDevelopmentBDSA">Agenda</h3>
+																<strong>ReadsYs</strong> is maintaining <strong>Agenda</strong> to integrate information on development of managing risk that at the end will influence profitability of insurance and reinsurance company.
+																<p></p>
+																Acceptance on an offer many time is made after a sequence of meeting agenda. An underwriter should recording all the information, for this might be a subject to disputer in the future, so recording it is important. 
+																<h3 id="stuffOperatingProcedureBDSA">Operating Procedure of Agenda</h3>
+																1. Click  blue button of <strong>ReadsYs</strong>.
+																<p></p>
+																2. Select menu <strong>Stuff and References</strong>, and click it.
+																<p></p>
+																3. <strong>ReadsYs</strong> will upate the active web page to <strong>Stuff and References</strong> web page.
+																<p></p>
+																4. Select an issue of <strong>Agenda</strong>													
+															</div>
+														</div>
+													</div>
+													
+													<div class="panel panel-danger">
+														<div class="panel-heading">
+															<h4 class="panel-title"  id="references">
+																<a data-toggle="collapse" href="#collapseStuffAndReferences">References</a>
+															</h4>
+														</div>
+														<div id="collapseStuffAndReferences" class="panel-collapse collapse in">	
+															<div class="panel-body">
+																<strong>Stuff</strong> are views to get information at aglance on <strong>Agenda, Mails, Business, Claims, Intercon, Squawk, and Treat.</strong> It is good to activate them once.
+																user can write his/her information while activate an issue.
+																<h3 id="applicationDevelopmentBD">Operating Procedure of Agenda</h3>
+																1. Click  blue button of <strong>ReadsYs</strong>.
+																<p></p>
+																2. Select menu <strong>Stuff and References</strong>, and click it.
+																<p></p>
+																3. <strong>ReadsYs</strong> will upate the active web page to <strong>Stuff and References</strong> web page.
+																<p></p>
+																4. Select an issue of <strong>Agenda</strong>													
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>	
+										</div>
+									
+										<div class="panel panel-warning" id="buttonApplications">
+											<div class="panel-heading">
+												<h4 class="panel-title"  id="buttonApplication">
+													<a data-toggle="collapse" href="#collapseButtonApplication">Button Application</a>
+												</h4>
+											</div>
+											<div id="collapseButtonApplication" class="panel-collapse collapse in">	
+												<div class="panel-body">
+													In managing reinsurance business, <strong>ReadsYs</strong> running a series of application that are <strong> Account, Actuarial, Administration, Claims, Customer Relationship, Report, and Underwriting</strong>.
+													<p></p>
+													<div class="panel panel-danger" id="actuarial">													
+														<div class="panel-heading">
+															<h4 class="panel-title"  id="buttonApplicationBAA">
+																<a data-toggle="collapse" href="#collapseActuarial">Actuarial</a>
+															</h4>
+														</div>
+														<div id="collapseActuarial" class="panel-collapse collapse in">	
+															<div class="panel-body" style="padding-left:5px">
+																<div class="row" id="aktuaria">
+																	<div class="col-lg-3">
+																		<img src="C:/xampp/htdocs/Gambar/Administration17.jpg" class="media-object" style="width:100%">
+																	</div>
+																	<div class="col-lg-9">	
+																		As the primary responsibility of the actuary and hence the acturial department is to protect the interest of the policyholders. <strong>ReadsYs</strong> look at what this mean in practical term and 
+																		the function that the acturial department should carry out.
+																		<p></p>
+																		The primary interest of the policyholders is that the office should be able to pay the claims when it become due. This mean the office must be solvent. So in practical terms the responsibilities
+																		of the actuary boil down to ensuring that the office is currently solvent and can be expected to remain so in the future.  
+																		The first step in this process is to examine the current position by carrying out an investigation into the liabilities and the assets of the office. Office should be valued periodically by actuary.
+																		<p></p>
+																	</div>
+																	<div class="row" id="aktuaria1">
+																		<div class="col-lg-12" style="padding-left:35px">
+																			<strong>ReadsYs</strong> is designed to help actuary to work out all that task describe above in an easy and simple way. Menu Actuarial consist of tasks :<strong>Performance, Valuation, Reserves, Security Loading, Retention Limit</strong>.
+																			<h3 id="buttonApplicationBAAA">Operating Procedure to Actuarial</h3>
+																			1. Click green button of <strong>ReadsYs</strong>.
+																			<p></p>
+																			2. Select menu <strong>Actuarial</strong>, and click it.
+																			<p></p>
+																			3. <strong>ReadsYs</strong> will raise a page according to selected menu made.
+																			<p></p>
+																			<h3 id="buttonApplicationValuation">Valuation</h3>
+																			<p></p>
+																			<h3 id="buttonApplicationReserve">Reserve</h3>
+																			<p></p>
+																			<h3 id="buttonApplicationSecurityLoading">Security Loading</h3>
+																			<p></p>
+																			<h3 id="buttonApplicationRetentionLimit">Retention Limit</h3>
+																		</div>
+																	</div>	
+																</div>
+														
+																<div class="panel panel-primary" id="performance">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																			<a data-toggle="collapse" data-parent="#accordion" href="#collapseBIR" id="buttonApplicationBAAPE">Performance</a>
+																		</h4>
+																	</div>				
+																	<div id="collapseBIR" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			The are four main areas where the shareholders, managers, and directors of an office require information on its progress. The information should be interrelated, and it is important that all the measuring system are consistent and base on consistent data.
+																			This is often a problem for offices as they develope system for different puposes that work independently of each other and sometimes give conflicting answer. It is not a good idea to have an information system that tell the manager that the office is on course 
+																			for along-term profitable future when the regulator or supervisory authority tells the managers that they have to cease writing new business. <strong>ReadsYs</strong> is designed to help actuary to eleminate thise problems.
+																			<p></p>
+																			Performance that <strong>ReadsYs</strong> manage are responsive respons for users to 4 main questions: 
+																			<p></p>
+																			1. Is the office solvent ?
+																			<p></p>
+																			2. Is the office still in a position to fullfill its long term objective regarding capital requirements and profits.
+																			<p></p>
+																			3. Is the office performing well or badly compared to targets the directors and managers have set the office for the foresseable future?
+																			<p></p>
+																			4. Is the day to day performance satisfactory and what are the current trends?
+																			<p></p>
+																			<strong>ReadsYs</strong> will provide a visual clues that users can easyly understand its figurative meaning as early warning. This kind perseption is supported with details and comprehensive data and its chart. 
+																			<h3 id="buttonApplicationBAAPOP">Operating Procedure to Office Performance</h3>
+																			1. Do steps of <strong>Operating Procedure to Actuarial</strong>.
+																			<p></p>
+																			2. Select menu <strong>Performance</strong>, and click it.
+																			<p></p>
+																			3. <strong>ReadsYs</strong> will raise a page according to selected menu made.
+																			<p></p>
+																			<div class="panel-group" id="accordionaBIR">
+																				<div class="panel panel-danger">
+																					<div class="panel-heading">
+																						<h4 class="panel-title">
+																						   <a data-toggle="collapse" data-parent="#accordion" href="#collapseaccordionaBIR" id="buttonApplicationBasicInformationRequirements">Basic Information Requirements</a>
+																						</h4>
+																					</div>	
+																					<div id="collapseaccordionaBIR" class="panel-collapse collapse in">
+																						<div class="panel-body"> 
+																							<div class="row" id="aktuaria2">
+																								<h3>Indicators</h3>
+																								<div class="col-lg-3">
+																								<img src="C:/xampp/htdocs/Gambar/graph-3.png" class="media-object" style="width:70%">
+																								</div>
+																								<div class="col-lg-3">
+																								<img src="C:/xampp/htdocs/Gambar/graph-4.png" class="media-object" style="width:70%">
+																								</div>
+																								<div class="col-lg-3">
+																								<img src="C:/xampp/htdocs/Gambar/crest-icon-64.png" class="media-object" style="width:70%">
+																								</div>
+																								<div class="col-lg-3">
+																								<img src="C:/xampp/htdocs/Gambar/graph-8.png" class="media-object" style="width:70%">
+																								</div>
+																								<br>
+																								They are icons. It is a progress representation at a glance of a required information, they are increase, decrease, stable, unstable, or stagnant. It will change according to the values of a 3 consecutive time series of the current year.
+																								<h3>Required Information</h3>
+																								These are group of information that will tell the condition of the company's operational progress. Click it to upadate the details of basic required Information, firstly it will change the title of the panel and at last passing the control to buttons on that panel.
+																								<h3>Procedures</h3>
+																								1. Select one of four required information available.
+																								<p></p>
+																								2. Goto Details of Required Information.
+																								
+																							</div>	
+																						</div>
+																					</div>
+																				</div>
+																				
+																				<div class="panel panel-danger">
+																					<div class="panel-heading">
+																						<h4 class="panel-title">
+																						   <a data-toggle="collapse" data-parent="#accordion" href="#collapseaccordionaBIR1">Details of Required Information</a>
+																						</h4>
+																					</div>	
+																					<div id="collapseaccordionaBIR1" class="panel-collapse collapse in">
+																						<div class="panel-body"> 
+																							<h3>The Title of the Panel</h3>
+																							This is the title of a panel which is setting to manage the details information of a selected required information. It will change accordingly. In the Panel there is a collapsed panel that fasilitate a grid and its data control tools.
+																							<h3>The Buttons</h3>
+																							View Data: This button will control tasks to colect data and show them in a collapse panel where grid and data control tools is shown. 
+																							<p></p>
+																							Chart Control: This button will control tasks of type of chart, the X-axis, the Y-Axis, the series, and chart's title.
+																							<p></p>
+																							Display Chart: This button will control tasks that activate chart and it can simplify user in understanding the meaning of data colected using sql query command together with passing parameters. 
+																							<p></p>
+																							Time Series: This dropdown button will be used to set up a passing parameter that control the time interval or time series and sending it to sql query command.
+																							<h3>Procedures</h3>
+																							1. Click view data button to show a view Panel that consist of a grid and Data Parameter.
+																							<p></p>
+																							2. Click Time Series (dropdown button) and select an available time series. System will search and colect data accordingly.
+																							<p></p>
+																							3. Click Control Chart button to show panel of chart. 
+																							<p></p>
+																							4. Click Display Chart button to show panel of chart. 
+																							<p></p>
+																							5. Manage the controls of the chart: type of chart, the X-axis, the Y-Axis, the series, and chart's title.
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>		
+													</div>
+													
+													<div class="panel panel-danger" id="administration">													
+														<div class="panel-heading">
+															<h4 class="panel-title"  id="buttonApplicationAdministration">
+																<a data-toggle="collapse" href="#collapseAdministration">Administration</a>
+															</h4>
+														</div>
+														<div id="collapseAdministration" class="panel-collapse collapse in">	
+															<div class="panel-body" style="padding-left:5px">
+																<div class="row" id="administrationRow">	
+																	<div class="col-lg-3">
+																		<img src="C:/xampp/htdocs/Gambar/Administration.jpg" class="media-object" style="width:100%">
+																	</div>
+																	<div class="col-lg-9">
+																		KONSEP UMUM MENGADMINISTRASIKAN BISNIS BARU
+																		<p></p>
+																		I. Reinsurance New Business - Bisnis baru 
+																		Baik treaty, fakultatif maupun fag-oblig selalu didahului dengan komunikasi antar dua pihak dan semua hal yang tercakup dalam komunikasi tersebut harus didokumentasikan dengan sebaik mungkin, karena akan menjadi dasar untuk menyelesaikan hak dan kewajiban masing masing pihak. ReadsYs mengadministrasikannya dalam format dokumen.
+																		<p></p>				
+																	</div>	
+																	<div class="row" id="administrations">
+																		<div class="col-lg-12" style="padding-left:40px">
+																			ReadsYs dirancang untuk mengadministrasikan bisnis reasuransi yang baru diterima dengan cara mendokumentasikan semua informasi awal yang terkait dengan pertanggungan dengan menggunakan perangkat memo dan tehnik administrasi dokumen yang menyatu dan menyeluruh. Dokumen harus bisa memberikan informasi yang diperlukan pada saat dibutuhkan oleh para pengambil keputusan.k
+																			<p></p>
+																			Dokumen diedarkan kepada users dalam format elektronik, terdistribusi menggunakan mekanisme olah data yang dikendalikan oleh menu Administration pada task Managing Business' Document.
+																			<p></p>
+																			II. Inforce of Reinsurace 
+																			Adalah terminologi yang digunakan oleh ReadsYs untuk proses pemutahiran pertanggungan reasuransi atau lebih umum dikenal dengan sebutan proses renewal.
+																			<p></p>
+																			Setelah pertanggungan dinyatakan dapat di reasuransikan, underwriter atau reinsurance analyst akan memberi status kepada cessie pertanggungan dengan nilai INFORCE sedangkan status renewalnya akan dimutahirkan menjadi  bulan dan tahun renewal berikutnya (contoh January2014).
+																			Jika ReadsYs dijalankan pada waktu ulang tahun pertanggungan (yakni pada keadaan dimana bulan issue date sama dengan bulan proses) dan bahwa terdapat sekelompok cessie yang memenuhi kriteria renewal maka ReadsYs akan segera melakukan pengumpulan cessie dari semua kelompok pertanggungan tersebut. Hasilnya dikelompokkan berdasarkan customer. Kemudian ReadsYs membuatkan tabel job.
+																			<p></p>
+																			Tabel job yang dibuat akan ditempatkan pada tab job development, yakni pada repositori inforced jobs, repositori documents, repositori outstanding inforce jobs  dan repositori inforce job bulan sekarang.
+																			<p></p>
+																			Untuk mengontrol agar proses renewal teradministrasikan dengan baik sesuai dengan kriteria renewal, ReadsYs menyediakan satu tab khusus; Renewal Control on Data Master.
+																			<p></p>
+																			There are six menus available on the page, those are regarding reinsurance business administration. The page is designed to be used by all of the six menus. On page <strong>ReadsYs</strong> creates panel control for each menu, so there are six panels that appereance are control by menu selection. The six panels can be activated together on one page. To deactivate a panel, click its related menu.
+																			<h3 id="buttonApplicationOperatingProcedureAdministration">Operating Procedure of Administration</h3>
+																			1. Click green button of <strong>ReadsYs</strong>.
+																			<p></p>
+																			2. Select menu <strong>Administration</strong>, and click it.
+																			<p></p>
+																			3. <strong>ReadsYs</strong> will raise page Reinsurace Administration, select and click available menu.
+																			<p></p>
+																		</div>
+																	</div>
+																</div>	
+															
+																<div class="panel panel-primary" id="managingBusinessDocument">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapseManagingBusinessDocument">Managing Business' Document</a>
+																		</h4>
+																	</div>
+																	<div id="collapseManagingBusinessDocument" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			<strong>ReadsYs</strong> integrates information that a business document has and information notes from underwriting process, because the underwriting decision making sometimes is decided after a certain period of time. This is a condition that potentially raise an intonsistency for medical advicer, underwriter, and CMO. Therefore managing business document together with placing new offer on the same page is important.
+																			<p></p>	
+																			Business Documents are manage likely library mecanism, every call, mail, wording or treaty is treated as document, all have to be recorded as physical object, the objects are place in cabinet, racks, folders, and files. <strong>ReadsYs</strong> then function as a tools of mapping physical object to electronic data. <strong>ReadsYs</strong> will provide library address of physical object document. To take out and take in users
+																			have to follow a requisition procedure. Each document has level of security which mean access on electronic data and physical object is protected under a rule that company has. A very high level security is protected for only owner has authority to access both electronic and physical object.
+																			<p></p>	
+																			When <strong>Managing Business' Document</strong> is activated, then page of the window devided to 2 parts: Division <strong>Business' Document</strong> and Tab <strong>Processing</strong>. On division <strong>Business' Document</strong> there are 4 panels.
+																			<h3 id="divisionBusinessDocument1">I. Division Business' Document</h3>
+																			<h3 id="panelCalls">I.1. C a l l s</h3>
+																			This is an open panel that control a grid filled with business' calls made for the last 3 months. Every business doers should have responsibility on keeping all the calls are recorded. A business man/woman should has an ability to recognise which call they made, should be recorded due to reinsurance processing reason. Underwriter will link the call with the offer they are dealing with and pay attention on what subject has been made between the receiver and sender.
+																			<p></p>	
+																			While phone operator put the call through, the operator create a record of main document's information, this action will update the listed calls. Receiver should then activate menu <strong>Managing Business' Document</strong> to add more information or update the history and the the topic of main subject. Keys subject to record are Insured firs name, ceding company, and topic of conversation. When initiative of making call come from the user, then the initiator should be
+																			the one who responsible for creating a document's record.
+																			<h3 id="panelBusinessLetterEMail">I.2. Business' Letter and E-Mail</h3>
+																			Recepsionist can function as creator of business document, on the other hand business documenter will function to manage all the necessary for documentation procedure. <strong>ReadsYs</strong> maintains electronic document, therefore physical mail has to transformed into electronic image. Mapping document object into electronic image need a primary key that automatically create and control by <strong>ReadsYs</strong>. On the other hand E-Mail 
+																			<h3 id="panelAgreement">I.3. Agreement</h3>
+																			<h3 id="panelTreatyWordings">I.4. Treaty and Wordings</h3>
+																			<h3 id="buttonApplicationOperatingProcedureManagingBusinessDocument">Operating Procedure of Managing Business' Document</h3>	
+																			1. Click menu Managing Business' Document.
+																			<p></p>	
+																			2. If you want to wiew more information on a document that listed in the panels, then:
+																			<p></p>
+																			2.1 Select a row of listed <strong>Calls, Business' Letter and E-Mail, Agreement, or Treaty and Wordings </strong>.
+																			<p></p>
+																			2.2 Click that row.
+																			<p></p>
+																			2.3 Click panel <strong> Document's Main Information</strong>.
+																			<p></p>
+																			2.4 Explore information on closed panel.
+																			<p></p>
+																			3. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			4. Information Required by Supervisory Authority.
+																			<p></p>
+																			5. Click buttons consecutively from view data, chart control, and display chart.
+																			<h3 id="tabProcessing">II. Processing</h3>
+																			The tab processing function as media to view and to enter a document information. The information that shown can not directly update the existing information, but there is a grid that will temporary place the information and there is a button that function to submit the data to the server.
+																			<p></p>
+																			<strong>ReadsYs</strong> deploy 4 closed panels: <strong>Document's Main Information, Document Library, Document Logbook, and Temporary Entries</strong>. User has to activate the panel manually.
+																			<h3 id="panelDocumentMainInformation">II.1 Document's Main Information</h3>
+																			Informations are classified as <strong>Identity, Details, and History</strong>
+																			<h3 id="panelDocumentLibrary">II.2 Document Library</h3>
+																			<h3 id="panelDocumentLogbook">II.3 Document Logbook</h3>
+																			<h3 id="panelTemporaryEntries">II.4 Temporary Entries</h3>
+																		</div>
+																	</div>
+																</div>
+															
+																<div class="panel panel-primary" id="placingNewOffer">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapsePlacingNewOffer">Placing New Offer</a>
+																		</h4>
+																	</div>
+																	<div id="collapsePlacingNewOffer" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			1. Click menu Information Required by Supervisory Authority.
+																			<p></p>												
+																			2. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			3. Information Required by Supervisory Authority.
+																			<p></p>
+																			4. Click buttons consecutively from view data, chart control, and display chart.
+																		</div>
+																	</div>
+																</div>
+																
+																<div class="panel panel-primary" id="managingRenewal">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapseManagingRenewal">Managing Renewal</a>
+																		</h4>
+																	</div>
+																	<div id="collapseManagingRenewal" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			1. Click menu Information Required by Supervisory Authority.
+																			<p></p>												
+																			2. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			3. Information Required by Supervisory Authority.
+																			<p></p>
+																			4. Click buttons consecutively from view data, chart control, and display chart.
+																		</div>
+																	</div>
+																</div>
+																
+																<div class="panel panel-primary" id="trackingCessie">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTrackingCessie">Tracking Cessie</a>
+																		</h4>
+																	</div>
+																	<div id="collapseTrackingCessie" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			1. Click menu Information Required by Supervisory Authority.
+																			<p></p>												
+																			2. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			3. Information Required by Supervisory Authority.
+																			<p></p>
+																			4. Click buttons consecutively from view data, chart control, and display chart.
+																		</div>
+																	</div>
+																</div>
+																
+																<div class="panel panel-primary" id="managingAutomaticTermination">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapseManagingAutomaticTermination">Managing Automatic Termination</a>
+																		</h4>
+																	</div>
+																	<div id="collapseManagingAutomaticTermination" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			1. Click menu Information Required by Supervisory Authority.
+																			<p></p>												
+																			2. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			3. Information Required by Supervisory Authority.
+																			<p></p>
+																			4. Click buttons consecutively from view data, chart control, and display chart.
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>	
+													</div>					
+												</div>	
+											</div>	
+											<div class="panel-group" id="accordionataglance2">
+																<div class="panel panel-dpanel-primary ">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance2">Information Required by Supervisory Authority</a>
+																		</h4>
+																	</div>
+																	<div id="collapseataglance2" class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			1. Click menu Information Required by Supervisory Authority.
+																			<p></p>												
+																			2. Click Information Required by Supervisory Authority button to activate/deactivate processing procedures.
+																			<p></p>Information Required by Supervisory Authority
+																			3. Information Required by Supervisory Authority.
+																			<p></p>
+																			4. Click buttons consecutively from view data, chart control, and display chart.
+																		</div>
+																	</div>
+																</div>
+																						<div class="panel-group" id="accordionataglance3">
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance3">Actuarial Valuation</a>
+																									</h4>
+																								</div>
+																								<div id="collapseataglance3" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										1. Click Basic Information Requirements button to activate/deactivate processing procedurres.
+																										<p></p>
+																										2. Select a row of column required information and click it.
+																										<p></p>
+																										3. Click buttons consecutively from view data, chart control, and display chart.
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						
+																						<div class="panel-group" id="accordionataglance4">
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance4">Corporate Planning</a>
+																									</h4>
+																								</div>
+																								<div id="collapseataglance4" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										1. Click Basic Information Requirements button to activate/deactivate processing procedurres.
+																										<p></p>
+																										2. Select a row of column required information and click it.
+																										<p></p>
+																										3. Click buttons consecutively from view data, chart control, and display chart.
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						
+																						<div class="panel-group" id="accordionataglance5">
+																							<div class="panel panel-default">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																										<a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance5">Net Worth</a>
+																									</h4>
+																								</div>
+																								<div id="collapseataglance5" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										1. Click Basic Information Requirements button to activate/deactivate processing procedurres.
+																										<p></p>
+																										2. Select a row of column required information and click it.
+																										<p></p>
+																										3. Click buttons consecutively from view data, chart control, and display chart.
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																								
+																						<div class="panel-group" id="accordionataglance6">
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance6">Goodwill</a>
+																									</h4>
+																								</div>
+																								<div id="collapseataglance6" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										1. Click Basic Information Requirements button to activate/deactivate processing procedurres.
+																										<p></p>
+																										2. Select a row of column required information and click it.
+																										<p></p>
+																										3. Click buttons consecutively from view data, chart control, and display chart.
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						
+																						<div class="panel-group" id="accordionataglance7">
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance7">Viability Study</a>
+																									</h4>
+																								</div>
+																								<div id="collapseataglance7" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										1. Click Basic Information Requirements button to activate/deactivate processing procedurres.
+																										<p></p>
+																										2. Select a row of column required information and click it.
+																										<p></p>
+																										3. Click buttons consecutively from view data, chart control, and display chart.
+																									</div>
+																								</div>
+																						   </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			
+																			<div class="panel panel-success" id="procedureAccessMainMenu">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					   <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Procedure to access Main Menu</a>
+																					</h4>
+																				</div>
+																				<div id="collapse1" class="panel-collapse collapse in">
+																					<div class="panel-body">
+																						<h3>Main Menu</h3>
+																						Performance has six informations category, each category is represented by a menu, it control many tasks as well as many references. The default informations category is Basic Information Requirements. Every selected menu will activated a button which has caption represent the menu's element.
+																						<h3>Procedures</h3>
+																						1. Select an available menu, and then click it to activate process. 
+																						<p></p>
+																						2. Click button which has caption represent the menu's element to see processing procedure.
+																						<p></p>
+																						3. Click a selected Required Information to start working with details information and it various support elements.
+																					</div>
+																				</div>
+																			</div>
+																			
+																			<div class="panel panel-success" id="procedureAccessBIR">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																						<a data-toggle="collapse" data-parent="#accordion" href="#collapseBIR">Basic Information Requirements</a>
+																					</h4>
+																				</div>				
+																				<div id="collapseBIR" class="panel-collapse collapse in">
+																					<div class="panel-body">
+																						<div class="panel-group" id="accordionaBIR">
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseaccordionaBIR">Procedure to access Indicators and R.I</a>
+																									</h4>
+																								</div>	
+																								<div id="collapseaccordionaBIR" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										<h3>Indicators</h3>
+																										They are icons. It is a progress representation at a glance of a required information, they are increase, decrease, stable, unstable, or stagnant. It will change according to the values of a 3 consecutive time series of the current year.
+																										<h3>Required Information</h3>
+																										These are group of information that will tell the condition of the company's operational progress. Click it to upadate the details of basic required Information, firstly it will change the title of the panel and at last passing the control to buttons on that panel.
+																										<h3>Procedures</h3>
+																										1. Select one of four required information available.
+																										<p></p>
+																										2. Goto Details of Required Information.
+																									</div>
+																								</div>
+																							</div>
+																							
+																							<div class="panel panel-danger">
+																								<div class="panel-heading">
+																									<h4 class="panel-title">
+																									   <a data-toggle="collapse" data-parent="#accordion" href="#collapseaccordionaBIR1">Details of Required Information</a>
+																									</h4>
+																								</div>	
+																								<div id="collapseaccordionaBIR1" class="panel-collapse collapse in">
+																									<div class="panel-body"> 
+																										<h3>The Title of the Panel</h3>
+																										This is the title of a panel which is setting to manage the details information of a selected required information. It will change accordingly. In the Panel there is a collapsed panel that fasilitate a grid and its data control tools.
+																										<h3>The Buttons</h3>
+																										View Data: This button will control tasks to colect data and show them in a collapse panel where grid and data control tools is shown. 
+																										<p></p>
+																										Chart Control: This button will control tasks of type of chart, the X-axis, the Y-Axis, the series, and chart's title.
+																										<p></p>
+																										Display Chart: This button will control tasks that activate chart and it can simplify user in understanding the meaning of data colected using sql query command together with passing parameters. 
+																										<p></p>
+																										Time Series: This dropdown button will be used to set up a passing parameter that control the time interval or time series and sending it to sql query command.
+																										<h3>Procedures</h3>
+																										1. Click view data button to show a view Panel that consist of a grid and Data Parameter.
+																										<p></p>
+																										2. Click Time Series (dropdown button) and select an available time series. System will search and colect data accordingly.
+																										<p></p>
+																										3. Click Control Chart button to show panel of chart. 
+																										<p></p>
+																										4. Click Display Chart button to show panel of chart. 
+																										<p></p>
+																										5. Manage the controls of the chart: type of chart, the X-axis, the Y-Axis, the series, and chart's title.
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			
+																			<div class="panel panel-success" id="procedureInformationRequiredbySA">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																						<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Information Required by S.A</a>
+																					</h4>
+																				</div>
+																				<div id="collapse3" class="panel-collapse collapse">
+																					<div class="panel-body">
+																					   
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+        </div>  			
+	</div>
+</body>
+</html>

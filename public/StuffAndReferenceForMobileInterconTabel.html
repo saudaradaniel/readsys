@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <title>StuffInterconTabel</title>
+<!--<meta http-equiv="refresh" content="1">-->
+</head> 
+<body ng-init="nomorUrutIntercon=0">
+	<div class="table-responsive">
+		<div class="media">
+			<div class="media-right">
+				<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px;">
+			</div>
+			<div class="media-body">
+				<h4>Search By</h4>
+			</div>
+		</div>
+		<p>Intercon Date <input type="text" ng-model="search.InterconDate"></p>
+		<p>Intercon Topic<input type="text" ng-model="search.Topic"></p>
+		<table class="table table-hover" style="background-color:lightgreen">
+			<thead>
+				<tr>
+					<th ng-show="false">#</th>
+					<th>Date</th>
+					<th>Topic</th>
+					<th ng-show="false">User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="xy in listInterconData | filter:search">
+					<td ng-show="false" ng-click="nomorIntercon=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.InterconNumber}}</td>
+					<td ng-click="nomorIntercon=xy.InterconNumber; nomorAgenda=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.InterconDate | date : "MM/dd/y" }}</td>
+					<td ng-click="nomorIntercon=xy.InterconNumber; nomorAgenda=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.Topic}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

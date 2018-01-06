@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ReadsYs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+    ul {background-color: green; color: white;}
+  </style>
+</head>  
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: green">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="background-color: coral;">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" data-toggle="collapse" data-parent="#accordion" href="#viewprocedureshelpataglance">Actuarial</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="AktuarialPerformance.html" target="_self">Performance</a></li>
+					<li><a href="AktuarialValuation.html" target="_self">Valuation</a></li>
+					<li><a href="#">Reserves</a></li>     
+					<li><a href="SecurityLoading.html" target="_self">Security Loading</a></li>
+					<li><a href="#">Retention Limit</a></li>
+					<script>$(document).ready(function(){$('[data-toggle="popover"]').popover()});</script>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container-fluid">
+		<div class="panel panel-success">
+			<div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapseIntroduction">Introduction</a></div>
+			<div class="panel-body">
+				<div class="intro" id="collapseIntroduction">
+					<div class="row">
+						<div class="col-lg-3">
+						<img src="/Gambar/Administration17.jpg" class="media-object" style="width:100%">
+						<h5><a href="ActuarialValuation.html" target="_self">Valuation</a></h5>
+						<p>Adalah tanggung jawab utama yang diemban oleh aktuaris perusahaan asuransi atau reasuransi.</p>
+						</div>
+						<div class="col-lg-3">
+							<p>Tugas ini bermakna menjaga kepentingan pemegang polis. Setiap pemegang polis berkepentingan atas kemampuan perusahaan asuransi untuk menunaikan kewajibannya pada saat terjadik klaim.</p>
+							<p> Hal ini akan dapat diketahui bila perusahaan asuransi/reasuransi dalam keadaan solvent.</p> 
+							<p> Peraturan pemerintah mengharuskan perusahaan untuk secara periodik melakukan valuasi oleh aktuaris independent.</p>	
+							<p> Aktuaris harus mempertimbangkan faktor-faktor yang sesungguhnya akan mempengaruhi kondisi keuangan perusahaan.</p>
+							<p> ReadsYs memvisualkan faktor-faktor tersebut.</p>
+						</div>
+						<div class="col-lg-3">
+							<img src="/Gambar/Administration10.jpg" class="media-object" style="width:100%">
+						</div>
+						<div class="col-lg-3">
+							<h5><a href="AktuarialPerformance.html" target="_self">Performance</a></h5>
+							<p>Dinytakan sebagi parameter yang diukur besaran nilainya engan mengolah hasil produksi - sales atau yang lainnya menggunakan periode waktu yang ditentukan. Besaran nilainya bisa bermakna premi (sales), uang pertanggungan, jumlah polis(cessie) dan lain lain. Proses ini diatur dalam 2 hal. Hal pertama pengaturan untuk user non aktuaria dan hal kedua adalah pengaturan untuk aktuaria. User aktuaria diperkenankan untuk membuat bisnis dan aktuaria statistik. User non aktuaria hanya diperkenankan untuk mengambil data statistik yang telah diproses oleh user aktuaria.</p>	
+						</div> 			
+					</div>
+
+					<div class="row">		
+						<div class="col-lg-2">
+							<img src="/Gambar/Administration16.jpg" class="media-object" style="width:100%">
+						</div>
+						<div class="col-lg-2">
+							<h5><a href="ActuarialReserves.html" target="_self">Reserves</a></h5>
+							<p> Pencadangan premi untuk dikembangkan menjadi suatu akumulasi dana diperlukan oleh perusahaan asuransi dan reasuransi untuk menunaikan kewajibannya kelak bila terjadi klaim.</p>
+						</div>
+						<div class="col-lg-2">
+							<img src="/Gambar/images26.jpg" class="media-object" style="width:100%">
+						</div>	
+						<div class="col-lg-2">
+							<h5>Security Loading</h5>
+							<h5><a href="SecurityLoading.html" target="_self">Security Loading</a></h5>
+						</div>
+						<div class="col-lg-2">
+							<img src="/Gambar/images23.jpg" class="media-object" style="width:100%">
+						</div>	
+						<div class="col-lg-2">
+							<h5><a href="ActuarialRetentionLimit.html" target="_self">Retention Limit</a></h5>
+						</div>			
+					</div>
+				</div>	
+			
+				<div id="viewprocedureshelpataglance" class="collapse">
+					<div class="panel-group" id="accordionataglance">
+						<div class="panel panel-success" id="procedureAtagalance">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								   <a data-toggle="collapse" data-parent="#accordion" href="#collapseataglance">Steps procedure at aglance</a>
+								</h4>
+							</div>
+							<div id="collapseataglance" class="panel-collapse collapse in">
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

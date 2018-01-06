@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>ReadsYsAccountManagingBillingPCSupport</title>
+	<!--<meta http-equiv="refresh" content="1">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.js"></script>
+</head>  
+<body>
+	<script src="AccountBillingControler.js"></script>
+	<div ng-app="accountBillingApp" ng-controller="accountControl">
+		<nav class="navbar navbar-fixed-top navbar-default" Style="color: #FFFFFF; background-color: #CC3333;">
+			<div class="navbar-header">
+				<h4> ACCOUNT: Managing Billing</h4>
+			</div>
+		</nav><br><br>
+		<p></p>
+		<div id="panelIconBilling" class="panel panel-primary" style="padding:0px; border:none;">			
+			<div class="panel-heading" id="panelIconBillings">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordionPanelIconBilling" href="#collapseIconBilling">Data Sources</a>
+				</h4>
+			</div>
+			<div class="panel-body collapse collapse in" id="collapseIconBilling" style="padding:0px; border:none;">
+				<div id="panelMyBillingJob" class="panel panel-success" style="padding:0px; border:none;">		
+					<div class="panel-heading" id="headingPanelIndicatorUtama">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordionPanelDevelopmentIndicators" href="#collapseMyJobs">My Billing Jobs</a>
+						</h4>
+					</div>
+					<div class="panel-body collapse" id="collapseMyJobs" style="padding:0px; border:none;">
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="/Gambar/entry4.jpg" style="width:100%; high:automatic; padding:0px;">
+								<div class="carousel-caption">
+									<a><h3 ng-click="fungsiNewBusiness()" style="color:yellow">New Business</h3></a>
+									<a><h3 ng-click="fungsiRenewal()" style="color:yellow">Renewal Business</h3></a>
+									<a><h3 ng-click="fungsiAlteration()" style="color:yellow">Alteration Transaction</h3></a>
+									<a><h3 ng-click="fungsiTermination()" style="color:yellow">Terminate Transaction</h3></a>
+								</div>
+							</div>
+						</div>
+						<div class="media"> 
+							<div class="media-right">
+								<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px;">
+							</div>
+							<div class="media-body">
+								<h5 ng-click="fungsiBillingShowMeSearchBilling()">Search By</h5>
+							</div>
+							<form class="form-inline" ng-show="showMeSearchBy">
+								<div class="form-group">
+									<label>Date:</label>
+									<input type="text" class="form-control" ng-model="search.Dated">
+								</div>
+								<div class="form-group">
+									<label>Topic:</label>
+									<input type="text" class="form-control" ng-model="search.Topic">
+								</div>
+								<p></p>
+							</form>
+						</div>
+						<table class="table table-hover table-bordered visible-xs" style="background-color:lightgreen">
+							<thead ng-click="fungsiActivateButton()">
+								<tr style="background-color:MediumSeaGreen; color:white">
+									<th>Job#</th>
+									<th>Date</th>
+									<th id="topikMyJobs">Topic</th>							
+									<th ng-show="false">Code</th>
+								</tr>
+							</thead>
+							<tbody id="provideDataContent">
+								<tr ng-repeat="y in listTransactionData">													
+									<td ng-click = "noJob = y.Job;fungsiShowBillingJobDetail(noJob)" data-toggle="modal" data-target="#myModal">{{y.Job}}</td>
+									<td ng-click = "noJob = y.Job;fungsiShowBillingJobDetail(noJob)" data-toggle="modal" data-target="#myModal">{{y.Dated}}</td>
+									<td ng-click = "noJob = y.Job; fungsiShowBillingJobDetail(noJob)" data-toggle="modal" data-target="#myModal">{{y.Topic}}</td>				
+									<td ng-show="false">{{ y.Code}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-hover table-bordered hidden-xs" style="background-color:lightgreen">
+							<thead ng-click="fungsiActivateButton()">
+								<tr style="background-color:MediumSeaGreen; color:white">													
+									<th>Job#</th>
+									<th>Date</th>
+									<th id="topikMyJobss">Topic</th>
+									<th>Customer</th>
+									<th ng-show="false">File Name</th>
+									<th ng-show="false">SOA-Transaction List</th>
+									<th ng-show="false">Code</th>
+								</tr>
+							</thead>
+							<tbody id="provideDataContent">
+								<tr ng-repeat="y in listTransactionData">													
+									<td id="jobNumber" ng-click = "noJob = y.Job; noCustomer = y.Code;fungsiCountingJob(noCustomer, noJob)">{{y.Job}}</td>
+									<td id="jobDate">{{y.Dated}}</td>
+									<td id="jobTopik">{{y.Topic}}</td>		
+									<td id="jobCustomer" ng-click = "noJob = y.Job; noCustomer = y.Code;fungsiCountingJob(noCustomer, noJob)">{{y.Customer}}</td>
+									<td ng-show="false" id="jobFileName">{{y.FileName}}</td>				
+									<td ng-show="false" id="jobSOAPL">{{y.SOAPL}}</td>				
+									<td ng-show="false">{{ y.Code}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>	
+				<div id="panelCountingJob" class="panel panel-success" style="padding:0px; border:none;">			
+					<div class="panel-heading" id="headingPanelIndicatorUtama1">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordionPanelDevelopmentIndicator" href="#collapseCountingJob">Counting Job to be Billing</a>
+						</h4>
+					</div>
+					<div class="panel-body collapse in" id="collapseCountingJob" style="border:none;">
+						<h4 id="panelCountingJobs" ng-click="fungsiCalculatingJobsToBeBilling()"><center>Click me to colect data:</center></h4>
+
+							<table class="table table-hover table-bordered" ng-show="showMeJobCalculatingTable">
+								<thead style="background-color:MediumSeaGreen; color:white">
+									<tr>
+										<th><center>Customer</center></th>
+										<th ng-click="fungsiCalculateBillingTransaction()"><center>Count Transaction</center></th>
+										<th ng-show="false">Code</th>
+									</tr>
+								</thead>
+								<tbody style="background-color:lightgreen">
+									<tr ng-repeat="yx in countCustomerBillingData">													
+										<td ng-click = "noClient = yx.Code; mCustomer=yx.Customer; fungsiShowTransactionDetail(noClient,mCustomer)" data-toggle="modal" data-target="#customerModal">{{yx.Customer}}</td>
+										<td ng-click = "noClient = yx.Code; mCustomer=yx.Customer; nomorJob = yx.JobNumber; fungsiCountingJobs(noCustomer,mCustomer); fungsiColectCessieForBilling(nomorJob); " style="text-align: right">
+											<div id="panelDetailsOfCessie" class="panel panel-success panel-scroll" style="padding:0px">
+												<div class="panel-heading" id="headingPanelDetailsOfCessieN">
+													<a data-toggle="collapse" data-parent="#accordionPanelDetailsOfCessie" href="#{{$index}}">{{yx.Count | currency: "": 2}}</a>
+												</div>
+											</div>
+											<div class="panel-body collapse" id="{{$index}}" style="padding:0px; height=10%;">
+												<table class="table table-hover table-bordered" style="background-color:#f1f1c1; color:black">
+													<thead style="background-color:MediumSeaGreen; color:white">
+														<tr>													
+															<th ng-click="fungsiBillingActivateMasterPolicyModal('ReinsuranceNumber')"><center>Reins#</center></th>
+															<th ng-click="fungsiBillingActivateMasterPolicyModal('ReinsuranceNumber')"><center>Transaction</center></th>
+														</tr>
+													</thead>
+													<tfoot>
+														<tr ng-repeat="nz in newBusinessTData">
+															<td><center>Sum</center></td>
+															<td style="text-align: right">{{nz.TotalTransactionAmount | currency: "": 2}}</td>
+														</tr>
+													</tfoot>
+													<tbody>																			
+														<tr ng-repeat="ny in cessieRelatedBillingData | orderBy:newBusinessOrderBy" ng-class="{'selected':$index1 == selectedRow}" ng-click="fungsiSetClickedRowN($index1)">
+															<td ng-show="false">{{$index1}}</td>
+															<td ng-click="nomorReas=ny.ReinsuranceNumber; fungsiBillingActivateMasterPolicyModal(nomorReas)">{{ny.ReinsuranceNumber}}</td>		
+															<td ng-click="fungsiBillingActivateMasterPolicyModal()" style="text-align: right">{{ny.TransactionAmount | currency: "": 2}}</td>
+														</tr>
+													</tbody>										
+												</table>
+											</div>
+										</td>	
+										<td ng-show="false">{{ yx.Code}}</td>
+									</tr>
+								</tbody>
+								<tfoot style="background-color:DarkSalmon; color:white;">
+									<tr ng-repeat="yz in countCustomerBillingTData">
+										<td><center>Sum</center></td>
+										<td style="text-align: right">{{yz.Total | currency: "": 2}}</td>
+									</tr>
+								</tfoot>
+							</table>
+						
+						<div class="modal fade in" id="masterPolicyModal">
+							<div class="modal-dialog">   
+								<div class="modal-content">
+									<div class="modal-header" style="padding:20px;"> 
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/Administration.jpg" class="media-object" style="width:90px;">
+											</div>
+											<div class="media-body">
+												<h3 class="media-heading">Master Policy Detail of Reinsurance#</h3>
+												<h3 class="media-heading" id="modalHeading">{{nomorUrutAgenda}}</h3>
+											</div>
+										</div>						
+									</div>
+									<div class="modal-body" style="padding:0px;">
+										<!--<iframe src="MasterPolicyView.html" style="border:none; height: 650px; width:100%; border:hidden;"></iframe>-->
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+									</div>
+								</div>  
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">   
+						<div class="modal-content">
+							<div class="modal-header" style="padding:20px 50px;">
+								<h4 id="modalBillingDetail"></h4>							
+							</div>
+							<div class="modal-body" style="padding:40px 50px;">
+								<p id="modalBillingDetailJob"></p>
+								<p id="modalBillingDetailDate"></p>
+								<p id="modalBillingDetailTopik"></p>
+								<p id="modalBillingDetailCustomer"></p>
+								<p id="modalBillingDetailFileName"></p>
+								<p id="modalBillingDetailSOAPL"></p>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+							</div>
+						</div>  
+					</div>
+				</div>
+				<div class="modal fade" id="billingProcessingModal" role="dialog">
+					<div class="modal-dialog">   
+						<div class="modal-content">
+							<div class="modal-header" style="padding:20px 50px;">
+								<img src="/Gambar/Administration7.jpg" style="width:100%; high:automatic; padding:0px;">
+								<h4 id="modalBillingDetail">Billing Processing Control</h4>							
+							</div>
+							<div class="modal-body" style="padding:40px 50px;">
+								<p id="modalBillingDetailJob"></p>
+								<p id="modalBillingDetailDate"></p>
+								<p id="modalBillingDetailTopik"></p>
+								<p id="modalBillingDetailCustomer"></p>
+								<p id="modalBillingDetailFileName"></p>
+								<p id="modalBillingDetailSOAPL"></p>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+							</div>
+						</div>  
+					</div>
+				</div>
+				<div class="modal fade" id="customerModal" role="dialog">
+				<p>Masuk</p>
+					<div class="modal-dialog">   
+						<div class="modal-content">
+							<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in transactionData">
+								<div class="media">
+									<div class="media-right">
+										<img src="/Gambar/newspaper.png" class="media-object" style="width:70px;">
+									</div>
+									<div class="media-body">
+										<h4>{{x.Customer}}</h4>
+									</div>
+								</div>								
+							</div>
+							<div class="form-group">
+								<select class="form-control" id="selectorCustomer" ng-model="variabelInfoCustomer" style="background-color:tomato; color:white;">
+									<option value="relatedCustomerInput-OutputToCompany">Related Customer Input/Output to Company</option>
+									<option value="aboutCustomer">About Customer</option>
+									<option value="contactPerson">Contact Person</option>
+									<option value="customerCommunication">Relationship - Communication</option>
+									<option value="customerCessie">Cessie Ceded by Customer</option>
+								</select>
+							</div>
+							<div ng-switch="variabelInfoCustomer">
+								<div ng-switch-when="relatedCustomerInput-OutputToCompany" ng-repeat="xx in totalTransactionData">
+									<div class="modal-body" style="padding:40px 50px;">
+										<div class="tampilkan" ng-repeat="x in transactionData">
+											<p>Total Transaction: {{x.Transaction | currency: "": 2}}</p>
+											<p>Total Whole Transaction: {{xx.Transaction | currency: "": 2}}</p>
+											<p ng-show="modalBodyTransaction">Share Over Whole Transaction: {{(x.Transaction/xx.Transaction)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalBodyNewBusiness">New Business: {{x.NewBusiness | currency: "": 2}}</p>
+											<p ng-show="modalBodyNewBusiness">Share Over New Business: {{(x.NewBusiness/xx.NewBusiness)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalBodyNewBusiness">Share Over Whole Transaction: {{(x.NewBusiness/xx.Transaction)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalBodyRenewal">Renewal: {{x.Renewal | currency: "": 2}}</p>
+											<p ng-show="modalBodyRenewal">Share Over Renewal: {{(x.Renewal/xx.Renewal)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalBodyRenewal">Share Over Whole Transaction: {{(x.Renewal/xx.Transaction)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalAlteration">Alteration: {{x.Alteration | currency: "": 2}}</p>
+											<p ng-show="modalAlteration">Share Over Alteration: {{(x.Alteration/xx.Alteration)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalAlteration">Share Over Whole Transaction: {{(x.Alteration/xx.Transaction)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalClaim">Claim:{{x.Claim | currency: "": 2}}</p>
+											<p ng-show="modalClaim">Total Claim:{{xx.Claim | currency: "": 2}}</p>
+											<p ng-show="modalClaim">Share Over Claim: {{(x.Claim/xx.Claim)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalClaim">Share Over Transaction: {{(x.Claim/x.Transaction)*100 | currency: "": 2}}%</p>
+											<p ng-show="modalClaim">Share Over Whole Transaction: {{(x.Claim/xx.Transaction)*100 | currency: "": 2}}%</p>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+									</div>
+								</div>
+								<div ng-switch-when="aboutCustomer" ng-repeat="z in aCustomerData">
+									<div class="modal-body" style="padding:40px 50px;">
+										<p>Code: {{z.Classification}}</p>
+										<p>Identity#: {{z.ID}}</p>
+										<p>Division Code: {{z.DivisionCode}}</p>
+										<p>Classification: {{z.Classification}}</p>
+										<p>Address: {{z.Address}}</p>
+										<p>Building: {{z.Building}}</p>
+										<p>ZIP: {{z.ZIP}}</p>
+										<p>City: {{z.City}}</p>
+										<p>Province: {{z.Province}}</p>
+										<p>State: {{z.State}}</p>
+										<p>     : {{z.Overseas}}</p>
+										<p>     : {{z.Asean}}</p>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+									</div>
+								</div>
+								<div ng-switch-when="contactPerson">
+									<div class="modal-header" style="padding:20px 50px;">
+										<p>Search <input type="text" ng-model="contactP"></p>
+										<table class="table table-hover" style="background-color:lightgreen">
+											<thead>
+												<tr>
+													<th>CP Full Name</th>
+													<th ng-show="false">CP#</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="k in listCPData | filter:contactP">													
+													<td ng-click = "noCP = k.ID; fungsiShowCPDetail(noCP)">{{k.FirstName + " " + k.LastName}}</td>
+													<td ng-click = "noCP = k.ID; fungsiShowCPDetail(noCP)" ng-show="false">{{k.ID}}</td>
+												</tr>
+											</tbody>
+										</table>							
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<select class="form-control" id="selectorContactPerson" ng-model="variabelContactPerson" style="background-color:tomato; color:white;">
+												<option value="cpPersonalData">Personal Data</option>
+												<option value="cpExperiences">Experiences</option>
+												<option value="cpOrganization">Organization</option>
+												<option value="cpOtherInfon">Other Info</option>
+											</select>
+										</div>
+										<div ng-switch="variabelContactPerson">
+											<div ng-switch-when="cpPersonalData">
+												<div class="tampilan"  ng-repeat="w in aCPData">
+													<p>ID#: {{w.ID}}</p>
+													<p>Gender: {{w.Gender}}</p>
+													<p>Date of Birth: {{w.DOB | date : "dd.MM.y" }}</p>
+													<p>Place of Birth: {{w.POB}}</p>
+													<p>Marital Status: {{w.MaritalStatus}}</p>
+													<p>Religion: {{w.Religion}}</p>
+													<p>Address: {{w.Address}}</p>
+													<p>Province: {{w.Province}}</p>
+													<p>State: {{w.State}}</p>
+													<p>Email: {{w.Email}}</p>
+													<p>Phone: {{w.Phone}}</p>
+													<p>HP     : {{w.HP}}</p>
+													<p>Region: {{w.Region}}</p>
+													<p>Notes: {{w.Designation}}</p>
+												</div>
+											</div>
+											<div ng-switch-when="cpExperiences">
+												<div class="tampilan"  ng-repeat="w in aCPData">
+													<p>ID#: {{w.ID}}</p>
+													<p>Job: {{w.Job}}</p>
+													<p>: {{w.Job1}}</p>
+													<p>: {{w.Job2}}</p>
+													<p>: {{w.Job3}}</p>
+													<p>Profesional Reputation: {{w.ProfesionalReputation}}</p>
+												</div>
+											</div>
+											<div ng-switch-when="cpOrganization">
+												<div class="tampilan"  ng-repeat="w in aCPData">
+													<p>ID#: {{w.ID}}</p>
+													<p>Organization: {{w.Organization1}}</p>
+													<p>: {{w.Organization2}}</p>
+													<p>: {{w.Organization3}}</p>
+													<p>Roles{{w.RoleOrganization1}}</p>
+													<p>: {{w.RoleOrganization2}}</p>
+													<p>: {{w.RoleOrganization3}}</p>
+												</div>
+											</div>
+											<div ng-switch-when="cpOtherInfon" ng-repeat="w in aContactPersonData">
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+									</div>
+								</div>
+								<div ng-switch-when="customerCommunication" ng-repeat="z in aCustomerData">											
+									<div class="modal-body" style="padding:40px 50px;">
+										<p>Telephone: {{z.Telephone1}}</p>
+										<p>         : {{z.Telephone2}}</p>
+										<p>         : {{z.Telephone3}}</p>
+										<p>Faxes: {{z.Faxes1}}</p>
+										<p>     : {{z.Faxes2}}</p>
+										<p>     : {{z.Faxes3}}</p>
+										<p>Email: {{z.Email}}</p>
+										<p>Web: {{z.Web}}</p>
+										<p>Location: {{z.Location}}</p>
+										<p>Region: {{z.Region}}</p>
+										<p>Status: {{z.Status}}</p>
+										<p>Competitor: {{z.Competitor}}</p>
+										<p>Problems: {{z.Problems}}</p>
+										<p>History: {{z.History}}</p>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+									</div>
+								</div>
+								<div ng-switch-when="customerCessie">												
+									<div class="table-responsive" style="background-color:lightgreen;">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th ng-click="fungsiColectCustomerCessie(nomorClient)"><a>Reinsurance#</a></th>
+													<th>Insured-Full Name</th>
+													<th ng-show="false">SSN#</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cx in listCessieData | filter:insuredFullName">
+													<td ng-click="reasNumber=cx.ReinsuranceNumber; fungsiShowDetailReinsurancePolicy(reasNumber)" data-toggle="modal" data-target="#myDetailReinsurancePolicyModal">{{cx.ReinsuranceNumber}}</td>
+													<td ng-click="reasNumber=cx.ReinsuranceNumber; fungsiShowDetailReinsurancePolicy(reasNumber)" data-toggle="modal" data-target="#myDetailReinsurancePolicyModal">{{cx.FirstName + " " + cx.LastName}}</td>
+													<td  ng-show="false" ng-click="noClaim=cx.ClaimID; fungsiShowDetailMasterClaim(noClaim)" data-toggle="modal" data-target="#myClaimDetailModal">{{cx.SocialSecurityNumber}}</td>
+												</tr>		
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>  
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Stuff</title>
+		<!--<meta http-equiv="refresh" content="1">-->
+	</head>  
+	<body>
+		<div ng-app="myReadsYsApp" ng-controller="crManagingControl">
+			<div id="modifiedInformationHirarchy" class="panel panel-info" style="border:none; padding-bottom:0px;">
+				<div class="panel-heading" id="headingPanelStuffPC">
+					<h4 class="panel-title">
+						<a id="panelTitleMobile" data-toggle="collapse" data-parent="#accordionPanelStuffMobile" href="#collapseStuffPC">Modified Information Hirarchy</a>
+					</h4>
+				</div>
+				<div id="collapseStuffPC" class="panel-collapse collapse in" style="border:none">
+					<select class="form-control" id="selectorVariabelAgenda" ng-model="variabelSelectorStuff" style="background-color:tomato; color:white;">
+						<option value="selectAgenda" id="myAgenda">Agenda</option>
+						<option value="selectDocument">Document</option>
+						<option value="selectInternalCommunication">Internal Communication</option>
+						<option value="selectCompanysPolicy">Company's Policy</option>
+						<option value="selectSynthesisCertainty">Synthesis Certainty</option>
+						<option value="selectInteligentKnowlage">Inteligent Knowlage</option>
+					</select>
+					<div ng-switch="variabelSelectorStuff">
+						<div ng-switch-when="selectAgenda">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/Administration3.jpg" style="width:100%; high:automatic; padding:0px;">
+									<div class="carousel-caption">
+										<a href="#showMyAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaMyAgenda()">Mine</h4></a>
+										<a href="#showCompanyAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaCompanyAgenda()">Company's</h4></a>
+										<a href="#toInsertNewAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">New Agenda</h4></a>
+									</div>
+								</div>
+							</div>
+							<div class="media" id="toInsertNewAgenda" ng-show="showMeEntryNewAgenda">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 id="modalJudulTransactionDetail" ng-click="fungsiAgendaActivateFormEntry()">Click me to confirm entry new agenda</h4>
+								</div>
+							</div>
+							<div class="media" id="showMyAgenda" ng-show="showMeMyAgenda">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 ng-click="fungsiAgendaColectMyAgenda()">Click me to colect my agenda</h4>
+								</div>
+							</div>
+							<div class="media" id="showCompanyAgenda" ng-show="showMeCompanyAgenda">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 ng-click="fungsiAgendaColectThisYear()">Click me to colect company's agenda</h4>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<div class="media" ng-show="myAgendaTabel"> 
+									<div class="media-right">
+										<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px;">
+									</div>
+									<div class="media-body">
+										<h4 ng-click="fungsiAgendaShowMeSearchAgenda()">Search By</h4>
+									</div>
+								</div>
+								<p ng-show="showMeSearchBy">Agenda Date <input type="text" ng-model="search.AgendaDate"></p>
+								<p ng-show="showMeSearchBy">Timeschedule<input type="text" ng-model="search.Time"></p>
+								<p ng-show="showMeSearchBy">Descriptions' <input type="text" ng-model="search.Description"></p>
+								<table class="table table-hover" style="background-color:lightgreen" ng-show="myAgendaTabel">
+									<thead>
+										<tr>
+											<th ng-show="false">#</th>
+											<th>Date</th>
+											<th>Time</th>
+											<th>Description</th>
+											<th ng-show="false">Attention</th>
+											<th ng-show="false">Notes</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="xy in listAgendaData | filter:search">
+											<td ng-show="false" ng-click="nomorAgenda=xy.AgendaNumber; fungsiAgendaShowAgendaDetail(nomorAgenda)" data-toggle="modal" data-target="#myShowAgendaModal">{{xy.AgendaNumber}}</td>
+											<td ng-click="nomorUrutAgenda=xy.AgendaNumber; nomorAgenda=xy.AgendaNumber; fungsiAgendaShowAgendaDetail(nomorAgenda)" data-toggle="modal" data-target="#myShowAgendaModal">{{xy.AgendaDate | date : "MM/dd/y" }}</td>
+											<td ng-click="nomorUrutAgenda=xy.AgendaNumber; nomorAgenda=xy.AgendaNumber; fungsiAgendaShowAgendaDetail(nomorAgenda)" data-toggle="modal" data-target="#myShowAgendaModal">{{xy.Time}}</td>
+											<td ng-click="nomorUrutAgenda=xy.AgendaNumber; nomorAgenda=xy.AgendaNumber; fungsiAgendaShowAgendaDetail(nomorAgenda)" data-toggle="modal" data-target="#myShowAgendaModal">{{xy.Description}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal fade" id="myShowAgendaModal" role="dialog">					
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+											<div class="media">
+												<div class="media-left">
+													<img src="/Gambar/Administration3.jpg" class="media-object" style="width:90px;">
+												</div>
+												<div class="media-body">
+													<h3 class="media-heading">Detail of Agenda #</h3>
+													<h3 class="media-heading" id="modalHeading">{{nomorUrutAgenda}}</h3>
+												</div>
+											</div>
+										</div>
+										<div class="modal-body" style="padding:10px 50px;" ng-repeat="xx in anAgendaData">
+											<h3>Main Agenda</h3>
+											<p>Owner: {{xx.Owner}}</p>
+											<p>Date: {{xx.AgendaDate | date : "dd.MM.y" }}</p>
+											<p>Time: {{xx.Time}}</p>
+											<p>Place: {{xx.Place}}</p>
+											<p>Room: {{xx.Room}}</p>
+											<p>Status: {{xx.Status}}</p>
+											<h3>Attentions</h3>	
+											<div class="table-responsive">
+												<table class="table table-hover" style="background-color:lightgreen">
+													<tbody>
+														<tr ng-repeat="xz in listAttentionAgendaData">																
+															<td>{{xz.Name}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<h3>Transportation</h3>
+											<p>Car Order: {{xx.CarOrder}}</p>
+											<p>Order Status: {{xx.CarOrderStatus}}</p>
+											<p>Car: {{xx.Car}}</p>
+											<p>Driver: {{xx.Driver}}</p>
+											<h3>Notes</h3>
+											<p>Topic/Description: {{xx.Description}}</p>
+											<p>Notes:{{xx.Notes}}</p>	
+										</div>
+										<div class="modal-footer">
+											<button ng-click="fungsiAgendaCloseModal()" type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>	
+											<button class="btn pull-left"><span class="glyphicon glyphicon-refresh" style="background-color:lightgray; color:green;"></span> Modify</button>
+											<button ng-click="fungsiAgendaDelete()" class="btn pull-left"><span class="glyphicon glyphicon glyphicon-remove" style="background-color:lightgray; color:red;"></span> Delete</button>
+										</div>
+										<p ng-show="showMeDeleteAgenda">Agenda deleted successfully</p> 
+										<p ng-hide="hideMeDeleteAgenda">You can't delete agenda</p>
+									</div>	
+								</div>
+							</div>
+							<div class="modal fade" id="myEntryNewAgendaModal" role="dialog">
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:10px 50px; background-color:LightGoldenRodYellow">
+											<div class="media">
+												<div class="media-left">
+													<img src="/Gambar/Administration3.jpg" class="media-object" style="width:90px;">
+												</div>
+												<div class="media-body">
+													<h3 class="media-heading">Entry New Agenda</h3>														 
+												</div>
+											</div>
+										</div>
+										<div class="modal-body" style="padding:10px 50px;">
+											<!--<form action="StuffInsertAgendaDataControl.php" method="post" name="mainAgendaForm" class="form-horizontal" ng-init="bowner=''; bdate=date;">-->
+											<form name="mainAgendaForm" class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Owner</label>
+													<div class="col-sm-10">
+														<input name="myInput1" ng-model="bowner" required class="form-control" type="text">
+														<span ng-show="mainAgendaForm.bowner.$touched && mainAgendaForm.bowner.$invalid">The Owner is required.</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Date </label>
+													<div class="col-sm-10"> 
+														<input name="myInput2" ng-model="bdate" required class="form-control" type="date">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Date is required.</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Timeschedule</label>
+													<div class="col-sm-10">
+														<input name="myInput3" ng-model="btime" required class="form-control" type="text">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Timeschedule is required.</span>
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Place</label>
+													<div class="col-sm-10">
+														<input name="myInput4" ng-model="bplace" required class="form-control" type="text">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Timeschedule is required.</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Room</label>
+													<div class="col-sm-10">
+														<input name="myInput3" ng-model="broom" required class="form-control" type="text">
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Status</label>
+													<div class="col-sm-10">
+														<input name="myInput4" ng-model="bstatus" required class="form-control" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Order</label>
+													<div class="col-sm-10">
+														<input name="myInput6" ng-model="CarOrder" required class="form-control" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Order Status</label>
+													<div class="col-sm-10"> 
+														<input name="myInput7" ng-model="CarOrderStatus" required class="form-control" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Car</label>
+													<div class="col-sm-10">
+														<input name="myInput8" ng-model="Car" required class="form-control" type="text">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Car is required.</span>
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Driver</label>
+													<div class="col-sm-10">
+														<input name="myInput9" ng-model="Driver" required class="form-control" type="text">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Driver is required.</span>
+													</div>
+												</div>									
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Name</label>
+													<div class="col-sm-10">
+														<input name="myInput10" ng-model="Name" required class="form-control" type="text">
+														<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The Name is required.</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Topic/Description</label>
+													<div class="col-sm-10">
+														<textarea class="form-control" rows="2" id="topikDeskripsi" ng-model="entryDescription" required></textarea>
+														<span ng-show="myForm.entryDescription.$touched && myForm.entryDescription.$invalid">The Topic/Description is required.</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label">Notes</label>
+													<div class="col-sm-10">
+														<textarea class="form-control" rows="10" id="catatanNotes" ng-model="entryNotes" required></textarea>
+														<span ng-show="myForm.entryNotes.$touched && myForm.entryNotes.$invalid">The Notes is required.</span>
+													</div>
+												</div>
+												<input type="button" value="Submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid" ng-click="fungsiAgendaEntryNewAgenda()">
+											</form>
+										</div>	
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>																	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-switch-when="selectDocument">
+							<div class="panel-group" id="collapseBudinessDocument">	
+								<div class="panel panel-primary" id="calls">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseCalls">Calls</a>
+										</h4>
+									</div>
+									<div id="collapseCalls" class="panel-collapse collapse">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<p></p>
+											<p>Filter <input type="text"  ng-model="search.Topics"></p>
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th ng-click="fungsiDocumentColectCallsData()">Year</th>
+															<th>Topic</th>
+															<th>Document#</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zx in listCallData | filter:search">
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)" data-toggle="modal" data-target="#showDetailDocumentModal">{{zx.Year}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)" data-toggle="modal" data-target="#showDetailDocumentModal">{{zx.Topics}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)" data-toggle="modal" data-target="#showDetailDocumentModal">{{zx.DocumentNumber}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>	
+								</div>
+								<div class="panel panel-success" id="businessLetterEmail">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseBusinessLetters">Business Letters, and Emails</a>
+										</h4>
+									</div>
+									<div id="collapseBusinessLetters" class="collapse">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th ng-click="fungsiDocumentColectBusinessLettersData()">Year</th>
+															<th>Issues</th>
+															<th>Document#</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zx in listBusinessLetterEmailData | filter:search">
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Year}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Topics}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.DocumentNumber}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-danger" id="agreement">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseAgreement">Agreement</a>
+										</h4>
+									</div>
+									<div id="collapseAgreement" class="collapse">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th ng-click="fungsiDocumentColectAgreementData()">Year</th>
+															<th>Issues</th>
+															<th>Document#</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zx in listAgreementData | filter:search">
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Year}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Topics}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.DocumentNumber}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-warning" id="treaty">							
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseTreatyWordings">Treaty and Wordings</a>
+										</h4>
+									</div>
+									<div id="collapseTreatyWordings" class="collapse">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th ng-click="fungsiDocumentColectTreatyAndWordingsData()">Customer</th>
+															<th ng-click="fungsiDocumentColectTreatyAndWordingsData()" style="text-align: right">Treaties</th>
+															<th ng-show="false" ng-click="fungsiDocumentColectTreatyAndWordingsData()" style="text-align: right">Customer Code</th>														
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zr in listTreatyAndWordingsData">
+															<td ng-click="noClient = zr.CustomerCode; customer=zr.Customers; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#treatyModal" style="text-align: center">{{zr.Customers}}</td>
+															<td ng-click="noClient = zr.CustomerCode; customer=zr.Customers; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#treatyModal" style="text-align: right">{{zr.NumbersOfTreaty}}</td>														
+															<td ng-show="false" ng-click="noClient = zr.CustomerCode; customer=zr.Customers; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#treatyModal">{{zr.CustomerCode}}</td>
+														</tr>
+													</tbody>
+													<tfoot style="background-color:DarkSalmon; color:white;">
+														<tr ng-repeat="zz in totalyTreatiesAndWordings">
+															<td style="border:none">Sum of Treaties</td>
+															<td style="text-align: right">{{zz.NumbersOfTreaties}}</td>
+														</tr>
+													</tfoot>
+												</table>
+											</div>
+										</div>
+									</div>				
+								</div>
+								<div class="panel panel-danger" id="paperCessionForm">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordionPCF" href="#collapsePaperCessionForm">Paper Cession Form</a>
+										</h4>
+									</div>
+									<div id="collapsePaperCessionForm" class="panel-collapse collapse">
+										<div class="panel-body" style="background-color:lightgreen; padding:0px;">
+											<p></p>
+											<p>Filter <input type="text" ng-model="Topics"></p>
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th ng-show="false">Year</th>
+															<th ng-click="fungsiDocumentColectPaperCessionFormData()">Form</th>
+															<th>Document#</th>
+															<th>P.C.F.D#</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zx in listCallData | filter:search">
+															<td id="showDocumetDetails" ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Year}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.Topics}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.DocumentNumber}}</td>
+															<td ng-click="nomorDokumen=zx.DocumentNumber;fungsiDocumentShowDetails(nomorDokumen)">{{zx.RelationNumber}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>	
+								</div>														
+							</div>
+							<div class="modal fade" id="showDetailDocumentModal" role="dialog">					
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+											<div class="media">
+												<div class="media-left">
+													<img src="/Gambar/Administration1.jpg" class="media-object" style="width:90px;">
+												</div>
+												<div class="media-body">
+													<h3 class="media-heading">Detail of Document#{{nomorDokumen}}</h3>
+												</div>
+											</div>
+										</div>
+										<div class="modal-body" style="padding:10px 50px;" ng-repeat="xx in oneDocument">
+											<h3>Main Document Information</h3>
+											<p>Owner: {{xx.Owner}}</p>
+											<p>Date: {{xx.AgendaDate | date : "dd.MM.y" }}</p>
+											<p>Time: {{xx.Time}}</p>
+											<p>Place: {{xx.Place}}</p>
+											<p>Room: {{xx.Room}}</p>
+											<p>Status: {{xx.Status}}</p>
+											<h3>Attentions</h3>	
+											<h3>Transportation</h3>
+											<p>Car Order: {{xx.CarOrder}}</p>
+											<p>Order Status: {{xx.CarOrderStatus}}</p>
+											<p>Car: {{xx.Car}}</p>
+											<p>Driver: {{xx.Driver}}</p>
+											<h3>Notes</h3>
+											<p>Topic/Description: {{xx.Description}}</p>
+											<p>Notes:{{xx.Notes}}</p>	
+										</div>
+									</div>	
+								</div>
+							</div>
+							<div class="modal fade" id="treatyModal" role="dialog">
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+											<div class="media">
+												<div class="media-right">
+													<img src="/Gambar/file-icon-64.png" class="media-object" style="width:90px;">
+												</div>
+												<div class="media-body">
+													<h3> Treaty of {{$customers}}</h3>
+												</div>
+											</div>								
+										</div>
+										<div class="modal-body panel-scroll" style="padding-top:0px; padding-left:50px;">
+											<div class="media" id="mediaTreaty">
+												<p></p>
+												<div class="media-right">
+													<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:50px;">
+												</div>
+												<div class="media-body">
+													<p>Filter: Topic <input type="text"  ng-model="search.Topics"></p>
+													<p>Filter: Trea# <input type="text"  ng-model="search.TreatyNumber"></p>
+												</div>
+											</div>
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>Topic</th>
+															<th>Treaty#</th>
+															<th>Issue</th>
+															<th>Termination</th>
+															<th ng-show="false">Code</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="zu in listTreatyAndWording | filter:search">
+															<td ng-click="fungsiDocumentActivateADetailTreatyOfCustomer()">{{zu.Topics}}</td>
+															<td ng-click="noClient = zx.CustomerCode; customer=zx.Customer; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#showDetailTreatyDocumentModal" style="text-align: right">{{zu.TreatyNumber}}</td>														
+															<td ng-click="noClient = zx.CustomerCode; customer=zx.Customer; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#showDetailTreatyDocumentModal">{{zu.IssueDate | date :  "MMM d, y"}}</td>
+															<td ng-click="noClient = zx.CustomerCode; customer=zx.Customer; fungsiDocumentColectTreatyOfCustomer(noClient,customer)" data-toggle="modal" data-target="#showDetailTreatyDocumentModal">{{zu.TerminationDate | date :  "MMM d, y" }}</td>														
+															<td th ng-show="false" ng-click="noClient = zx.CustomerCode; customer=zx.Customer; fungsiDocumentColectTreatyOfCustomer(noClient,customer)">{{zu.CustomerCode}}</td>														
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="detailTreaty" ng-repeat="zu in listTreatyAndWording | filter:search" ng-show="true">
+												<div class="panel-group" id="collapseBudinessDocument">	
+													<div class="panel panel-primary" id="detailTreaty">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+																<a data-toggle="collapse" data-parent="#accordionDetailTreaty" href="#collapseDetailTreaty">Details Treaty Information</a>
+															</h4>
+														</div>
+														<div id="collapseDetailTreaty" class="panel-collapse collapse">
+															<div class="row">
+																<div class="col-sm-4" style="padding-right:0px; padding-left:1">
+																	<h3>Main Information</h3>
+																	<p>Customer: {{zu.Customer}}</p>
+																	<p>Topic: {{zu.Topics}}</p>
+																	<p>Document#: {{zu.Document}}</p>
+																	<p>Status: {{zu.TreatyStatus}}</p>
+																	<p>Issue Date: {{zu.IssueDate | date : "dd.MM.y"}}</p>
+																	<p>Termination: {{zu.Terminate | date : "dd.MM.y"}}</p>
+																	<p>Reinsurance Method: {{zu.ReinsuranceMetode}}</p>
+																	<p>Reinsurance Structure: {{zu.ReinsuranceStructure}}</p>
+																	<p>Administrator: {{zu.Administration}}</p>
+																	<p>Administration Method: {{zu.MethodAdministration}}</p>
+																	<p>Teritory of Coverage: {{zu.Teritory}}</p>
+																	<p>Administration Method: {{zu.MethodAdministration}}</p>
+																	<p>Type of Product Cover: {{zu.TypeProduct}}</p>
+																	<p>Type of Reinsurance: {{zu.TypeProportional}}</p>
+																	<p>Direct Retrocessionaires: {{zu.DirectRetro}}</p>
+																</div>
+																<div class="col-sm-4" style="padding-right:0px; padding-left:1">
+																	<h3>Treaty Requirement</h3>
+																	<p>Minimum Insured Age: {{zu.AgeLimit}}</p>
+																	<p>Maximum Insured Age: {{zu.MaxAgeLimit}}</p>
+																	<p>Join Age Calculation: {{JointAgeCalculation}}</p>
+																	<p>Automatic Binding Limit: {{zu.AutomaticBindingLimit}}</p>
+																	<p>Mortality Limit: {{zu.MortalityLimit}}</p>
+																	<p>Note of Negotiation: {{zu.NegotiationNote}}</p>
+																</div>
+																<div class="col-sm-4" style="padding-right:0px; padding-left:1">
+																	<h3>Treaty Mapping Control</h3>
+																	<p>Share: {{zu.TreatyShare}}</p>
+																	<p>Commission: {{zu.TreatyCommission}}</p>
+																	<p>Retention: {{TreatyRetention}}</p>
+																	<p>Recapture: {{zu.TreatyRecapture}}</p>
+																	<p>Underwriting Requirement: {{zu.TreatyUnderwriting}}</p>
+																	<p>Underwriting Limit: {{zu.TreatyLimit}}</p>
+																	<p>Layer: {{zu.TreatyLayer}}</p>
+																	<p>Overriding: {{zu.TreatyOveriding}}</p>
+																	<p>Profit Commission: {{TreatyPC}}</p>
+																	<p>Fleed Discount: {{zu.TreatyFD}}</p>
+																	<p>Volume Discount: {{zu.TreatyVD}}</p>											
+																</div>
+															</div>	
+															<div class="row">
+																<div class="col-sm-6" style="padding-right:0px; padding-left:1">
+																	<h3>Risk Mapping Control</h3>
+																	<p>Natural Death : {{zu.TREATY_R1}}</p>
+																	<p>Critical Illness: {{zu.TreatyR2}}</p>
+																	<p>Permanent Total Disability: {{zu.TreatyR3}}</p>
+																	<p>Accidental Cover: {{zu.TreatyR4}}</p>
+																	<p>Accidental and Death: {{zu.TreatyR5}}</p>
+																	<p>Reinsurance Structure: {{zu.TreatyR6}}</p>
+																	<p>Administrator: {{zu.TreatyR7}}</p>
+																	<p>Administration Method: {{zu.TreatyR8}}</p>
+																	<p>Teritory of Coverage: {{zu.TreatyR9}}</p>
+																	<p>Administration Method: {{zu.TreatyR10}}</p>
+																	<p>Type of Product Cover: {{zu.TreatyR11}}</p>
+																</div>
+																<div class="col-sm-6" style="padding-right:0px; padding-left:1">
+																	<h3>Key Seacrh Control</h3>
+																	<p>Key Comission: {{zu.KeyComission}}</p>
+																	<p>Key Underwiting: {{zu.KeyUnderwiting}}</p>
+																	<p>Key Layer: {{KeyLayer}}</p>
+																	<p>Key Retention: {{zu.KeyRetention}}</p>
+																	<p>Key Share: {{zu.KeyShare}}</p>
+																	<p>Key Risk Commission: {{zu.KeyRiskCommission}}</p>
+																	<p>KeyOveriding: {{zu.KeyOveriding}}</p>												
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="panel panel-info" id="detailMapOfTreaty">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+																<a data-toggle="collapse" data-parent="#accordionDetailMapTreaty" href="#collapseDetailValueTreaty">Details Value of Treaty Information</a>
+															</h4>
+														</div>
+														<div id="collapseDetailValueTreaty" class="panel-collapse collapse">
+														</div>
+													</div>
+													<div class="panel panel-danger" id="detailPremium">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																	<a data-toggle="collapse" data-parent="#accordionDetailPremium" href="#collapseDetailPremium">Tables of Premium</a>
+																</h4>
+															</div>
+															<div id="collapseDetailPremium" class="panel-collapse collapse">
+															</div>
+														</div>
+													</div>				
+												</div>			
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+						<div ng-switch-when="selectInternalCommunication">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/mobile_communication.jpg" style="width:100%; high:automatic; padding:0px;">
+									<div class="carousel-caption">
+										<a href="#showMyIntercon"><h4 style="color:yellow" ng-click="fungsiInterconColectMyIntercon()">Mine</h4></a>
+										<a href="#showCompanyIntercon"><h4 style="color:yellow" ng-click="fungsiInterconColectThisYear()">Company's</h4></a>
+										<a href="#showMeEntryNewIntercon"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">New Intercon</h4></a>
+									</div>
+								</div>
+							</div>
+							<div class="media" id="toInsertNewIntercon" ng-show="showMeEntryNewIntercon">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 id="modalJudulTransactionDetailIntercon" ng-click="fungsiInterconActivateFormEntry()">Click me to confirm entry new agenda</h4>
+								</div>
+							</div>
+							<div class="media" id="showMyIntercon" ng-show="showMeMyIntercon">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 ng-click="fungsiInterconColectMyIntercon()">Click me to colect my intercon</h4>
+								</div>
+							</div>
+							<div class="media" id="showCompanyIntercon" ng-show="showMeCompanyIntercon">
+								<div class="media-right">
+									<img src="/Gambar/entry1.jpg" class="media-object" style="width:70px;">
+								</div>
+								<div class="media-body">
+									<h4 ng-click="fungsiInterconColectThisYear()">Click me to colect company's intercon</h4>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<div class="media" ng-show="myInterconTabel"> 
+									<div class="media-right">
+										<img src="/Gambar/search-icon-64-22258053.png" class="media-object" style="width:40px;">
+									</div>
+									<div class="media-body">
+										<h4 ng-click="fungsiInterconShowMeSearchIntercon()">Search By</h4>
+									</div>
+								</div>
+								<p ng-show="showMeSearchByIntercon">Intercon Date<input type="text" ng-model="search.InterconDate"></p>
+								<p ng-show="showMeSearchByIntercon">Intercon Topic<input type="text" ng-model="search.Topic"></p>
+								<table class="table table-hover" style="background-color:lightgreen" ng-show="myInterconTabel">
+									<thead>
+										<tr>
+											<th ng-show="false">#</th>
+											<th>Date</th>
+											<th ng-show="myInterconTopics">My Intercon Topics</th>
+											<th ng-show="coysInterconTopic">Coys' Intercon Topic</th>
+											<th ng-show="false">User</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="xy in listInterconData | filter:search">
+											<td ng-show="false" ng-click="nomorIntercon=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.InterconNumber}}</td>
+											<td ng-click="nomorIntercon=xy.InterconNumber; nomorAgenda=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.InterconDate | date : "MM/dd/y" }}</td>
+											<td ng-click="nomorIntercon=xy.InterconNumber; nomorAgenda=xy.InterconNumber; fungsiInterconDetailShow(nomorIntercon)" data-toggle="modal" data-target="#myShowInterconModal">{{xy.Topic}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal fade" id="myShowInterconModal" role="dialog">
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow">
+											<div class="media">
+												<div class="media-left">
+													<img src="/Gambar/mobile_communication.jpg" class="media-object" style="width:90px;">
+												</div>
+												<div class="media-body">
+													<h3 class="media-heading">Internal Communication #{{nomorUrutIntercon}}</h3>
+												</div>
+											</div>
+										</div>
+										<div class="modal-body" style="padding:10px 50px;" ng-repeat="xx in anInterconData">
+											<h3>Main Intercon</h3>
+											<p>Topic: {{xx.Topic}}</p>
+											<p>Date: {{xx.InterconDate | date : "dd.MM.y" }}</p>
+											<p>Sender: {{xx.Sender}}</p>
+											<p>Receiver: {{xx.Receiver}}</p>
+											<h3>Attentions</h3>
+											<p> : {{xx.Attention1}}</p>
+											<p> : {{xx.Attention2}}</p>
+											<p>	: {{xx.Attention3}}</p>
+											<p> : {{xx.Attention4}}</p>
+											<p>	: {{xx.Attention5}}</p>
+											<h3>Attentions</h3>
+											<p>Notes:{{xx.Notes}}</p>	
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>	
+											<button class="btn pull-left"><span class="glyphicon glyphicon-refresh" style="background-color:lightgray; color:green;"></span> Modify</button>
+											<button ng-click="fungsiInterconDelete()" class="btn pull-left"><span class="glyphicon glyphicon glyphicon-remove" style="background-color:lightgray; color:red;"></span> Delete</button>
+										</div>
+										<p ng-show="showMeDeleteIntercon">Intercon deleted successfully</p> 
+										<p ng-hide="hideMeDeleteIntercon">You can't delete Intercon</p>
+									</div>	
+								</div>
+							</div>		
+							<div class="modal fade" id="myEntryNewInterconModal" role="dialog">	
+								<div class="modal-content">
+									<div class="modal-header" style="padding:10px 50px; background-color:LightGoldenRodYellow">
+										<div class="media">
+											<div class="media-left">
+												<img src="/Gambar/mobile_communication.jpg" class="media-object" style="width:90px;">
+											</div>
+											<div class="media-body">
+												<h3 class="media-heading">Entry New Intercon</h3>														 
+											</div>
+										</div>
+									</div>
+									<div class="modal-body" style="padding:10px 50px;">
+										<div class="form-group" name="InterconForm">
+											<select class="form-control" id="selectorIntercon" ng-model="variabelInterconDetail" style="background-color:lightgray;">
+												<option value="selectMainIntercon" id="myEntryNewIntercon">Main Intercon</option>
+												<option value="selectAttentions">Attentions</option>
+												<option value="selectNotes">Notes</option>
+											</select>
+										</div>
+										<div ng-switch="variabelInterconDetail">
+											<div ng-switch-when="selectMainIntercon">
+												<form name="mainInterconForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Topic</label>
+														<div class="col-sm-10">
+															<input name="myInput1" ng-model="Topic" required class="form-control" type="text">
+															<span style="color:red" ng-show="mainInterconForm.Topic.$dirty && mainInterconForm.Topic.$invalid"></span>
+															<span ng-show="mainInterconForm.Topic.$touched && mainInterconForm.Topic.$invalid">The Topic is required.</span>
+															
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Date </label>
+														<div class="col-sm-10"> 
+															<input name="myInput2" ng-model="Date" required class="form-control" type="date">
+															<span ng-show="mainInterconForm.Date.$touched && mainInterconForm.Date.$invalid">The Date is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Sender</label>
+														<div class="col-sm-10">
+															<input name="myInput3" ng-model="Sender" required class="form-control" type="text">
+															<span ng-show="mainInterconForm.Sender.$touched && mainInterconForm.Sender.$invalid">The Sender is required.</span>
+														</div>
+													</div>												
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Receiver</label>
+														<div class="col-sm-10">
+															<input name="myInput4" ng-model="Receiver" required class="form-control" type="text">
+															<span ng-show="mainInterconForm.Receiver.$touched && mainInterconForm.Receiver.$invalid">The Receiver is required.</span>
+														</div>
+													</div>
+													<p>
+													<input type="submit" ng-disabled="mainInterconForm.Topic.$dirty">
+													
+													</p>
+												</form>
+											</div>	
+											<div ng-switch-when="selectAttentions">	
+												<form name="interconAttentionsForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Attention1</label>
+														<div class="col-sm-10">
+															<input name="myInput1" ng-model="Attention1" required class="form-control" type="text">
+															<span ng-show="interconAttentionsForm.Attention1.$touched && interconAttentionsForm.Attention1.$invalid">The Attention1 is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Attention2</label>
+														<div class="col-sm-10"> 
+															<input name="myInput2" ng-model="Attention2" required class="form-control" type="date">
+															<span ng-show="interconAttentionsForm.Attention2.$touched && interconAttentionsForm.Attention2.$invalid">The Attention2 is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Attention3</label>
+														<div class="col-sm-10">
+															<input name="myInput3" ng-model="Attention3" required class="form-control" type="text">
+															<span ng-show="interconAttentionsForm.Attention3.$touched && interconAttentionsForm.Attention3.$invalid">The Attention3 is required.</span>
+														</div>
+													</div>												
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Attention4</label>
+														<div class="col-sm-10">
+															<input name="myInput4" ng-model="Attention4" required class="form-control" type="text">
+															<span ng-show="interconAttentionsForm.Attention4.$touched && interconAttentionsForm.Attention4.$invalid">The Attention4 is required.</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Attention5</label>
+														<div class="col-sm-10">
+															<input name="myInput3" ng-model="Attention5" required class="form-control" type="text">
+															<span ng-show="interconAttentionsForm.Attention5.$touched && interconAttentionsForm.Attention5.$invalid">The Attention5 is required.</span>
+														</div>
+													</div>												
+													<p>
+													<input type="submit" ng-disabled="interconAttentionsForm.Attention1.$dirty && interconAttentionsForm.Attention1.$invalid || interconAttentionsForm.Attention2.$dirty && interconAttentionsForm.Attention2.$invalid 
+													|| interconAttentionsForm.Attention3.$dirty && interconAttentionsForm.Attention3.$invalid || interconAttentionsForm.Attention4.$dirty && interconAttentionsForm.Attention4.$invalid 
+													|| interconAttentionsForm.Attention5.$dirty && interconAttentionsForm.Attention5.$invalid">
+													</p>
+												</form>
+											</div>
+											<div ng-switch-when="selectNotes">
+												<form name="MainInterconForm" class="form-horizontal">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">Notes</label>
+														<div class="col-sm-10">
+															<input name="myInput11" ng-model="Notes" required class="form-control" type="text">
+															<span ng-show="myForm.Notes.$touched && myForm.Notes.$invalid">The Notes is required.</span>
+														</div>
+													</div>
+													<p>
+													<input type="submit" ng-disabled="mainInterconForm.Notes.$dirty && mainInterconForm.Notes.$invalid ">
+													</p>
+												</form>
+											</div>
+										</div>	
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>																	
+										</div>	
+									</div>
+								</div>
+							</div>						
+						</div>	
+						<div ng-switch-when="selectCompanysPolicy">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/tactics.png" style="width:90%; high:automatic; padding:0px;">
+									<div class="carousel-caption">
+										<a href="#showMyIntercon"><h4 style="color:yellow" ng-click="fungsiUnderwritingPolicy()">Underwriting</h4></a>
+										<a href="#showCompanyIntercon"><h4 style="color:yellow" ng-click="fungsiInterconColectThisYear()">Retentions</h4></a>
+										<a href="#showMeEntryNewIntercon"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">Actuarial</h4></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-switch-when="selectSynthesisCertainty">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/Administration17.jpg" style="width:100%; high:100px; padding:0px;">
+									<div class="carousel-caption">
+										<a href="#showMyIntercon"><h4 style="color:yellow" ng-click="fungsiUnderwritingPolicy()">Risk Assessment</h4></a>
+										<a href="#showCompanyIntercon"><h4 style="color:yellow" ng-click="fungsiInterconColectThisYear()">Coverage Distribution</h4></a>
+										<a href="#showMeEntryNewIntercon"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">Underwriting Distribution</h4></a>
+									</div>
+								</div>
+							</div>	
+						</div>
+						<div ng-switch-when="selectInteligentKnowlage">
+							
+						</div>
+					</div>			
+				</div>
+			</div>
+			<div id="informationContex" class="panel panel-info" style="border:none; padding-bottom:0px;">	
+				<div class="panel-heading" id="headingPanelReferencePC">
+					<h4 class="panel-title">
+						<a id="panelTitle" data-toggle="collapse" data-parent="#accordionPanelReference" href="#collapseReferencePC">Information Contex</a>
+					</h4>
+				</div>
+				<div id="collapseReferencePC" class="panel-collapse collapse in" style="border:none">
+					<div class="form-group">
+						<select class="form-control" id="selectorInformationContex" ng-model="variabelSelectorInformationContex" style="background-color:tomato; color:white;">
+							<option value="selectViewsOfInsuranceIndustry">Views of Insurance Industry</option>
+							<option value="selectCustomer">Customer</option>
+							<option value="selectCurrentAndFutureEconomicConditions">Current and future economic conditions</option>
+						</select>
+					</div>
+					<div ng-switch="variabelSelectorInformationContex">
+						<div ng-switch-when="selectViewsOfInsuranceIndustry">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/reference collection.jpg" style="width:100%; height:automatic; padding:0px;">
+									<div class="carousel-caption">
+										<a href="#showTheNews"><h4 style="color:yellow" ng-click="fungsiColectNews()">News</h4></a>
+										<a href="#showCompanyAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaCompanyAgenda()">Performance</h4></a>
+										<a href="#toInsertNewAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">Association</h4></a>
+										<a href="#toInsertNewAgenda"><h4 style="color:yellow" ng-click="fungsiAgendaEntryAgenda()">Reinsurance</h4></a>
+									</div>
+								</div>
+							</div>
+							<div id="showTheNews" class="table-responsive" ng-show="showMeNews">
+								<p></p>
+								<p ng-show="showMeSearchOfTheTable">Filter the Headline News<input type="text" ng-model="test"></p>
+								<table class="table table-hover" style="background-color:lightgreen">
+									<thead>
+										<tr>
+											<th><center>Headline News</center></th>
+											<th ng-show="false">Code</th>
+											<th ng-show="false">Date</th>
+											<th ng-show="false">News</th>
+											<th ng-show="false">FileOfPicture</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="y in listNewsData | filter:test">
+											<td ng-click = "noNews = y.Code; fungsiColectNewsDetails(noNews)" data-toggle="modal" data-target="#myModalNews">{{y.Topic}}</td>
+											<td ng-show="false" ng-click = "noNews = y.Code; fungsiColectNewsDetails(noNews)" data-toggle="modal" data-target="#myModalNews">{{y.Code}}</td>
+											<td ng-show="false" ng-click = "noNews = y.Code; fungsiColectNewsDetails(noNews)" data-toggle="modal" data-target="#myModalNews">{{y.Date}}</td>
+											<td ng-show="false" ng-click = "noNews = y.Code; fungsiColectNewsDetails(noNews)" data-toggle="modal" data-target="#myModalNews">{{y.Details}}</td>
+											<td ng-show="false" ng-click = "noNews = y.Code; fungsiColectNewsDetails(noNews)" data-toggle="modal" data-target="#myModalNews">{{y.FileGambar}}</td>										
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal fade" id="myModalNews" role="dialog">
+								<div class="modal-dialog">   
+									<div class="modal-content">
+										<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="y in detailsNewsData">
+											<div class="media">
+												<div class="media-right">
+													<img src="/Gambar/newspaper.png" class="media-object" style="width:70px;">
+												</div>
+												<div class="media-body">
+													<h4># {{y.Code + ". " + y.Topic}}</h4>
+												</div>
+											</div>								
+										</div>
+										<div class="modal-body" ng-repeat="x in detailsNewsData">
+											<div class="media">
+												<div class="media-right">
+													<img ng-src="{{x.FileGambar}}" class="media-object" style="width:100px; height:automatic">
+												</div>
+												<div class="media-body">
+													<p> {{x.Details}}</p>
+												</div>
+											</div>	
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-switch-when="selectCustomer">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/Gambar/family-563968_960_720.jpg" style="width:100%; height:400px; padding:0px;"><br>
+									<div class="carousel-caption">									
+										<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerTop5()">Top Ten Buz</h4></a>
+										<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomer()">Performance'</h4></a>
+										<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiSearchCustomer()">Search Customer</h4></a>
+										<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerClaim()">Top Ten Claims</h4></a>
+										<a href="#showReferencecustomer"><h4 style="color:yellow" ng-click="fungsiColectCustomerLapse()">Top Ten Lapses</h4></a>
+									</div>
+								</div>
+							</div>
+							<div id="showReferencecustomer" class="table-responsive">
+								<div class="table-responsive" ng-show="showMeAllCustomers">
+									<select ng-show="showMeSelectedCustomer"><option ng-repeat="xy in listSelectedCustomerData">{{xy.Customer}}</option></select>
+									<h4 ng-show="showMeTheTable" id="titleRefCustomer"></h4>
+									<p ng-show="showMeSearchOfTheTable">Search <input type="text" ng-model="test"></p>
+									<table ng-show="showMeTheTable" class="table table-hover" style="background-color:lightgreen">
+										<thead>
+											<tr>
+												<th>Ceding Company</th>
+												<th>Amount</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="y in listCustomerData | filter:test">													
+												<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)" data-toggle="modal" data-target="#myModal">{{y.Customer}}</td>
+												<td ng-click = "noClient = y.Code; customer=y.Customer; fungsiShowTransactionDetail(noClient,customer)" data-toggle="modal" data-target="#myModal">{{y.Transaction | currency: "": 2}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>	
+							</div>	
+						</div>
+					</div>	
+				</div>		
+				<div class="modal fade" id="myModal" role="dialog"></div>
+					<div class="modal-dialog" style="position:fixed; top:50px; left:370px; width:500px;">   
+						<div class="modal-content">
+							<div class="modal-header" style="padding:20px 50px; background-color:LightGoldenRodYellow" ng-repeat="x in transactionData">
+								<div class="media">
+									<div class="media-right">
+										<img src="/Gambar/AIA_Logo.jpg" class="media-object" style="width:70px;">
+									</div>
+									<div class="media-body">
+										<h4> {{x.Customer}}</h4>
+									</div>
+								</div>								
+							</div>
+							<div class="modal-body panel-scroll" style="padding-top:0px; padding-left:50px;">
+								<div class="form-group">
+									<select class="form-control" id="selectorCustomer" ng-model="variabelInfoCustomer" style="background-color:tomato; color:white;">
+										<option value="relatedCustomerInput-OutputToCompany">Related Customer Input/Output to Company</option>
+										<option value="aboutCustomer">About Customer</option>
+										<option value="contactPerson">Contact Person</option>
+										<option value="customerCommunication">Relationship - Communication</option>
+										<option value="customerCessie">Cessie Ceded by Customer</option>
+									</select>
+								</div>
+								<div ng-switch="variabelInfoCustomer">
+									<div ng-switch-when="relatedCustomerInput-OutputToCompany" ng-repeat="xx in totalTransactionData">
+										<p>Total Transaction: {{x.Transaction | currency: "": 2}}</p>
+										<p>Total Whole Transaction: {{xx.Transaction | currency: "": 2}}</p>
+										<p ng-show="modalBodyTransaction">Share Over Whole Transaction: {{(x.Transaction/xx.Transaction)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalBodyNewBusiness">New Business: {{x.NewBusiness | currency: "": 2}}</p>
+										<p ng-show="modalBodyNewBusiness">Share Over New Business: {{(x.NewBusiness/xx.NewBusiness)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalBodyNewBusiness">Share Over Whole Transaction: {{(x.NewBusiness/xx.Transaction)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalBodyRenewal">Renewal: {{x.Renewal | currency: "": 2}}</p>
+										<p ng-show="modalBodyRenewal">Share Over Renewal: {{(x.Renewal/xx.Renewal)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalBodyRenewal">Share Over Whole Transaction: {{(x.Renewal/xx.Transaction)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalAlteration">Alteration: {{x.Alteration | currency: "": 2}}</p>
+										<p ng-show="modalAlteration">Share Over Alteration: {{(x.Alteration/xx.Alteration)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalAlteration">Share Over Whole Transaction: {{(x.Alteration/xx.Transaction)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalClaim">Claim:{{x.Claim | currency: "": 2}}</p>
+										<p ng-show="modalClaim">Total Claim:{{xx.Claim | currency: "": 2}}</p>
+										<p ng-show="modalClaim">Share Over Claim: {{(x.Claim/xx.Claim)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalClaim">Share Over Transaction: {{(x.Claim/x.Transaction)*100 | currency: "": 2}}%</p>
+										<p ng-show="modalClaim">Share Over Whole Transaction: {{(x.Claim/xx.Transaction)*100 | currency: "": 2}}%</p>
+									</div>
+									<div ng-switch-when="aboutCustomer" ng-repeat="z in aCustomerData">											
+										<h3>About Customer</h3>
+										<p>Code: {{z.Classification}}</p>
+										<p>Identity#: {{z.ID}}</p>
+										<p>Division Code: {{z.DivisionCode}}</p>
+										<p>Classification: {{z.Classification}}</p>
+										<p>Address: {{z.Address}}</p>
+										<p>Building: {{z.Building}}</p>
+										<p>ZIP: {{z.ZIP}}</p>
+										<p>City: {{z.City}}</p>
+										<p>Province: {{z.Province}}</p>
+										<p>State: {{z.State}}</p>
+										<p>     : {{z.Overseas}}</p>
+										<p>     : {{z.Asean}}</p>
+									</div>
+									<div ng-switch-when="contactPerson">
+										<p>Search <input type="text" ng-model="contactP"></p>
+										<table class="table table-hover" style="background-color:lightgreen">
+											<thead>
+												<tr>
+													<th>CP Full Name</th>
+													<th ng-show="false">CP#</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="k in listCPData | filter:contactP">													
+													<td ng-click = "noCP = k.ID; fungsiShowCPDetail(noCP)">{{k.FirstName + " " + k.LastName}}</td>
+													<td ng-click = "noCP = k.ID; fungsiShowCPDetail(noCP)" ng-show="false">{{k.ID}}</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="tampilan" ng-show="contactPersonCustomer" ng-repeat="w in aCPData">
+											<p>ID#: {{w.ID}}</p>
+											<p>Gender: {{w.Gender}}</p>
+											<p>Date of Birth: {{w.DOB | date : "dd.MM.y" }}</p>
+											<p>Place of Birth: {{w.POB}}</p>
+											<p>Marital Status: {{w.MaritalStatus}}</p>
+											<p>Religion: {{w.Religion}}</p>
+											<p>Address: {{w.Address}}</p>
+											<p>Province: {{w.Province}}</p>
+											<p>State: {{w.State}}</p>
+											<p>Email: {{w.Email}}</p>
+											<p>Phone: {{w.Phone}}</p>
+											<p>HP     : {{w.HP}}</p>
+											<p>Region: {{w.Region}}</p>
+											<p>Notes: {{w.Designation}}</p>
+										</div>
+										<div class="tampilan"  ng-repeat="w in aCPData">
+											<p>ID#: {{w.ID}}</p>
+											<p>Job: {{w.Job}}</p>
+											<p>: {{w.Job1}}</p>
+											<p>: {{w.Job2}}</p>
+											<p>: {{w.Job3}}</p>
+											<p>Profesional Reputation: {{w.ProfesionalReputation}}</p>
+										</div>
+										<div class="tampilan"  ng-repeat="w in aCPData">
+											<p>ID#: {{w.ID}}</p>
+											<p>Organization: {{w.Organization1}}</p>
+											<p>: {{w.Organization2}}</p>
+											<p>: {{w.Organization3}}</p>
+											<p>Roles{{w.RoleOrganization1}}</p>
+											<p>: {{w.RoleOrganization2}}</p>
+											<p>: {{w.RoleOrganization3}}</p>
+										</div>
+									</div>
+									<div ng-switch-when="customerCommunication" ng-repeat="z in aCustomerData">													
+										<p>Telephone: {{z.Telephone1}}</p>
+										<p>         : {{z.Telephone2}}</p>
+										<p>         : {{z.Telephone3}}</p>
+										<p>Faxes: {{z.Faxes1}}</p>
+										<p>     : {{z.Faxes2}}</p>
+										<p>     : {{z.Faxes3}}</p>
+										<p>Email: {{z.Email}}</p>
+										<p>Web: {{z.Web}}</p>
+										<p>Location: {{z.Location}}</p>
+										<p>Region: {{z.Region}}</p>
+										<p>Status: {{z.Status}}</p>
+										<p>Competitor: {{z.Competitor}}</p>
+										<p>Problems: {{z.Problems}}</p>
+										<p>History: {{z.History}}</p>
+									</div>
+									<div ng-switch-when="customerCessie">
+										<img src="/Gambar/Administration14.jpg" style="width:100%; height:400px; padding:0px;"><br>
+										<p>Filter <input type="text" ng-model="insuredFullName"></p>
+										<div class="table-responsive" style="background-color:lightgreen;">
+											<table class="table table-hover">
+												<thead>
+													<tr>
+														<th ng-click="fungsiColectCustomerCessie(nomorClient)"><a>Reinsurance#</a></th>
+														<th>Insured-Full Name</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="cx in listCessieData | filter:insuredFullName">
+														<td  ng-click="reasNumber=cx.ReinsuranceNumber; fungsiShowDetailReinsurancePolicy(reasNumber);" data-toggle="modal" data-target="#myDetailReinsurancePolicyModal">{{cx.ReinsuranceNumber}}</td>
+														<td  ng-click="reasNumber=cx.ReinsuranceNumber; fungsiShowDetailReinsurancePolicy(reasNumber);" data-toggle="modal" data-target="#myDetailReinsurancePolicyModal">{{cx.FirstName + " " + cx.LastName}}</td>
+													</tr>		
+												</tbody>
+											</table>
+											<div class="modal fade" id="myDetailReinsurancePolicyModal" role="dialog">
+												<div class="modal-dialog" style="position:fixed; top:50px; left:500px; width:500px;">   
+													<div class="modal-content">
+														<div class="modal-header" style="padding:20px; background-color:LightGoldenRodYellow;"> 
+															<div class="media">
+																<div class="media-left">
+																	<img src="/Gambar/Administration.jpg" class="media-object" style="width:90px;">
+																</div>
+																<div class="media-body" ng-repeat="dx in aPolicyIdentityData">
+																	<h3 class="media-heading">Master Policy Detail of Reinsurance# {{dx.ReinsuranceNumber}}</h3>
+																</div>
+															</div>						
+														</div>
+														<div class="modal-body" style="padding:10px;" ng-repeat="dx in aPolicyIdentityData">
+															<!--<iframe ng-src="{{IframeSrcUrl | trustAsResourceUrl}}" style="border:none; height: 500px; width:100%; border:hidden;"></iframe>
+															<iframe src="MasterPolicyView.html?nomorReasuransi=17"style="border:none; height: 500px; width:100%; border:hidden;"></iframe>-->
+															<div class="panel-group panel-scroll" id="masterPolicyViewing" ng-repeat="dx in aPolicyIdentityData">
+																<div class="panel panel-primary">
+																	<div class="panel-heading">
+																		<h4 class="panel-title">
+																		<a data-toggle="collapse" data-parent="#accordion" href="#collapseBasicInformation">Basic Information for Risk Assessment Consideration</a>
+																		</h4>
+																	</div>
+																	<div id="collapseBasicInformation" class="panel-collapse collapse">
+																		<div class="panel-body" style="padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px">
+																			<div class="panel panel-success" id="mainInformation">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a data-toggle="collapse" data-parent="#accordion" href="#collapseInsuredMainInformation">Reinsurance Main Information</a>
+																					</h4>
+																				</div>
+																				<div id="collapseInsuredMainInformation" class="panel-collapse collapse" style="padding-left:5px">
+																					<h3>Identity</h3>
+																					<p>Reference#: {{dx.ReinsuranceNumber}}</p>
+																					<p>Treaty# or Wordings#: {{dx.TreatyNumber}}</p>
+																					<p>Policy ID#: {{dx.CedingPolicy}}</p>
+																					<p>Slip#: {{dx.SlipNumber}}</p>
+																					<p>Slip Date: {{dx.SlipDate}}</p>
+																					<h3>Source of Business</h3>
+																					<p>Ceding Company or Customer: {{dx.SourceOfBusiness}}</p>
+																					<p>Payor of Reference Premium: {{dx.SourceOfBusiness}}</p>
+																					<h3>Reinsurance Development</h3>
+																					<p>Offer Received: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+																					<p>Offer Due Date: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+																					<p>Date of Entry: {{dx.DateOfOfferEntry|date:'dd/MM/yyyy'}}</p>
+																					<p>Date of Complete Recorded: {{dx.DateOfComprehensiveData|date:'dd/MM/yyyy'}}</p>
+																					<p>Date of Underwriting Processing: {{dx.DateOfUnderwriting|date:'dd/MM/yyyy'}}</p>
+																					<p>Date of Acceptance: {{dx.DateOfComprehensiveData|date:'dd/MM/yyyy'}}</p>
+																					<p>Date to Retroceded: {{dx.RetrocessionDate|date:'dd/MM/yyyy'}}</p>
+																					<p>Last Renewal Date: {{dx.LastRenewalDate|date:'dd/MM/yyyy'}}</p>
+																					<p>Status of Insurance: {{dx.StatusInsurancePeriod}}</p>
+																					<p>Alteration Date: {{dx.StatusInsurancePeriod|date:'dd/MM/yyyy'}}</p>
+																					<p>Date of Preleminary Loss Advice: {{dx.DateOfPLA|date:'dd/MM/yyyy'}}</p>
+																					<p>History: {{dx.History}}</p>
+																				</div>	
+																			</div>
+																			<div class="panel panel-success" id="insured">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a data-toggle="collapse" data-parent="#accordion" href="#objectReinsured">Object to Reinsured</a>
+																					</h4>
+																				</div>
+																				<div id="objectReinsured"  class="panel-collapse collapse" style="padding-left:5px">
+																					<h3>Object</h3>
+																					<p>Insured Object: {{dx.InsuredObject}}</p>
+																					<p>Specification: {{dx.SpesificBusiness}}</p>
+																					<h3>Object Location</h3>
+																					<p>Region: {{dx.SourceOfBusiness}}</p>
+																					<p>State: {{dx.SourceOfBusiness}}</p>																										<p>Region: {{dx.SourceOfBusiness}}</p>
+																					<p>Province: {{dx.SourceOfBusiness}}</p>																		
+																					<p>City: {{dx.SourceOfBusiness}}</p>
+																					<h3>Insured</h3>
+																					<p>First Name: {{dx.FirstName}}</p>
+																					<p>Last Name: {{dx.LastName}}</p>
+																					<p>Policy Owner: {{dx.CedingPolicy}}</p>
+																					<p>Social Security Number (SSN): {{dx.SocialSecurityNumber}}</p>
+																					<h3>Contact</h3>
+																					<p>Address: {{dx.History}}</p>
+																					<p>Phone: {{dx.History}}</p>
+																					<p>Email: {{dx.History}}</p>
+																				</div>
+																			</div>	
+																			<div class="panel panel-success" id="riskFactor">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a data-toggle="collapse" data-parent="#accordion" href="#riskFactorsDegre">Risk Factors: Factors that influence the degree of risk</a>
+																					</h4>
+																				</div>
+																				<div id="riskFactorsDegre" class="panel-collapse collapse">
+																					<h3>Issued Factor</h3>
+																					<p>Issue Date: {{dx.ReinsuranceNumber}}</p>
+																					<p>Terminate: {{dx.TreatyNumber}}</p>
+																					<p>Policy Year: {{dx.CedingPolicy}}</p>
+																					<p>Underwriting Year: {{dx.SlipNumber}}</p>
+																					<p>Accounting Year: {{dx.SlipDate}}</p> 
+																					<h3>Inssured Factor</h3>
+																					<p>Place of Birth: {{dx.SourceOfBusiness}}</p>
+																					<p>Birth Date: {{dx.SourceOfBusiness}}</p>
+																					<p>Aging Method: {{dx.SourceOfBusiness}}</p>
+																					<p>Attained Age: {{dx.SourceOfBusiness}}</p>
+																					<p>Gender: {{dx.SourceOfBusiness}}</p>
+																					<p>Smoking: {{dx.SourceOfBusiness}}</p>
+																					<p>Medics: {{dx.SourceOfBusiness}}</p>
+																					<h3>Insurance Factor</h3>
+																					<p>Insurance: {{dx.DateOfOfferEntry}}</p>
+																					<p>Insurance Form: {{dx.DateOfComprehensiveData}}</p>
+																					<p>Currency: {{dx.DateOfUnderwriting}}</p>
+																					<p>Reinsurance Arrangement: {{dx.RetrocessionDate}}</p>
+																					<p>Retrocession: {{dx.LastRenewalDate}}</p>
+																					<p>Previous Insurance: {{dx.StatusInsurancePeriod}}</p>
+																					<p>Group Insurance: {{dx.DateOfPLA}}</p>
+																					<p>Sum Reinsured: {{dx.History}}</p>
+																				</div>
+																			</div>	
+																			<div class="panel panel-success" id="coverage">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceCoverage">Reinsurance Coverage</a>
+																					</h4>
+																				</div>
+																				<div id="reinsuranceCoverage" class="panel-collapse collapse">
+																					<div class="table-responsive">
+																						<table class="table table-hover">
+																							<thead>
+																								<tr>
+																									<th>Coverage#</th>
+																									<th>Product</th>
+																									<th>Risks</th>
+																									<th>Elapse(Year)</th>
+																									<th>Sum Insured</th>
+																									<th>Sum at Risk</th>
+																									<th>Sum Reinsured</th>
+																									<th>% Reinsurance Shared</th>
+																									<th>Sum Retroced</th>
+																									<th>Reinsurance Treaty</th>
+																									<th>Retro Treaty</th>
+																									<th>CCy/Risk</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								<tr>
+																									<td>2017</td>
+																									<td>Facultative</td>
+																									<td>100</td>
+																									<td>2017</td>
+																									<td>Treaty</td>
+																									<td>1000</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																				</div>	
+																			</div>
+																			<div class="panel panel-success" id="billing">
+																				<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a data-toggle="collapse" data-parent="#accordion" href="#reinsuranceBilling">Reinsurance Billing</a>
+																					</h4>
+																				</div>
+																				<div id="reinsuranceBilling" class="panel-collapse collapse">
+																					<div class="table-responsive">
+																						<table class="table table-hover">
+																							<thead>
+																								<tr ng-click="fungsiColectCedingBilling()">
+																									<th>Billing#</th>
+																									<th>Risks</th>
+																									<th>Balance</th>
+																									<th>Premium</th>
+																									<th>EM Premium</th>
+																									<th>ER Premium</th>
+																									<th>Commission</th>
+																									<th>EM Commission</th>
+																									<th>ER Commission</th>
+																									<th>Overriding</th>
+																									<th>Fleet Discount</th>
+																									<th>Profit Commission</th>
+																									<th>Fleet Discount</th>
+																									<th>Product</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								<tr>
+																									<td>2017</td>
+																									<td>Facultative</td>
+																									<td>100</td>
+																									<td>2017</td>
+																									<td>Treaty</td>
+																									<td>1000</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>	
+																		</div>	
+																	</div>
+																</div>
+															</div>
+														</div>	
+													</div>
+													<div class="modal-footer">
+														<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-folder-close"></span> Close</button>										
+													</div>
+												</div>
+											</div>	
+										</div> 
+									</div> 
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<script src="ReadsYsControl.js"></script>
+	</body>
+</html>

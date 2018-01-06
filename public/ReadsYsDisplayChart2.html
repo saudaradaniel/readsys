@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<title>Chart Control</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="ReadsYsChartControler.js"></script>
+	<style>
+
+		ul {background-color: white; color: black;}
+	</style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="600" ng-controller="chartControl" ng-init="jenisChart; showMe5=false; showMe8=false; showme9=true; showMe10=false; showMe11=true; showMe12=false; showMe13=false; showMe14=false; showMe15=false; showMe16=false; showMe17=false; showMe18=false; showMe19=false; showMe20=false;">
+	<div class="row content">
+		<div class="col-sm-3" style="padding=0px; width:300px; height:500;">
+			<nav role="navigation" class="navbar sidenav navbar-fixed-top" style="background-color: white; color:black; width:300px; height:500;">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">Chart Supporting Tools</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="summary nav navbar-nav">
+							<li><a ng-click="fungsiChartIntroduction()">Introduction</a></li>
+							<li><a data-toggle="modal" data-target="#myModalChartControlTask" ng-click="fungsiListed()">Setting Source of Chart</a></li>
+							<li><a href="#section3" ng-click="fungsiCreate()">Create Chart</a></li>
+							<li><a href="#section4" ng-click="fungsiRelated()">Setting Related Source of Chart</a></li>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Setting Type of Chart<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#section44">Line</a></li>
+									<li><a href="#section45">Bar</a></li>
+									<li><a href="#section44">Radar</a></li>
+									<li><a href="#viewChartControl">Doughnut & Pie</a></li>
+									<li><a href="#section44">Polar Area</a></li>
+									<li><a href="#section45">Buble</a></li>
+									<li><a href="#viewChartControl">Scatter</a></li>
+									<li><a href="#section45">Area</a></li>
+									<li><a href="#viewChartControl">Mixed</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Arrange Chart's View<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a data-toggle="modal" data-target="#myModalDeactivateChart">Deactivate Chart</a></li>
+									<li><a data-toggle="modal" data-target="#myModalActivateChart">Activate Chart</a></li>								
+									<li><a data-toggle="modal" data-target="#myModalManagingChartTitle">Managing Chart's Title</a></li>
+									<li><a data-toggle="modal" data-target="#myModalManagingChartSize">Managing Chart's Size</a></li>
+									<li><a href="#viewChartControl">Managing Chart's Label</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Arrange Chart's Data<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#section44">Deactivate Chart's Data</a></li>
+									<li><a href="#section45">Activate Chart's Data</a></li>
+									<li><a href="#viewChartControl">Managing Chart's Dataset</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="col-sm-9">
+			<div id="chartIntoduction" class="container-fluid" ng-show = "showMe11" style="padding-top:0px; padding-right:5px; padding-left:5px">
+				<h4><center>Operating Procedure</center></h4>
+				<img src="/Gambar/decision.jpg" style="width:100%; height:500px; padding-bottom:0px;">
+				<p>Menghubungkan users dengan semua ceding dalam suatu kerangka proses penyajian informasi terpadu.</p>
+				<p>Perkembangan bisnis dapat diamati dari waktu kewaktu dengan memperhatikan prinsip prinsip underwriting, sehingga hubungan relasional terjalin dengan harmonis.</p>
+				<p> Dokumentasi setiap transaksi bisnis didasarkan pada cara administrasi dokumen secara elektronik.</p>
+									
+				<p ng-show="true" id="variabelTerkirim"></p>
+			</div>
+			<div id="viewSelectedChartControl" class="container-fluid" ng-show = "showMe14" style="padding-top:0px; padding-right:5px; padding-left:5px;">	
+				<div class="laptop" style="padding=0px;">
+					<h3>List of Charts</h3>
+					<label for="sel5">Select Chart(select one):</label>
+					<select class="form-control" id="sel5" ng-model="selectedChartTask" ng-options="z3.SelectedChart for z3 in chartTask3" ng-change="fungsiSettingSelectedChart(z3.SelectedChart)"></select>
+				</div>
+				<div class="well" id="mainChart" ng-init="mainChartTitle; mainChartSubTitle; showMe30=true;" ng-show="showMe30" ng-click="fungsiPlacingMainChartTitle()">
+					<h4 id="wellMainChartTitle"><center>{{mainChartTitle}}</center></h4>
+					<h5 id="wellMainChartSubTitle"><center>{{mainChartSubTitle}}</center></h5>
+					<canvas id="myMainChart" width={{mainChartWith}} height={{mainChartHeight}}></canvas>
+					<p ng-click="fungsiPlacingMainChart()">Description:</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="well" id="firstChart" ng-init="firstChartTitle; firstChartSubTitle; showMe31=true;" ng-show="showMe31" ng-click="fungsiPlacingChartOneTitle()">
+							<h4 id="wellFirstChartTitle" ng-click="fungsiPlacingChartOne()"><center>{{firstChartTitle}}</center></h4>
+							<h5 id="wellFirstChartSubTitle" ng-click="fungsiPlacingChartOne()"><center>{{firstChartSubTitle}}</center></h5>
+							<canvas id="myMainChart" width={{firstChartWith}} height={{firstChartHeight}}></canvas>
+							<p ng-click="fungsiPlacingChartOne()">Description:</p> 
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="well" id="secondChart" ng-init="secondChartTitle; secondChartSubTitle; showMe32=true;" ng-show="showMe32" ng-click="fungsiPlacingChartTwoTitle()">
+							<h4 id="wellTwoChartTitle" ng-click="fungsiPlacingChartTwo()"><center>{{secondChartTitle}}</center></h4>
+							<h5 id="wellTwoChartSubTitle" ng-click="fungsiPlacingChartTwo()"><center>{{secondChartSubTitle}}</center></h5>
+							<canvas id="myMainChart" width={{secondChartWith}} height={{secondChartHeight}}></canvas>
+							<p ng-click="fungsiPlacingChartTwo()">Description:</p> 
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="well" id="thirtChart" ng-init="thirdChartTitle; thirdChartSubTitle; showMe33=true;" ng-show="showMe33" ng-click="fungsiPlacingChartThreeTitle()">
+							<h4 id="wellThreeChartTitle" ng-click="fungsiPlacingChartThree()"><center>{{thirdChartTitle}}</center></h4>
+							<h5 id="wellThreeChartSubTitle" ng-click="fungsiPlacingChartThree()"><center>{{thirdChartSubTitle}}</center></h5>
+							<canvas id="myMainChart" width={{thirdChartWith}} height={{thirdChartHeight}}></canvas>
+							<p ng-click="fungsiPlacingChartThree()">Description:</p> 
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="well" id="fourthChart" ng-init="fourthChartTitle; fourthChartSubTitle; showMe34=true;" ng-show="showMe34" ng-click="fungsiPlacingChartFourTitle()">
+							<h4 id="wellFourthChartTitle" ng-click="fungsiPlacingChartFour()"><center>{{fourthChartTitle}}</center></h4>
+							<h5 id="wellFourthChartSubTitle" ng-click="fungsiPlacingChartFour()"><center>{{fourthChartSubTitle}}</center></h5>
+							<canvas id="myMainChart" width={{fourthChartWith}} height={{fourthChartHeight}}></canvas>
+							<p ng-click="fungsiPlacingChartFour()">Description:</p> 
+						</div>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-4">
+						<div class="well">
+							<p>Main Chart Data</p> 
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="well">
+							<p>Chart#1 Data</p>  
+						</div>
+					</div>
+					<div class="col-sm-4">
+					  <div class="well">
+						<p>Chart#2 Data</p> 
+					  </div>
+					</div>
+			    </div>
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="well">
+						<p>Chart#3 Data</p> 
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="well">
+						<<p>Chart#4 Data</p>  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	
+	<div id="myModalChartControlTask" class="modal fade" role="dialog" ng-init="showMe=true; showMe8; showMe1; showMe4">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><center>Managing Sources</center></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row" ng-show="showMe8">
+						<div class="col-lg-4" ng-show="showMe" style="padding-top:5px; padding-right:15px; padding-left:15px;">
+							<label ng-show="showMe6" for="sel1">Select Task (select one):</label>
+							<select class="form-control" id="sel1" ng-model="selectedChartTask" ng-options="z1.SelectedTask for z1 in chartTask" ng-change="fungsiSelectTask(selectedChartTask.SelectedTask)"></select>
+						</div>
+						<div class="col-lg-4" ng-show="showMe4" style="padding-top:5px; padding-right:15px; padding-left:15px;">
+							<label for="sel1">Select Task (select one):</label>
+							<select class="form-control" id="sel1" ng-model="selectedChartTask" ng-options="z1.SelectedTask for z1 in chartTask" ng-change="fungsiSelectTask1(selectedChartTask.SelectedTask)"></select>
+						</div>
+						
+						<div class="col-lg-8" ng-show="showMe1" style="padding-top:5px; padding-right:15px; padding-left:15px;">
+							<label ng-show="showMe7" for="sel2">Select Sub Task (select multiple):</label>
+							<select multiple class="form-control" id="sel2" ng-model="selectedChartTask1" ng-options="z2.SelectedTask for z2 in chartTask2" ng-change="fungsiSelectTask2(selectedChartTask1.SelectedTask)"></select>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="myModalActivateChart" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><center>Activate Chart</center></h4>
+				</div>
+				<div class="modal-body">
+					<p>Chart#: <input type="text" ng-model="deActivateCharts" ng-change="fungsiActivateChart(deActivateCharts)"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModalDeactivateChart" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><center>Deactivate Chart</center></h4>
+				</div>
+				<div class="modal-body">
+					<p>Chart#: <input type="text" ng-model="deActivateCharts" ng-change="fungsiDeactivateChart(deActivateCharts)"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModalManagingChartSize" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><center>Managing Chart's Size</center></h4>
+				</div>
+				<div class="modal-body">
+					<p>Chart#: <input type="text" ng-model="managingChartsSize" ng-change="fungsiManagingChartsSize(managingChartsSize)"></p>
+					<div id="toolsToViewChart1" class="title" ng-show = "showMe40" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Main Chart's Size</center></h4>
+						<p>With:<input type="integer" ng-model="mainChartWith"></p>
+						<p>Height:<input type="integer" ng-model="mainChartHeight"></p>
+					</div>
+					<div id="toolsToViewChart2" class="title" ng-show = "showMe41" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart #One's Title</center></h4>
+						<p>With:<input type="integer" ng-model="firstChartWith"></p>
+						<p>Height:<input type="integer" ng-model="firstChartHeight"></p>
+					</div>
+					<div id="toolsToViewChart3" class="title" ng-show = "showMe42" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart #Two's Title</center></h4>
+						<p>With:<input type="text" ng-model="secondChartWith"></p>
+						<p>Height:<input type="text" ng-model="secondChartHeight"></p>
+					</div>
+					<div id="toolsToViewChart4" class="title" ng-show = "showMe43" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart Three's Title</center></h4>
+						<p>With:<input type="text" ng-model="thirdChartWith"></p>
+						<p>Height:<input type="text" ng-model="thirdChartHeight"></p>
+					</div>
+					<div id="toolsToViewChart5" class="title" ng-show = "showMe44" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart Four's Title</center></h4>
+						<p>With:<input type="text" ng-model="fourthChartWith"></p>
+						<p>Height:<input type="text" ng-model="fourthChartHeight"></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModalManagingChartTitle" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><center>Managing Chart's Title</center></h4>
+				</div>
+				<div class="modal-body">
+					<p>Chart#: <input type="text" ng-model="managingChartsTitle" ng-change="fungsiManagingChartsTitle(managingChartsTitle)"></p>
+					<div id="toolsToViewChart1" class="title" ng-show = "showMe16" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Main Chart's Title</center></h4>
+						<p>Title: <input type="text" ng-model="mainChartTitle"></p>
+						<p>Sub.T: <input type="text" ng-model="mainChartSubTitle"></p>
+					</div>
+					<div id="toolsToViewChart2" class="title" ng-show = "showMe17" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart #One's Title</center></h4>
+						<p>Title: <input type="text" ng-model="firstChartTitle"></p>
+						<p>Sub.T: <input type="text" ng-model="firstChartSubTitle"></p>
+					</div>
+					<div id="toolsToViewChart3" class="title" ng-show = "showMe18" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart #Two's Title</center></h4>
+						<p>Title: <input type="text" ng-model="secondChartTitle"></p>
+						<p>Sub.T: <input type="text" ng-model="secondChartSubTitle"></p>
+					</div>
+					<div id="toolsToViewChart4" class="title" ng-show = "showMe19" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart Three's Title</center></h4>
+						<p>Title: <input type="text" ng-model="thirdChartTitle"></p>
+						<p>Sub.T: <input type="text" ng-model="thirdChartSubTitle"></p>
+					</div>
+					<div id="toolsToViewChart5" class="title" ng-show = "showMe20" style="padding-top:15px; padding-right:5px; padding-left:5px">	
+						<h4><center>Setting Chart Four's Title</center></h4>
+						<p>Title: <input type="text" ng-model="fourthChartTitle"></p>
+						<p>Sub.T: <input type="text" ng-model="fourthChartSubTitle"></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function memberiJudulPadaChart() {
+				var myElement = document.getElementById("judul");
+				myElement=myElement.value;
+				myElement=myElement.trim();
+				document.getElementById("judulChart").innerHTML = myElement;
+				}
+		function memberiJudulPadaChart1() {
+				var myElement = document.getElementById("judul1");
+				myElement=myElement.value;
+				myElement=myElement.trim();
+				document.getElementById("judulChart1").innerHTML = myElement;
+				}	
+		function membuatChartColumn() {
+				document.getElementById("myImage").src = "/Gambar/images13.jpg";
+				}							
+		function menampilkanChart() {
+                var myElement = document.getElementById('buttonChart');
+				if (myElement = 'Chart') {
+                   document.getElementById("buttonChart").innerHTML = "Chart.";
+				   document.getElementById('displaychart').style.display='block';
+                    } else {
+					document.getElementById("buttonChart").innerHTML = "Chart";
+					document.getElementById('displaychart').style.display='collapse';
+					}
+		        }
+	</script>
+</body>
+</html>

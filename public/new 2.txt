@@ -1,0 +1,276 @@
+ng-init="showMeMediaAgenda=true; showMeSearchBy=false; showMeAgendaTabel=false; myAgendaTabel=false; noNews=0; showMeTheTable=false; showMeDeleteAgenda=false; hideMeDeleteAgenda=true; showMeAgendaTabel=true; nomorUrutAgenda=0; showMeCustomerLapses=false; showMeCustomerBusin=false; showMeCustomerTable=false; showMeAllCustomers=false; showMeCustomerClaim=false; showMe1=false; showMe2=false; showMe3=false; showMe4=false; showMe5=false; showMe6=false; showMe7=false; legendSurplus; mJudul; mJudul2; mJudul3; mJudul4; mJudul5; mySwitch=true; mySwitch2=true; mySwitch3=true; mySwitch4=true; mySwitch5=true; mSwitch=false; mSwitch2=false; mSwitch3=false; mSwitch4=false; mSwitch5=false; mSwitch6=true; mSwitch7=false; mSwitch8=false; mSwitch9=false; mSwitch10=false; mSwitch11=true; showMeEntryNewAgenda=false; showMeMyAgenda=false; showMeCompanyAgenda=false;"
+ng-init="showMeAllCustomers=false; showMeSelectedCustomer=false; showMeNews=false; showMeSearchOfTheTable=false;"
+MEMBELA GRID
+ style="min-width:1200px; padding:500px;" id="mainContent"
+ 
+ $(document).ready(function () {
+    var i = 0;
+    var dragging = false;
+    $('#dragbar').mousedown(function (e) {
+        e.preventDefault();
+        dragging = true;
+        var main = $('#main');
+        var ghostbar = $('<div>', {
+            id: 'ghostbar',
+            css: {
+                height: main.outerHeight(),
+                top: main.offset().top,
+                left: main.offset().left
+            }
+        }).appendTo('body');
+        $(document).mousemove(function (e) {
+            ghostbar.css("left", e.pageX + 2);
+        });
+    });
+    $(document).mouseup(function (e) {
+        if (dragging) {
+            $('#sidebar').css("width", e.pageX + 2);
+            $('#main').css("left", e.pageX + 2);
+            $('#ghostbar').remove();
+            $(document).unbind('mousemove');
+            dragging = false;
+        }
+    });
+});
+
+
+ 
+<div class="container">
+    <div class="row-fluid">
+        <div class="col-md-offset-2 col-md-8">
+            Content
+        </div>
+     </div>
+</div>
+==========================
+KIRIM DATA PADA IFRAME
+Depends on your specific situation, but if the iframe can be deployed after the rest of the page's loading, you can simply use a query string, a la:
+
+<iframe src="some_page.html?somedata=5&more=bacon"></iframe>
+And then somewhere in some_page.html:
+
+<script>
+var params = location.href.split('?')[1].split('&');
+data = {};
+for (x in params)
+ {
+data[params[x].split('=')[0]] = params[x].split('=')[1];
+ }
+</script>
+==================================================================
+ 
+KIRIM DATA DARI 1 CONTROL KE CONTROL LAIN
+product = { product: 'Some Product', price: '123' }  
+Never matter whether we want to share a value, an object, a list or a list of object, the same logic will work for every situation. We are going to use hard coded value so let's create a simple service to get and keep the data
+
+var app = angular.module("MyApp", []);    
+/*  Create Products service   */
+app.service('Products', function () {      
+  this.Items = function() {
+    // if we want can get data from database 
+     product = { product: '', price: '' }
+  };    
+  return this;
+});
+In this service, we are not using any complicated code, simply created a method and create a new object of product. However you want to use, you can.
+
+Now let's say We have two controllers Ctrl1, Ctrl2 like this
+
+app.controller("Ctrl1", ['$scope', 'Products',
+    function ($scope, Products) {
+    $scope.Product = Products.Items;
+    //some other code
+}]);
+
+app.controller("Ctrl2", ['$scope', 'Products',
+    function ($scope, Products) {
+    $scope.Product = Products.Items;
+    //some other code 
+}]);
+===========================================================================
+PROSES BILLING
+SETIAP BILLING WAKTU DIBUAT HARUS MENGAMBIL SALDO AHIR BILLING SEBELUMNYA UNTUK DITEMPATKAN MENJADI SALDO AWAL BILLING SEKARANG.
+106584721.00 + 12345.00 + 12334567.00 + -1234567.00 - 233232323.00 - 5000000.00
+
+
+MEMBUAT TOOLTIP PADA SUATU DIV 
+<h3 data-toggle="tooltip" title="This tooltip is on top!">Hover to see my tooltip</h3>
+
+=======================================================================================
+MEMBUAT TABEL DYNAMIC
+<script type="text/javascript">
+        var app = angular.module('MyApp', [])
+        app.controller('MyController', function ($scope, $window) {
+            $scope.Customers = [
+                { Name: "John Hammond", Country: "United States" },
+                { Name: "Mudassar Khan", Country: "India" },
+                { Name: "Suzanne Mathews", Country: "France" },
+                { Name: "Robert Schidner", Country: "Russia" }
+                ];
+ 
+            $scope.Add = function () {
+                //Add the new item to the Array.
+                var customer = {};
+                customer.Name = $scope.Name;
+                customer.Country = $scope.Country;
+                $scope.Customers.push(customer);
+ 
+                //Clear the TextBoxes.
+                $scope.Name = "";
+                $scope.Country = "";
+            };
+ 
+            $scope.Remove = function (index) {
+                //Find the record using Index from Array.
+                var name = $scope.Customers[index].Name;
+                if ($window.confirm("Do you want to delete: " + name)) {
+                    //Remove the item from Array using Index.
+                    $scope.Customers.splice(index, 1);
+                }
+            }
+        });
+    </script>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+            <tbody ng-repeat="m in Customers">
+                <tr>
+                    <td>{{m.Name}}</td>
+                    <td>{{m.Country}}</td>
+                    <td><input type="button" ng-click="Remove($index)" value="Remove" /></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><input type="text" ng-model="Name" /></td>
+                    <td><input type="text" ng-model="Country" /></td>
+                    <td><input type="button" ng-click="Add()" value="Add" /></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
+=================================================
+MENGINSERT DATA
+	<form>
+		Book Name:-<input type="text" ng-model="bname" />
+		Book Author:-<input type="text" ng-model="bauthor" />
+		Book Price:-<input type="text" ng-model="bprice" />
+		Book Language:-<input type="text" ng-model="blanguage" />
+		<input type="button" value="Submit" ng-click="insertData()" />
+	</form>
+
+ var app = angular.module('myApp',[]);
+    app.controller('bookController',function($scope,$http){	
+    $scope.insertData=function(){		
+    $http.post("insert.php", {
+		'bname':$scope.bname,
+		'bauthor':$scope.bauthor,
+		'bprice':$scope.bprice,
+		'blanguage':$scope.blanguage})
+    
+    .success(function(data,status,headers,config){
+    console.log("Data Inserted Successfully");
+    });
+        }
+         });
+
+<?php 
+$data = json_decode(file_get_contents("php://input"));
+$bname = mysql_real_escape_string($data->bname);
+$bauthor = mysql_real_escape_string($data->bauthor);
+$bprice = mysql_real_escape_string($data->bprice);
+$blanguage = mysql_real_escape_string($data->blanguage);
+mysql_connect("localhost", "root", ""); 
+mysql_select_db("books-library");
+mysql_query("INSERT INTO books('book-name', 'book-author', 'book-price', 'book-longuage') VALUES('".$bname."','".$bauthor."','".$bprice."','".$blanguage."')");
+?>
+
+
+Example #1 Simple mysql_real_escape_string() example
+
+<?php
+// Connect
+$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')
+    OR die(mysql_error());
+
+// Query
+$query = sprintf("SELECT * FROM users WHERE user='%s' AND password='%s'",
+            mysql_real_escape_string($user),
+            mysql_real_escape_string($password));
+?>
+
+Example #2 mysql_real_escape_string() requires a connection example
+
+This example demonstrates what happens if a MySQL connection is not present when calling this function.
+
+<?php
+// We have not connected to MySQL
+
+$lastname  = "O'Reilly";
+$_lastname = mysql_real_escape_string($lastname);
+
+$query = "SELECT * FROM actors WHERE last_name = '$_lastname'";
+
+var_dump($_lastname);
+var_dump($query);
+?>
+
+
+Example #3 An example SQL Injection Attack
+
+<?php
+// We didn't check $_POST['password'], it could be anything the user wanted! For example:
+$_POST['username'] = 'aidan';
+$_POST['password'] = "' OR ''='";
+
+// Query database to check if there are any matching users
+$query = "SELECT * FROM users WHERE user='{$_POST['username']}' AND password='{$_POST['password']}'";
+mysql_query($query);
+
+// This means the query sent to MySQL would be:
+echo $query;
+?>
+==========================================
+MENGGABUNG 2 field
+You cannot permanently to do this if the data type of the column is INT or number but you can do it on SELECT statement,
+
+In MySQL:
+
+SELECT  CONCAT('Price is ', priceColumn) Price_Column
+FROM    tableName
+In TSQL
+
+SELECT  'Price is ' + CAST(priceColumn AS VARCHAR(15)) Price_Column
+FROM    tableName
+But if you change the data type of that column into string (VARCHAR()) then you can simple execute  UPDATE command
+
+In MySQL,
+
+UPDATE  tableName
+SET     priceColumn = CONCAT('Price is ', priceColumn)
+in TSQL
+
+UPDATE  tableName
+SET     priceColumn = 'Price is ' + CAST(priceColumn AS VARCHAR(15))
+shareimprove this answer
+answered Feb 24 '13 at 9:50
+
+John Woo
+183k38336382
+
+					<div class="panel panel-success" id="mobilePanelInqueryCenterControl" style="padding-top:0px; padding-bottom:0px;">			
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							   <img class="img-responsive" src="/Gambar/bird.png" style="float:left; width:40; height:40px;"><a data-toggle="collapse" data-parent="#accordionDatabase3" href="#collapseMobileInqueryCenterControl">: Inquery Center</a>
+							</h4>
+						</div>
+						<div id="collapseMobileInqueryCenterControl" class="panel-collapse collapse" style="padding:0px; padding-bottom:0px;">
+							<div ng-include="'StuffAndReferenceForMobile.html'"></div>
+						</div>
+					</div>
